@@ -51,9 +51,7 @@ class Solution:
                 num_island += 1
 
                 while (queue):
-                    size = len(queue)
-
-                    for _ in range(size):
+                    for _ in range(len(queue)):
                         cur_row, cur_col = queue[0]
 
                         for (next_row, next_col) in ((cur_row - 1, cur_col), (cur_row + 1, cur_col), (cur_row, cur_col - 1), (cur_row, cur_col + 1)):
@@ -69,6 +67,7 @@ class Solution:
 
 
 sol = Solution()
+
 # sol.numIslands([["1", "1", "1", "1", "0"], ["1", "1", "0", "1", "0"], [
 #                "1", "1", "0", "0", "0"], ["0", "0", "0", "0", "0"]])
 # sol.numIslands([])
