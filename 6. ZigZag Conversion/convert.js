@@ -4,20 +4,19 @@
  * @return {string}
  */
 const convert = (s, numRows) => {
+  // return original string if can't zigzag
+  if (numRows === 1 || s.length < numRows) return s;
+
   const x = Array(numRows).fill(null).map(() => ([]));
   let row = 0;
-  let i = 0;
-  let positive = 0;
-  x[row].push(s[i]);
-  while (i < s.length) {
-    positive += 1;
-    for (let j = 0; j < numRows - 1; j += 1) {
-      i += 1;
-      row = positive % 2 === 1 ? row + 1 : row - 1;
-      x[row].push(s[i]);
-    }
+  let positive = false;
+  for (let i = 0; i < s.length; i += 1) {
+    x[row].push(s[i]);
+    positive = i % (numRows - 1) === 0 ? !positive : positive;
+    row = positive ? row + 1 : row - 1;
   }
   return x.map((v) => v.join('')).join('');
 };
 
-console.log(convert('PAYPALISHIRING', 3));
+// console.log(convert('PAYPALISHIRING', 3));
+console.log(convert('AB', 1));

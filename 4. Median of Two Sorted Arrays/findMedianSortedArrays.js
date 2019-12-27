@@ -4,18 +4,12 @@
  * @return {number}
  */
 const findMedianSortedArrays = (nums1, nums2) => {
-  let i = nums2.length;
-  nums1.forEach((v) => {
-    while (!(v <= nums2[i] && v >= nums2[i - 1])) {
-      if (v < nums2[i - 1]) {
-        i = Math.round(i / 2);
-      } else if (v > nums2[i]) {
-        i = Math.round((3 * i) / 2);
-      }
-      nums2.splice(i, 0, v);
-    }
-  });
-  return i % 2 === 0 ? nums2[i / 2] : (nums2[Math.ceil(i / 2)] + nums2[Math.floor(i / 2)]);
+  const nums = nums1.concat(nums2).sort((a, b) => a - b);
+  const { length } = nums;
+  return length % 2 === 0
+    ? ((nums[length / 2 - 1] + nums[length / 2]) / 2)
+    : nums[(length - 1) / 2];
 };
 
 console.log(findMedianSortedArrays([1, 3], [2]));
+console.log(findMedianSortedArrays([1, 2], [3, 4]));
