@@ -17,30 +17,35 @@
  * @return {number}
  */
 const findMedianSortedArrays = (nums1, nums2) => {
-  if (nums1.length > nums2.length) findMedianSortedArrays(nums2, nums1);
+  if (nums1.length > nums2.length) return findMedianSortedArrays(nums2, nums1);
 
   let i = Math.floor(nums1.length / 2);
   let j = Math.ceil(nums2.length / 2);
-  while (i > 0 && i < nums1.length && (nums1[i - 1] > nums2[j] || nums2[j - 1] > nums1[i])) {
-    if (nums1[i - 1] > nums2[j]) {
+  let leftI;
+  let rightI;
+  let leftJ;
+  let rightJ;
+  do {
+    leftI = i === 0 ? -Infinity : nums1[i - 1];
+    rightI = i === nums1.length ? Infinity : nums1[i];
+    leftJ = j === 0 ? -Infinity : nums2[j - 1];
+    rightJ = j === nums2.length ? Infinity : nums2[j];
+    if (leftI > rightJ) {
       i -= 1;
       j += 1;
     }
-    if (nums2[j - 1] > nums1[i]) {
-      i += 1;
+    if (leftJ > rightI) {
       j -= 1;
+      i += 1;
     }
-  }
-  if (i === 0 || i === nums1.length) {
-    return (nums1[i], nums2[j]) / 2;
-  }
+  } while (leftI > rightJ || leftJ > rightI);
   if (2 * (i + j) > nums1.length + nums2.length) {
-    return Math.max(nums1[i - 1], nums2[j - 1]);
+    return Math.max(leftI, leftJ);
   }
   if (2 * (i + j) < nums1.length + nums2.length) {
-    return Math.min(nums1[i], nums2[j]);
+    return Math.min(rightI, rightJ);
   }
-  return (Math.max(nums1[i - 1], nums2[j - 1]) + Math.min(nums1[i], nums2[j])) / 2;
+  return (Math.max(leftI, leftJ) + Math.min(rightI, rightJ)) / 2;
 };
 
 
