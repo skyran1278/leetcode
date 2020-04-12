@@ -26,38 +26,23 @@ const arrayToListNode = (arr) => {
  * @return {ListNode}
  */
 const removeNthFromEnd = (head, n) => {
-  if (head.next === null) return null;
-  let list = head;
+  const list = { next: head };
+  let p1 = list;
+  let p2 = list;
 
-  // 計算總共有幾個
-  let i = 1;
-  while (list.next !== null) {
-    // 不影響 head
-    list = list.next;
-    i += 1;
+  for (let i = 0; i < n; i += 1) {
+    p1 = p1.next;
   }
 
-  // 正的數過來要刪除的前一個
-  i -= (n + 1);
-
-  // 如果 -1 直接刪除第一個，並回傳
-  if (i === -1) {
-    return head.next;
+  while (p1.next !== null) {
+    p1 = p1.next;
+    p2 = p2.next;
   }
 
-  // 正的數過來要刪除的前一個 ListNode
-  list = head;
-  while (i > 0) {
-    list = list.next;
-    i -= 1;
-  }
-
-  // 會影響 head
-  // 要刪除的前一個的 next 直接跳到下下個 ListNode
-  list.next = list.next.next;
-  return head;
+  p2.next = p2.next.next;
+  return list.next;
 };
 
-console.log(removeNthFromEnd(arrayToListNode([1, 2, 3, 4, 5]), 5));
+console.log(removeNthFromEnd(arrayToListNode([1, 2, 3, 4, 5]), 2));
 console.log(removeNthFromEnd(arrayToListNode([1]), 1));
 console.log(removeNthFromEnd(arrayToListNode([1, 2]), 2));
