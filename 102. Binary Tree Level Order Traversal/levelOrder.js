@@ -17,14 +17,22 @@ function TreeNode(val) {
  */
 const levelOrder = (root) => {
   const arr = [];
-  const level = (node) => {
-    if (node !== null) {
-      arr.push(node.val);
-      level(node.left);
-      level(node.right);
+  const queue = root ? [root] : [];
+
+  while (queue.length) {
+    const level = [];
+    const { length } = queue;
+
+    for (let i = 0; i < length; i += 1) {
+      const node = queue.shift();
+      level.push(node.val);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
     }
-  };
-  level(root);
+
+    arr.push(level);
+  }
+
   return arr;
 };
 
