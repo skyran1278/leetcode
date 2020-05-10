@@ -4,14 +4,14 @@ class Solution:
       return False
 
     nums.sort()
-    c = Counter(nums)
+    nums_dict = Counter(nums)
 
-    for n in c:
-      num = c[n]
-      if num == 0:
+    for num in nums_dict:
+      value = nums_dict[num]
+      if value == 0:
         continue
       for i in range(k):
-        if c[n + i] == 0:
+        if nums_dict[num + i] == 0:
           return False
-        c[n + i] -= num
+        nums_dict[num + i] -= value
     return True
