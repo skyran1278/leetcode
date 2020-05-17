@@ -119,12 +119,49 @@ class Solution2:
         return island
 
 
-sol = Solution2()
+class Solution3:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
-print(sol.closedIsland([
-    [1, 1, 1, 1, 1, 1, 1, 0],
-    [1, 0, 0, 0, 0, 1, 1, 0],
-    [1, 0, 1, 0, 1, 1, 1, 0],
-    [1, 0, 0, 0, 0, 1, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 0]
-]))
+        m, n = len(grid), len(grid[0])
+
+        island = 0
+
+        def dfs(i: int, j: int) -> int:
+            if i in (-1, m) or j in (-1, n) or grid[i][j] == 1:
+                return 0
+
+            grid[i][j] = 1
+            for dx, dy in directions:
+                dfs(i + dx, j + dy)
+
+            return 1
+
+        def bfs(i, j):
+            queue = deque()
+            queue.append((i, j))
+            grid[i][j] = 1
+
+            while queue:
+                cur_i, cur_j = queue.popleft()
+                for di, dj in directions:
+                    next_i = di + cur_i
+                    next_j = dj + cur_j
+
+                    if grid[next_i][next_j] == 0:
+                        queue.append((next_i, next_j))
+                        grid[next_i][next_j] = 1
+
+        # 先包起來，這樣只要看到了就可以直接加 1
+        for i in range(m):
+            for j in range(n):
+                if (i in (-1, m) or j in (-1, n)) and grid[i][j] == 0:
+                    dfs(i, j)
+
+        # 開始做事
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 0:
+                    island += dfs(i, j)
+
+        return island
