@@ -155,7 +155,7 @@ class Solution3:
         # 先包起來，這樣只要看到了就可以直接加 1
         for i in range(m):
             for j in range(n):
-                if (i in (-1, m) or j in (-1, n)) and grid[i][j] == 0:
+                if (i in (0, m - 1) or j in (0, n - 1)) and grid[i][j] == 0:
                     dfs(i, j)
 
         # 開始做事
