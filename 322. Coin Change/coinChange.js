@@ -3,41 +3,64 @@
  * @param {number} amount
  * @return {number}
  */
-// const coinChange = (coins, amount) => {
-//   // const min = Math.min(coins)
-//   // const max = Math.max(coins)
+const coinChange = (coins, amount) => {
+  const memo = Array(amount + 1);
+  const dp = (n) => {
+    // base case
+    if (n === 0) return 0;
+    if (n < 0) return -1;
 
-//   // const memo = Array(max - min)
-//   const memo = Array(amount + 1)
+    if (memo[n]) return memo[n];
 
-//   const dp = (subAmount) => {
-//       if (memo[subAmount]) return memo[subAmount]
-//       let element = 0
-//       for (let index = 1; index < subAmount; index += 1) {
-//         element += dp(index);
+    let num = Infinity;
+    coins.forEach((coin) => {
+      const subProblem = dp(n - coin);
+      if (subProblem >= 0) {
+        num = Math.min(num, subProblem + 1);
+      }
+    });
 
-//       }
+    memo[n] = Number.isFinite(num) ? num : -1;
 
-//       memo[subAmount] =
-
-//   }
-//   for (let index = 1; index < memo.length; index += 1) {
-//     const element = memo[index];
-
-//   }
-// };
+    return memo[n];
+  };
+  return dp(amount);
+};
 
 const coinChange = (coins, amount) => {
-  let num = 0;
-  const dp = (coins, amount) => {
-    for (let index = 0; index < coins.length; index += 1) {
-      const subProblem = amount - coins[index];
-      if (subProblem === 0) return 1;
-      if (subProblem > 0) {
-        num += coinChange(coins, subProblem);
+  const dp = Array(amount + 1);
+  dp[0] = 0;
+  for (let index = 0; index < dp.length; index += 1) {
+    const element = dp[index];
+    coins.forEach((coin) => {
+      const subProblem = dp(n - coin);
+      if (subProblem >= 0) {
+        num = Math.min(num, subProblem + 1);
       }
-    }
-    return -1;
+    });
+  }
+  return dp[amount]
+  const dp = (n) => {
+    // base case
+    if (n === 0) return 0;
+    if (n < 0) return -1;
+
+    if (memo[n]) return memo[n];
+
+    let num = Infinity;
+    coins.forEach((coin) => {
+      const subProblem = dp(n - coin);
+      if (subProblem >= 0) {
+        num = Math.min(num, subProblem + 1);
+      }
+    });
+
+    memo[n] = Number.isFinite(num) ? num : -1;
+
+    return memo[n];
   };
-  dp(coins, amount);
+  return dp(amount);
 };
+
+console.log(coinChange([1, 2, 5], 11));
+console.log(coinChange([2], 3));
