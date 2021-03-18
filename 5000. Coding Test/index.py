@@ -24,4 +24,8 @@ def solution(s):
     return dp[len(s) - 1][4]
 
 
-print(solution('aeiouaaaiaaaa') == 'aaaaaaaa')
+print(solution('eiaeiou') == 'aeiou')
+print(solution('aeiaouaaa') == 'aeiou')
+print(solution('aeiaaioooaauuaeiu') == 'aeiiooouuu')
+print(solution('aeiaouaaaa') == 'aaaaaa')
+print(solution('eiaouaaaa') == 'aaaaa')
