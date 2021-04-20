@@ -1,9 +1,6 @@
 {
-    "env": {
-        "jest": true
-    },
-    "extends": "airbnb-base",
-    "rules": {
-        "linebreak-style": "off"
-    }
+  "env": {
+    "jest": true
+  },
+  "extends": ["airbnb-base", "prettier"]
 }
