@@ -20,11 +20,45 @@ const isMatch = (s, p) => {
   );
 };
 
-console.log(isMatch('aa', 'a'));
-console.log(isMatch('aa', 'a*'));
-console.log(isMatch('aa', 'b*aa'));
-console.log(isMatch('ab', '.*'));
-console.log(isMatch('aaa', 'a*a'));
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {boolean}
+ */
+const isMatchDpTopDown = (s, p) => {
+  const memo = {};
+
+  const dp = (str, pattern) => {
+    if (memo[`${str},${pattern}`] !== undefined) {
+      return memo[`${str},${pattern}`];
+    }
+
+    if (str === pattern) return true;
+
+    const firstMatch =
+      str[0] !== undefined && (pattern[0] === str[0] || pattern[0] === '.');
+
+    if (pattern.length >= 2 && pattern[1] === '*') {
+      memo[`${str},${pattern}`] =
+        dp(str, pattern.substring(2, pattern.length)) ||
+        (firstMatch && dp(str.substring(1, str.length), pattern));
+    } else {
+      memo[`${str},${pattern}`] =
+        firstMatch &&
+        dp(str.substring(1, str.length), pattern.substring(1, pattern.length));
+    }
+
+    return memo[`${str},${pattern}`];
+  };
+
+  return dp(s, p);
+};
+
+console.log(isMatch('aa', 'a') === false);
+console.log(isMatch('aa', 'a*') === true);
+console.log(isMatch('aa', 'b*aa') === true);
+console.log(isMatch('ab', '.*') === true);
+console.log(isMatch('aaa', 'a*a') === true);
 
 /**
  * ERROR: still error
