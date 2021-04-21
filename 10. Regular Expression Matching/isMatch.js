@@ -9,9 +9,10 @@ const isMatch = (s, p) => {
   const firstMatch = s[0] !== undefined && (p[0] === s[0] || p[0] === '.');
 
   if (p.length >= 2 && p[1] === '*') {
-    return firstMatch
-      ? isMatch(s.substring(1, s.length), p)
-      : isMatch(s, p.substring(2, p.length));
+    return (
+      isMatch(s, p.substring(2, p.length)) ||
+      (firstMatch && isMatch(s.substring(1, s.length), p))
+    );
   }
 
   return (
