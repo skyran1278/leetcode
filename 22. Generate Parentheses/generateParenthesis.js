@@ -51,11 +51,24 @@ const generateParenthesis = (n) => {
       result.push(track);
     }
 
-    rest.forEach((parentheses) => {});
+    for (let index = 0; index < rest.length; index += 1) {
+      const parentheses = rest[index];
 
-    if (canInsertRightParentheses(track)) {
+      if (!canInsertRightParentheses(track) && parentheses === ')') {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      const newRest = [...rest];
+      newRest.splice(index, 1);
+
+      backtrace(track + parentheses, newRest);
     }
   };
 
   backtrace('', Array(n).fill('(').concat(Array(n).fill(')')));
+
+  return new Set(result);
 };
+
+console.log(generateParenthesis(1));
