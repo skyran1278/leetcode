@@ -1,38 +1,39 @@
-// /**
-//  * @param {number} n
-//  * @return {string[]}
-//  */
-// const generateParenthesis = (n) => {
-//   let x = ['('];
-//   while (x[0].length < 2 * n) {
-//     const t = [];
-//     x.forEach((e) => {
-//       const v = e.split('').reduce((prev, next) => {
-//         prev += next === '(' ? 1 : -1;
-//         return prev;
-//       }, 0);
-//       const v2 = e.split('').reduce((prev, next) => {
-//         prev += next === '(' ? 1 : -1;
-//         return prev;
-//       }, 0);
-//       if (v > 0) {
-//         t.push(`${i})`);
-//       }
-//       if (v < n && v2 < n) {
-//         t.push(`${i}(`);
-//       }
-//     });
-//     x = t;
-//   }
-//   return x;
-// };
+/**
+ * has error
+ * @param {number} n
+ * @return {string[]}
+ */
+const generateParenthesis = (n) => {
+  let x = ['('];
+  while (x[0].length < 2 * n) {
+    const t = [];
+    x.forEach((e) => {
+      const v = e.split('').reduce((prev, next) => {
+        prev += next === '(' ? 1 : -1;
+        return prev;
+      }, 0);
+      const v2 = e.split('').reduce((prev, next) => {
+        prev += next === '(' ? 1 : -1;
+        return prev;
+      }, 0);
+      if (v > 0) {
+        t.push(`${e})`);
+      }
+      if (v < n && v2 < n) {
+        t.push(`${e}(`);
+      }
+    });
+    x = t;
+  }
+  return x;
+};
 
 /**
  * @param {number} n
  * @return {string[]}
  */
-const generateParenthesis = (n) => {
-  const result = [];
+const generateParenthesisV2 = (n) => {
+  const result = new Set();
 
   const canInsertRightParentheses = (track) => {
     const leftParenthesesCount = (track.match(/\(/g) || []).length;
@@ -48,7 +49,7 @@ const generateParenthesis = (n) => {
 
   const backtrace = (track, rest) => {
     if (rest.length === 0) {
-      result.push(track);
+      result.add(track);
     }
 
     for (let index = 0; index < rest.length; index += 1) {
@@ -68,7 +69,33 @@ const generateParenthesis = (n) => {
 
   backtrace('', Array(n).fill('(').concat(Array(n).fill(')')));
 
-  return new Set(result);
+  return Array.from(result);
 };
 
-console.log(generateParenthesis(1));
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+const generateParenthesisV3 = (n) => {
+  const result = [];
+
+  const backtrace = (track, leftRest, rightRest) => {
+    if (leftRest === 0 && rightRest === 0) {
+      result.push(track);
+    }
+
+    if (leftRest > 0) {
+      backtrace(`${track}(`, leftRest - 1, rightRest);
+    }
+
+    if (rightRest > leftRest) {
+      backtrace(`${track})`, leftRest, rightRest - 1);
+    }
+  };
+
+  backtrace('', n, n);
+
+  return result;
+};
+
+console.log(generateParenthesis(3));
