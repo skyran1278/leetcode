@@ -16,9 +16,8 @@
       "request": "launch",
       "name": "node.js",
       "program": "${file}",
-      "skipFiles": [
-        "<node_internals>/**"
-      ]
+      "runtimeExecutable": "/home/ran/.nvm/versions/node/v14.17.0/bin/node",
+      "skipFiles": ["<node_internals>/**"]
     }
   ]
 }
