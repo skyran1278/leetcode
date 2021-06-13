@@ -5,19 +5,19 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "python",
-      "type": "python",
-      "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal"
-    },
-    {
       "type": "node",
       "request": "launch",
       "name": "node.js",
       "program": "${file}",
       "runtimeExecutable": "/home/ran/.nvm/versions/node/v14.17.0/bin/node",
       "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "python",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
     }
   ]
 }
