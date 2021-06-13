@@ -44,13 +44,12 @@ const mergeTwoLists = (l1, l2) => {
   while (l1 !== null && l2 !== null) {
     if (l1.val < l2.val) {
       tail.next = new ListNode(l1.val);
-      tail = tail.next;
       l1 = l1.next;
     } else {
       tail.next = new ListNode(l2.val);
-      tail = tail.next;
       l2 = l2.next;
     }
+    tail = tail.next;
   }
 
   tail.next = l1 || l2;
