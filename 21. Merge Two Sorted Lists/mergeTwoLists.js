@@ -40,26 +40,21 @@ const listNodeToArray = (listNode) => {
  */
 const mergeTwoLists = (l1, l2) => {
   const list = new ListNode();
-  let l = list;
-  while (l1 !== null || l2 !== null) {
-    if (l2 === null) {
-      l.next = new ListNode(l1.val);
-      l = l.next;
-      l1 = l1.next;
-    } else if (l1 === null) {
-      l.next = new ListNode(l2.val);
-      l = l.next;
-      l2 = l2.next;
-    } else if (l1.val < l2.val) {
-      l.next = new ListNode(l1.val);
-      l = l.next;
+  let tail = list;
+  while (l1 !== null && l2 !== null) {
+    if (l1.val < l2.val) {
+      tail.next = new ListNode(l1.val);
+      tail = tail.next;
       l1 = l1.next;
     } else {
-      l.next = new ListNode(l2.val);
-      l = l.next;
+      tail.next = new ListNode(l2.val);
+      tail = tail.next;
       l2 = l2.next;
     }
   }
+
+  tail.next = l1 || l2;
+
   return list.next;
 };
 
