@@ -65,3 +65,7 @@ console.log(
     )
   )
 );
+
+console.log(
+  listNodeToArray(mergeTwoLists(arrayToListNode([]), arrayToListNode([])))
+);
