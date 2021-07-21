@@ -1,9 +1,20 @@
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-public class Example {
+public class Selection {
   public static void sort(Comparable[] a) {
-    /* 请见算法2.1、算法2.2、算法2.3、算法2.4、算法2.5或算法2.7 */
+    // 将a[]按升序排列
+    // 数组长度
+    int N = a.length;
+    for (int i = 0; i < N; i++) {
+      // 将a[i]和a[i+1..N]中最小的元素交换
+      int min = i;
+      // 最小元素的索引
+      for (int j = i + 1; j < N; j++)
+        if (less(a[j], a[min]))
+          min = j;
+      exch(a, i, min);
+    }
   }
 
   private static boolean less(Comparable v, Comparable w) {
@@ -32,8 +43,16 @@ public class Example {
   }
 
   public static void main(String[] args) {
+    // String x = args[0];
     // 从标准输入读取字符串，将它们排序并输出
+    // Scanner myObj = new Scanner(System.in); // Create a Scanner object
+    // System.out.println("Enter username");
+
+    // String userName = myObj.nextLine(); // Read user input
+    // Scanner in = new Scanner(System.in);
+    // String[] a = In.readStrings();
     String[] a = StdIn.readAllStrings();
+    // String[] a = { args[0], args[1], args[2], args[3] };
     sort(a);
     assert isSorted(a);
     show(a);

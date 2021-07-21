@@ -1,0 +1,1352 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch Current File",
+      "request": "launch",
+      "mainClass": "${file}",
+      "args": "${command:SpecifyProgramArgs}"
+    },
+    {
+      "type": "java",
+      "name": "Launch Example",
+      "request": "launch",
+      "mainClass": "Example",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch QuickStart",
+      "request": "launch",
+      "mainClass": "QuickStart",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Selection",
+      "request": "launch",
+      "mainClass": "Selection",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch AVLTreeST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.AVLTreeST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Accumulator",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Accumulator",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch AcyclicLP",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.AcyclicLP",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch AcyclicSP",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.AcyclicSP",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch AdjMatrixEdgeWeightedDigraph",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.AdjMatrixEdgeWeightedDigraph",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch AllowFilter",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.AllowFilter",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Allowlist",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Allowlist",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Alphabet",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Alphabet",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch AmericanFlag",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.AmericanFlag",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch AmericanFlagX",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.AmericanFlagX",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Arbitrage",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Arbitrage",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch AssignmentProblem",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.AssignmentProblem",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Average",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Average",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BTree",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BTree",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Bag",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Bag",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BellmanFordSP",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BellmanFordSP",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BinaryDump",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BinaryDump",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BinaryIn",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BinaryIn",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BinaryInsertion",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BinaryInsertion",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BinaryOut",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BinaryOut",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BinarySearch",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BinarySearch",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BinarySearchST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BinarySearchST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BinaryStdIn",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BinaryStdIn",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BinaryStdOut",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BinaryStdOut",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Bipartite",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Bipartite",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BipartiteMatching",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BipartiteMatching",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BipartiteX",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BipartiteX",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BlockFilter",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BlockFilter",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BoruvkaMST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BoruvkaMST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BoyerMoore",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BoyerMoore",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BreadthFirstDirectedPaths",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BreadthFirstDirectedPaths",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch BreadthFirstPaths",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.BreadthFirstPaths",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch CC",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.CC",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch CPM",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.CPM",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Cat",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Cat",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch ClosestPair",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.ClosestPair",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch CollisionSystem",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.CollisionSystem",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Complex",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Complex",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Count",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Count",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Counter",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Counter",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Cycle",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Cycle",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Date",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Date",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DeDup",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DeDup",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DegreesOfSeparation",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DegreesOfSeparation",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DepthFirstDirectedPaths",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DepthFirstDirectedPaths",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DepthFirstOrder",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DepthFirstOrder",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DepthFirstPaths",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DepthFirstPaths",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DepthFirstSearch",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DepthFirstSearch",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Digraph",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Digraph",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DigraphGenerator",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DigraphGenerator",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DijkstraAllPairsSP",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DijkstraAllPairsSP",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DijkstraSP",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DijkstraSP",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DijkstraUndirectedSP",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DijkstraUndirectedSP",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DirectedCycle",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DirectedCycle",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DirectedCycleX",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DirectedCycleX",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DirectedDFS",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DirectedDFS",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DirectedEdge",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DirectedEdge",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DirectedEulerianCycle",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DirectedEulerianCycle",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DirectedEulerianPath",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DirectedEulerianPath",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DoublingRatio",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DoublingRatio",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch DoublingTest",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.DoublingTest",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Draw",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Draw",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Edge",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Edge",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch EdgeWeightedDigraph",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.EdgeWeightedDigraph",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch EdgeWeightedDirectedCycle",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.EdgeWeightedDirectedCycle",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch EdgeWeightedGraph",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.EdgeWeightedGraph",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch EulerianCycle",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.EulerianCycle",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch EulerianPath",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.EulerianPath",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FFT",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FFT",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FarthestPair",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FarthestPair",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FenwickTree",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FenwickTree",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FileIndex",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FileIndex",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FlowEdge",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FlowEdge",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FlowNetwork",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FlowNetwork",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FloydWarshall",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FloydWarshall",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FordFulkerson",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FordFulkerson",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch FrequencyCounter",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.FrequencyCounter",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch GREP",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.GREP",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch GabowSCC",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.GabowSCC",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch GaussJordanElimination",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.GaussJordanElimination",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch GaussianElimination",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.GaussianElimination",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Genome",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Genome",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch GlobalMincut",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.GlobalMincut",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch GrahamScan",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.GrahamScan",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Graph",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Graph",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch GraphGenerator",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.GraphGenerator",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch GrayscalePicture",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.GrayscalePicture",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Heap",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Heap",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch HexDump",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.HexDump",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch HopcroftKarp",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.HopcroftKarp",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Huffman",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Huffman",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch In",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.In",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch IndexMaxPQ",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.IndexMaxPQ",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch IndexMinPQ",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.IndexMinPQ",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch InplaceMSD",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.InplaceMSD",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Insertion",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Insertion",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch InsertionX",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.InsertionX",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Interval1D",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Interval1D",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Interval2D",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Interval2D",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Inversions",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Inversions",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch KMP",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.KMP",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch KWIK",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.KWIK",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Knuth",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Knuth",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch KosarajuSharirSCC",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.KosarajuSharirSCC",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch KruskalMST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.KruskalMST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LSD",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LSD",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LZW",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LZW",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LazyPrimMST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LazyPrimMST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LinearProbingHashST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LinearProbingHashST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LinearProgramming",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LinearProgramming",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LinkedBag",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LinkedBag",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LinkedQueue",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LinkedQueue",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LinkedStack",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LinkedStack",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LongestCommonSubstring",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LongestCommonSubstring",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LongestRepeatedSubstring",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LongestRepeatedSubstring",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LookupCSV",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LookupCSV",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch LookupIndex",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.LookupIndex",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch MSD",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.MSD",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch MaxPQ",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.MaxPQ",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Merge",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Merge",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch MergeBU",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.MergeBU",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch MergeX",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.MergeX",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch MinPQ",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.MinPQ",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Multiway",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Multiway",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch NFA",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.NFA",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch NonrecursiveDFS",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.NonrecursiveDFS",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch NonrecursiveDirectedDFS",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.NonrecursiveDirectedDFS",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Out",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Out",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch PatriciaSET",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.PatriciaSET",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch PatriciaST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.PatriciaST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Picture",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Picture",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch PictureDump",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.PictureDump",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Point2D",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Point2D",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Polynomial",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Polynomial",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch PrimMST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.PrimMST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Queue",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Queue",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Quick",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Quick",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Quick3string",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Quick3string",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Quick3way",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Quick3way",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch QuickBentleyMcIlroy",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.QuickBentleyMcIlroy",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch QuickFindUF",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.QuickFindUF",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch QuickUnionUF",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.QuickUnionUF",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch QuickX",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.QuickX",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch RabinKarp",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.RabinKarp",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch RandomSeq",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.RandomSeq",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch RedBlackBST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.RedBlackBST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch ResizingArrayBag",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.ResizingArrayBag",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch ResizingArrayQueue",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.ResizingArrayQueue",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch ResizingArrayStack",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.ResizingArrayStack",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch RunLength",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.RunLength",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SET",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SET",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch ST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.ST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SegmentTree",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SegmentTree",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Selection(1)",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Selection",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SeparateChainingHashST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SeparateChainingHashST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SequentialSearchST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SequentialSearchST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Shell",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Shell",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SparseVector",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SparseVector",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Stack",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Stack",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch StdArrayIO",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.StdArrayIO",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch StdAudio",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.StdAudio",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch StdDraw",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.StdDraw",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch StdIn",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.StdIn",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch StdOut",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.StdOut",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch StdRandom",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.StdRandom",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch StdStats",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.StdStats",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Stopwatch",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Stopwatch",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch StopwatchCPU",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.StopwatchCPU",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SuffixArray",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SuffixArray",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SuffixArrayX",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SuffixArrayX",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SymbolDigraph",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SymbolDigraph",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch SymbolGraph",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.SymbolGraph",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch TST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.TST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch TarjanSCC",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.TarjanSCC",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreeSum",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.ThreeSum",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreeSumFast",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.ThreeSumFast",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch TopM",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.TopM",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Topological",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Topological",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch TopologicalX",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.TopologicalX",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Transaction",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Transaction",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch TransitiveClosure",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.TransitiveClosure",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch TrieSET",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.TrieSET",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch TrieST",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.TrieST",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch TwoPersonZeroSumGame",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.TwoPersonZeroSumGame",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch UF",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.UF",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch Vector",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.Vector",
+      "projectName": "0. algs4"
+    },
+    {
+      "type": "java",
+      "name": "Launch WeightedQuickUnionUF",
+      "request": "launch",
+      "mainClass": "edu.princeton.cs.algs4.WeightedQuickUnionUF",
+      "projectName": "0. algs4"
+    }
+  ]
+}
