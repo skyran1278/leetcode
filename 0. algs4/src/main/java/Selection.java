@@ -1,62 +1,182 @@
+/******************************************************************************
+ *  Compilation:  javac Selection.java
+ *  Execution:    java  Selection < input.txt
+ *  Dependencies: StdOut.java StdIn.java
+ *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
+ *                https://algs4.cs.princeton.edu/21elementary/words3.txt
+ *
+ *  Sorts a sequence of strings from standard input using selection sort.
+ *
+ *  % more tiny.txt
+ *  S O R T E X A M P L E
+ *
+ *  % java Selection < tiny.txt
+ *  A E E L M O P R S T X                 [ one string per line ]
+ *
+ *  % more words3.txt
+ *  bed bug dad yes zoo ... all bad yet
+ *
+ *  % java Selection < words3.txt
+ *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
+ *
+ ******************************************************************************/
+
+import java.util.Comparator;
+
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
+/**
+ *  The {@code Selection} class provides static methods for sorting an
+ *  array using <em>selection sort</em>.
+ *  This implementation makes ~ &frac12; <em>n</em><sup>2</sup> compares to sort
+ *  any array of length <em>n</em>, so it is not suitable for sorting large arrays.
+ *  It performs exactly <em>n</em> exchanges.
+ *  <p>
+ *  This sorting algorithm is not stable. It uses &Theta;(1) extra memory
+ *  (not including the input array).
+ *  <p>
+ *  For additional documentation, see
+ *  <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a>
+ *  of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ *
+ *  @author Robert Sedgewick
+ *  @author Kevin Wayne
+ */
 public class Selection {
-  public static void sort(Comparable[] a) {
-    // 将a[]按升序排列
-    // 数组长度
-    int N = a.length;
-    for (int i = 0; i < N; i++) {
-      // 将最小元素放到数组的第一位
-      // 取出最小元素
-      int min = i;
-      for (int j = i + 1; j < N; j++) {
-        if (less(a[j], a[min]))
-          min = j;
-      }
-      // 交换
-      exch(a, i, min);
+
+    // This class should not be instantiated.
+    private Selection() { }
+
+    /**
+     * Rearranges the array in ascending order, using the natural order.
+     * @param a the array to be sorted
+     */
+    public static void sort(Comparable[] a) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            int min = i;
+            for (int j = i+1; j < n; j++) {
+                if (less(a[j], a[min])) min = j;
+            }
+            exch(a, i, min);
+            assert isSorted(a, 0, i);
+        }
+        assert isSorted(a);
     }
-  }
 
-  private static boolean less(Comparable v, Comparable w) {
-    return v.compareTo(w) < 0;
-  }
+    /**
+     * Rearranges the array in ascending order, using a comparator.
+     * @param a the array
+     * @param comparator the comparator specifying the order
+     */
+    public static void sort(Object[] a, Comparator comparator) {
+        int n = a.length;
+        for (int i = 0; i < n; i++) {
+            int min = i;
+            for (int j = i+1; j < n; j++) {
+                if (less(comparator, a[j], a[min])) min = j;
+            }
+            exch(a, i, min);
+            assert isSorted(a, comparator, 0, i);
+        }
+        assert isSorted(a, comparator);
+    }
 
-  private static void exch(Comparable[] a, int i, int j) {
-    Comparable t = a[i];
-    a[i] = a[j];
-    a[j] = t;
-  }
 
-  private static void show(Comparable[] a) {
-    // 在单行中打印数组
-    for (int i = 0; i < a.length; i++)
-      StdOut.print(a[i] + " ");
-    StdOut.println();
-  }
+   /***************************************************************************
+    *  Helper sorting functions.
+    ***************************************************************************/
 
-  public static boolean isSorted(Comparable[] a) {
-    // 测试数组元素是否有序
-    for (int i = 1; i < a.length; i++)
-      if (less(a[i], a[i - 1]))
-        return false;
-    return true;
-  }
+    // is v < w ?
+    private static boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) < 0;
+    }
 
-  public static void main(String[] args) {
-    // String x = args[0];
-    // 从标准输入读取字符串，将它们排序并输出
-    // Scanner myObj = new Scanner(System.in); // Create a Scanner object
-    // System.out.println("Enter username");
+    // is v < w ?
+    private static boolean less(Comparator comparator, Object v, Object w) {
+        return comparator.compare(v, w) < 0;
+    }
 
-    // String userName = myObj.nextLine(); // Read user input
-    // Scanner in = new Scanner(System.in);
-    // String[] a = In.readStrings();
-    String[] a = StdIn.readAllStrings();
-    // String[] a = { args[0], args[1], args[2], args[3] };
-    sort(a);
-    assert isSorted(a);
-    show(a);
-  }
+
+    // exchange a[i] and a[j]
+    private static void exch(Object[] a, int i, int j) {
+        Object swap = a[i];
+        a[i] = a[j];
+        a[j] = swap;
+    }
+
+
+   /***************************************************************************
+    *  Check if array is sorted - useful for debugging.
+    ***************************************************************************/
+
+    // is the array a[] sorted?
+    private static boolean isSorted(Comparable[] a) {
+        return isSorted(a, 0, a.length - 1);
+    }
+
+    // is the array sorted from a[lo] to a[hi]
+    private static boolean isSorted(Comparable[] a, int lo, int hi) {
+        for (int i = lo + 1; i <= hi; i++)
+            if (less(a[i], a[i-1])) return false;
+        return true;
+    }
+
+    // is the array a[] sorted?
+    private static boolean isSorted(Object[] a, Comparator comparator) {
+        return isSorted(a, comparator, 0, a.length - 1);
+    }
+
+    // is the array sorted from a[lo] to a[hi]
+    private static boolean isSorted(Object[] a, Comparator comparator, int lo, int hi) {
+        for (int i = lo + 1; i <= hi; i++)
+            if (less(comparator, a[i], a[i-1])) return false;
+        return true;
+    }
+
+
+
+    // print array to standard output
+    private static void show(Comparable[] a) {
+        for (int i = 0; i < a.length; i++) {
+            StdOut.println(a[i]);
+        }
+    }
+
+    /**
+     * Reads in a sequence of strings from standard input; selection sorts them;
+     * and prints them to standard output in ascending order.
+     *
+     * @param args the command-line arguments
+     */
+    public static void main(String[] args) {
+        String[] a = StdIn.readAllStrings();
+        Selection.sort(a);
+        show(a);
+    }
 }
+
+/******************************************************************************
+ *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
+ *
+ *  This file is part of algs4.jar, which accompanies the textbook
+ *
+ *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
+ *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
+ *      http://algs4.cs.princeton.edu
+ *
+ *
+ *  algs4.jar is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  algs4.jar is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
+ ******************************************************************************/
