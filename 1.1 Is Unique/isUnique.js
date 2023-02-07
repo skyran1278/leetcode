@@ -10,3 +10,9 @@ const isUnique = (str) => {
   });
   return unique;
 }
+
+// if is ascii, there is only 256 character, then I can use an array to store the character and check if it is already in the array
+// O(n) time complexity
+// if is unicode
+// if cannot use additional data structures, only can compare each character with the rest of the string
+// O(n^2) time complexity
