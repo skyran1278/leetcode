@@ -30,7 +30,7 @@
       "request": "launch",
       "name": "node.js",
       "program": "${file}",
-      "runtimeExecutable": "/home/ran/.nvm/versions/node/v14.17.0/bin/node",
+      "runtimeVersion": "default",
       "skipFiles": ["<node_internals>/**"]
     },
     {
