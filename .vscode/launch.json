@@ -34,6 +34,14 @@
       "skipFiles": ["<node_internals>/**"]
     },
     {
+      "type": "node",
+      "request": "launch",
+      "name": "typescript",
+      "program": "${file}",
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/out/**/*.js"]
+    },
+    {
       "name": "python",
       "type": "python",
       "request": "launch",
