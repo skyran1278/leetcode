@@ -2,6 +2,7 @@
   "name": "leetcode",
   "version": "1.0.0",
   "description": "leetcode records",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skyran1278/leetcode.git"
