@@ -1,3 +1,5 @@
+import { randomBytes } from 'crypto';
+
 // Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
 const checkPermutation = (str1, str2) => {
   if (str1.length !== str2.length) return false;
@@ -7,16 +9,15 @@ const checkPermutation = (str1, str2) => {
   const str2Obj = {};
   str1Arr.forEach((char) => {
     str1Obj[char] = str1Obj[char] + 1 || 1;
-
-  })
+  });
   str2Arr.forEach((char) => {
     str2Obj[char] = str2Obj[char] + 1 || 1;
-  })
+  });
   for (let key in str1Obj) {
     if (str1Obj[key] !== str2Obj[key]) return false;
   }
   return true;
-}
+};
 
 // Solution #1: Sort the strings.
 // Time Complexity: O(n log n)
@@ -24,8 +25,9 @@ const checkPermutation = (str1, str2) => {
 const checkPermutation1 = (str1, str2) => {
   if (str1.length !== str2.length) return false;
   return str1.split('').sort().join('') === str2.split('').sort().join('');
-}
+};
 
+// 建一個表，看看他有沒有用完
 // Solution #2: Check if the two strings have identical character counts.
 // Time Complexity: O(n)
 // Space Complexity: O(n)
@@ -47,14 +49,11 @@ const checkPermutation2 = (str1, str2) => {
     }
   }
   return true;
-}
-
-const crypto = require('crypto');
-
+};
 
 // case1: long random string
-const str1 = crypto.randomBytes(10000).toString('hex');
-const str2 = crypto.randomBytes(10000).toString('hex');
+const str1 = randomBytes(10000).toString('hex');
+const str2 = randomBytes(10000).toString('hex');
 
 console.log(checkPermutation(str1, str1));
 console.log(checkPermutation1(str1, str1));
@@ -80,8 +79,8 @@ for (let i = 0; i < 1000; i++) {
 console.timeEnd('checkPermutation2');
 
 // case2 short random string
-const str3 = crypto.randomBytes(10).toString('hex');
-const str4 = crypto.randomBytes(10).toString('hex');
+const str3 = randomBytes(10).toString('hex');
+const str4 = randomBytes(10).toString('hex');
 
 console.log(checkPermutation(str3, str3));
 console.log(checkPermutation1(str3, str3));
