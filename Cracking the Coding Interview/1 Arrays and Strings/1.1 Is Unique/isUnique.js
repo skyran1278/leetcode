@@ -9,7 +9,16 @@ const isUnique = (str) => {
     }
   });
   return unique;
-}
+};
+
+console.log(isUnique('abcde')); // true
+console.log(isUnique('abcdea')); // false
+
+// 1. key-value pair O(1)
+// 2. create all characters array O(1)
+// if can't use additional data structures
+// 1. for loop in-place O(n^2)
+// 2. sort the string O(n log n) + for loop O(n)
 
 // if is ascii, there is only 256 character, then I can use an array to store the character and check if it is already in the array
 // O(n) time complexity
