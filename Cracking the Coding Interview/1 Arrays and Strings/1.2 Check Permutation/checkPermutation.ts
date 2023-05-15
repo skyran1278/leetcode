@@ -1,19 +1,19 @@
 import { randomBytes } from 'crypto';
 
 // Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
-const checkPermutation = (str1, str2) => {
+const checkPermutation = (str1: string, str2: string) => {
   if (str1.length !== str2.length) return false;
   const str1Arr = str1.split('');
   const str2Arr = str2.split('');
-  const str1Obj = {};
-  const str2Obj = {};
-  str1Arr.forEach((char) => {
+  const str1Obj: { [key: string]: number } = {};
+  const str2Obj: { [key: string]: number } = {};
+  str1Arr.forEach((char: string | number) => {
     str1Obj[char] = str1Obj[char] + 1 || 1;
   });
-  str2Arr.forEach((char) => {
+  str2Arr.forEach((char: string | number) => {
     str2Obj[char] = str2Obj[char] + 1 || 1;
   });
-  for (let key in str1Obj) {
+  for (const key in str1Obj) {
     if (str1Obj[key] !== str2Obj[key]) return false;
   }
   return true;
@@ -22,7 +22,7 @@ const checkPermutation = (str1, str2) => {
 // Solution #1: Sort the strings.
 // Time Complexity: O(n log n)
 // Space Complexity: O(1)
-const checkPermutation1 = (str1, str2) => {
+const checkPermutation1 = (str1: string, str2: string) => {
   if (str1.length !== str2.length) return false;
   return str1.split('').sort().join('') === str2.split('').sort().join('');
 };
@@ -31,9 +31,9 @@ const checkPermutation1 = (str1, str2) => {
 // Solution #2: Check if the two strings have identical character counts.
 // Time Complexity: O(n)
 // Space Complexity: O(n)
-const checkPermutation2 = (str1, str2) => {
+const checkPermutation2 = (str1: string, str2: string) => {
   if (str1.length !== str2.length) return false;
-  const charCount = {};
+  const charCount: { [key: string]: number } = {};
   for (let i = 0; i < str1.length; i++) {
     if (charCount[str1[i]]) {
       charCount[str1[i]]++;
