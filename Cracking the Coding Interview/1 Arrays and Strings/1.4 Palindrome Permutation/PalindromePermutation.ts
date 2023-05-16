@@ -5,15 +5,15 @@ import * as crypto from 'crypto';
 
 const isPalindromePermutation = (str: string): boolean => {
   const strArray = str.toLowerCase().split('');
-  const stringMap = {};
-  strArray.forEach((char) => {
+  const stringMap: { [key: string]: number } = {};
+  strArray.forEach((char: string) => {
     if (char === ' ') return;
-    stringMap[char] = stringMap[char] + 1 || 1;
+    stringMap[char] = stringMap[char] ? stringMap[char] + 1 : 1;
   });
 
   let oddCount = 0;
   for (const value of Object.values(stringMap)) {
-    if (Number(value) % 2 === 1) {
+    if (value % 2 === 1) {
       oddCount += 1;
     }
     if (oddCount >= 2) {
@@ -30,12 +30,12 @@ const isPalindromePermutation2 = (str: string): boolean => {
     const char = str[i].toLowerCase();
     if (char === ' ') continue;
     if (charMap.has(char)) {
-      charMap.set(char, charMap.get(char) + 1);
+      charMap.set(char, charMap.get(char)! + 1);
     } else {
       charMap.set(char, 1);
     }
   }
-  for (const [key, value] of charMap) {
+  for (const value of charMap.values()) {
     if (value % 2 !== 0) oddCount++;
   }
   return oddCount <= 1;
