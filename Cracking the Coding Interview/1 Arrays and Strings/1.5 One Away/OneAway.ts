@@ -12,7 +12,7 @@ enum PerformedType {
   Undefined,
 }
 
-const oneAway = (str1: string, str2: string): boolean => {
+export const oneAway = (str1: string, str2: string): boolean => {
   if (Math.abs(str1.length - str2.length) > 1) {
     return false;
   }
@@ -89,7 +89,7 @@ const oneEditInsert = (str1: string, str2: string): boolean => {
   return true;
 };
 
-const oneAway2 = (str1: string, str2: string): boolean => {
+export const oneAway2 = (str1: string, str2: string): boolean => {
   if (str1.length === str2.length) {
     return oneEditReplace(str1, str2);
   } else if (str1.length + 1 === str2.length) {
@@ -99,27 +99,3 @@ const oneAway2 = (str1: string, str2: string): boolean => {
   }
   return false;
 };
-
-console.log(oneAway('pale', 'ple'));
-console.log(oneAway('pales', 'pale'));
-console.log(oneAway('pale', 'bale'));
-console.log(oneAway('pale', 'bake'));
-
-// measure time
-console.time('oneAway');
-for (let index = 0; index < 100000; index++) {
-  oneAway('pale', 'ple');
-  oneAway('pales', 'pale');
-  oneAway('pale', 'bale');
-  oneAway('pale', 'bake');
-}
-console.timeEnd('oneAway');
-
-console.time('oneAway2');
-for (let index = 0; index < 100000; index++) {
-  oneAway2('pale', 'ple');
-  oneAway2('pales', 'pale');
-  oneAway2('pale', 'bale');
-  oneAway2('pale', 'bake');
-}
-console.timeEnd('oneAway2');
