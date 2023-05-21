@@ -1,27 +1,67 @@
-// test stringCompression
-//   ✓ should return a2b1c5a3 for aabcccccaaa
-import { stringCompression, stringCompression2 } from './stringCompression';
+import { stringCompression, stringCompression2 } from './stringCompression'; // Replace 'your-module' with the actual module path
 
-test('stringCompression', () => {
-  expect(stringCompression('aabcccccaaa')).toEqual('a2b1c5a3');
-  expect(stringCompression('abca')).toEqual('abca');
+describe('stringCompression', () => {
+  it('should compress the string correctly', () => {
+    const str = 'aabcccccaaa';
+    const expected = 'a2b1c5a3';
 
-  console.time('stringCompression if can be compressed');
-  stringCompression('abcaaaaaaa'.repeat(1000000));
-  console.timeEnd('stringCompression if can be compressed');
-  console.time('stringCompression if cannot be compressed');
-  stringCompression('abca'.repeat(1000000));
-  console.timeEnd('stringCompression if cannot be compressed');
+    const result = stringCompression(str);
+    expect(result).toEqual(expected);
+  });
+
+  it('should return the original string if compressed string is not smaller', () => {
+    const str = 'abcde';
+    const expected = 'abcde';
+
+    const result = stringCompression(str);
+    expect(result).toEqual(expected);
+  });
+
+  it('should handle an empty string', () => {
+    const str = '';
+    const expected = '';
+
+    const result = stringCompression(str);
+    expect(result).toEqual(expected);
+  });
 });
 
-test('stringCompression2', () => {
-  expect(stringCompression2('aabcccccaaa')).toEqual('a2b1c5a3');
-  expect(stringCompression2('abca')).toEqual('abca');
+describe('stringCompression2', () => {
+  it('should compress the string correctly', () => {
+    const str = 'aabcccccaaa';
+    const expected = 'a2b1c5a3';
 
-  console.time('stringCompression2 if can be compressed');
-  stringCompression2('abcaaaaaaa'.repeat(1000000));
-  console.timeEnd('stringCompression2 if can be compressed');
-  console.time('stringCompression2 if cannot be compressed');
-  stringCompression2('abca'.repeat(1000000));
-  console.timeEnd('stringCompression2 if cannot be compressed');
+    const result = stringCompression2(str);
+    expect(result).toEqual(expected);
+  });
+
+  it('should return the original string if compressed string is not smaller', () => {
+    const str = 'abcde';
+    const expected = 'abcde';
+
+    const result = stringCompression2(str);
+    expect(result).toEqual(expected);
+  });
+
+  it('should handle an empty string', () => {
+    const str = '';
+    const expected = '';
+
+    const result = stringCompression2(str);
+    expect(result).toEqual(expected);
+  });
+});
+
+describe('Performance comparison', () => {
+  it('should compare the performance of stringCompression and stringCompression2', () => {
+    const longStr = 'a'.repeat(1000000);
+
+    console.time('stringCompression');
+    stringCompression(longStr);
+    console.timeEnd('stringCompression');
+
+    console.time('stringCompression2');
+    stringCompression2(longStr);
+    console.timeEnd('stringCompression2');
+  });
 });

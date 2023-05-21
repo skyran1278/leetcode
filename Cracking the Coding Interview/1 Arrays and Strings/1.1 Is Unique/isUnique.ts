@@ -1,6 +1,6 @@
 // Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
-const isUnique = (str: string) => {
+export const isUnique = (str: string) => {
   const strArr = str.split('');
   let unique = true;
   strArr.forEach((char: string, index: number) => {
@@ -10,9 +10,6 @@ const isUnique = (str: string) => {
   });
   return unique;
 };
-
-console.log(isUnique('abcde')); // true
-console.log(isUnique('abcde a')); // false
 
 // 1. key-value pair O(1)
 // 2. create all characters array O(1)

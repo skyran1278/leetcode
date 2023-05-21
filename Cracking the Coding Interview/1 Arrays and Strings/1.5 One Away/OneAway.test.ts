@@ -1,37 +1,64 @@
-import { oneAway, oneAway2 } from './OneAway';
+import { oneAway, oneAway2 } from './OneAway'; // Replace 'your-module' with the actual module path
 
-test('oneAway', () => {
-  expect(oneAway('pale', 'ple')).toBe(true);
-  expect(oneAway('pales', 'pale')).toBe(true);
-  expect(oneAway('pale', 'bale')).toBe(true);
-  expect(oneAway('pale', 'bake')).toBe(false);
-  expect(oneAway('pale', 'paleAe')).toBe(false);
-  expect(oneAway('pale', 'baleE')).toBe(false);
+describe('oneAway', () => {
+  it('should return true for strings that are one edit away', () => {
+    expect(oneAway('pale', 'ple')).toBe(true);
+    expect(oneAway('pales', 'pale')).toBe(true);
+    expect(oneAway('pale', 'bale')).toBe(true);
+    expect(oneAway('pale', 'pale')).toBe(true);
+    expect(oneAway('abcde', 'abfde')).toBe(true);
+    expect(oneAway('abcde', 'abcdef')).toBe(true);
+  });
 
-  console.time('oneAway');
-  for (let index = 0; index < 100000; index++) {
-    oneAway('pale', 'ple');
-    oneAway('pales', 'pale');
-    oneAway('pale', 'bale');
-    oneAway('pale', 'bake');
-  }
-  console.timeEnd('oneAway');
+  it('should return false for strings that are more than one edit away', () => {
+    expect(oneAway('pale', 'bake')).toBe(false);
+    expect(oneAway('abcde', 'afgde')).toBe(false);
+    expect(oneAway('abcde', 'abcdefg')).toBe(false);
+    expect(oneAway('abcde', 'cbcd')).toBe(false);
+  });
 });
 
-test('oneAway2', () => {
-  expect(oneAway2('pale', 'ple')).toBe(true);
-  expect(oneAway2('pales', 'pale')).toBe(true);
-  expect(oneAway2('pale', 'bale')).toBe(true);
-  expect(oneAway2('pale', 'bake')).toBe(false);
-  expect(oneAway2('pale', 'paleAe')).toBe(false);
-  expect(oneAway2('pale', 'baleE')).toBe(false);
+describe('oneAway2', () => {
+  it('should return true for strings that are one edit away', () => {
+    expect(oneAway2('pale', 'ple')).toBe(true);
+    expect(oneAway2('pales', 'pale')).toBe(true);
+    expect(oneAway2('pale', 'bale')).toBe(true);
+    expect(oneAway2('pale', 'pale')).toBe(true);
+    expect(oneAway2('abcde', 'abfde')).toBe(true);
+    expect(oneAway2('abcde', 'abcdef')).toBe(true);
+  });
 
-  console.time('oneAway2');
-  for (let index = 0; index < 100000; index++) {
-    oneAway2('pale', 'ple');
-    oneAway2('pales', 'pale');
-    oneAway2('pale', 'bale');
-    oneAway2('pale', 'bake');
-  }
-  console.timeEnd('oneAway2');
+  it('should return false for strings that are more than one edit away', () => {
+    expect(oneAway2('pale', 'bake')).toBe(false);
+    expect(oneAway2('abcde', 'afgde')).toBe(false);
+    expect(oneAway2('abcde', 'abcdefg')).toBe(false);
+    expect(oneAway2('abcde', 'cbcd')).toBe(false);
+  });
+});
+
+describe('Performance comparison', () => {
+  it('should compare the performance of oneAway and oneAway2', () => {
+    const longStr1 = 'a'.repeat(1000000);
+    const longStr2 = 'b'.repeat(1000000);
+
+    console.time('oneAway');
+    for (let index = 0; index < 100000; index++) {
+      oneAway('pale', 'ple');
+      oneAway('pales', 'pale');
+      oneAway('pale', 'bale');
+      oneAway('pale', 'bake');
+    }
+    oneAway(longStr1, longStr2);
+    console.timeEnd('oneAway');
+
+    console.time('oneAway2');
+    oneAway2(longStr1, longStr2);
+    for (let index = 0; index < 100000; index++) {
+      oneAway2('pale', 'ple');
+      oneAway2('pales', 'pale');
+      oneAway2('pale', 'bale');
+      oneAway2('pale', 'bake');
+    }
+    console.timeEnd('oneAway2');
+  });
 });
