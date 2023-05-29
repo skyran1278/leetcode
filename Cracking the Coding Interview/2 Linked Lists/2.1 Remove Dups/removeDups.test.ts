@@ -1,27 +1,5 @@
-import { Node, removeDups, removeDupsNoBuffer } from './removeDups';
-
-// Helper function to convert an array to a linked list
-const arrayToLinkedList = (arr: number[]) => {
-  const head = new Node(arr[0]);
-  let current = head;
-  for (let i = 1; i < arr.length; i++) {
-    const newNode = new Node(arr[i]);
-    current.next = newNode;
-    current = newNode;
-  }
-  return head;
-};
-
-// Helper function to convert a linked list to an array
-const linkedListToArray = (head: Node | null) => {
-  const arr = [];
-  let current = head;
-  while (current !== null) {
-    arr.push(current.value);
-    current = current.next;
-  }
-  return arr;
-};
+import { Node, arrayToLinkedList, linkedListToArray } from '../linkedList';
+import { removeDups, removeDupsNoBuffer } from './removeDups';
 
 describe('removeDups', () => {
   it('should remove duplicates from an unsorted linked list', () => {

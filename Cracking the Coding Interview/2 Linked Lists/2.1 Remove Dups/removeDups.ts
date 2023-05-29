@@ -1,3 +1,5 @@
+import { Node } from '../linkedList';
+
 export const removeDups = (head: Node | null): void => {
   const set = new Set();
   let current = head;
@@ -39,13 +41,3 @@ export const removeDupsNoBuffer = (head: Node | null): void => {
 // Time Complexity: O(n^2)
 // Space Complexity: O(1)
 // where n is the length of the linked list
-
-export class Node {
-  public value: number;
-  public next: Node | null;
-
-  constructor(value: number) {
-    this.value = value;
-    this.next = null;
-  }
-}
