@@ -1,4 +1,9 @@
-import { Node, arrayToLinkedList, linkedListToArray } from '../linkedList';
+import {
+  Node,
+  arrayToLinkedList,
+  createLinkedList,
+  linkedListToArray,
+} from '../linkedList';
 import { removeDups, removeDupsNoBuffer } from './removeDups';
 
 describe('removeDups', () => {
@@ -62,5 +67,39 @@ describe('removeDupsNoBuffer', () => {
     const head = arrayToLinkedList([1, 1, 1, 1, 1]);
     removeDupsNoBuffer(head);
     expect(linkedListToArray(head)).toEqual([1]);
+  });
+});
+
+describe('removeDups performance', () => {
+  it('should have acceptable performance for removeDups', () => {
+    const length = 10000; // Define the length of the linked list for performance testing
+    const head = createLinkedList(length);
+
+    // Measure the execution time of removeDups
+    const startTime = process.hrtime();
+    removeDups(head);
+    const endTime = process.hrtime(startTime);
+    const executionTime = endTime[0] * 1000 + endTime[1] / 1000000; // Convert to milliseconds
+
+    // Adjust the acceptable execution time according to your requirements
+    const acceptableExecutionTime = 10; // Specify the acceptable execution time in milliseconds
+
+    expect(executionTime).toBeLessThanOrEqual(acceptableExecutionTime);
+  });
+
+  it('should have acceptable performance for removeDupsNoBuffer', () => {
+    const length = 10000; // Define the length of the linked list for performance testing
+    const head = createLinkedList(length);
+
+    // Measure the execution time of removeDupsNoBuffer
+    const startTime = process.hrtime();
+    removeDupsNoBuffer(head);
+    const endTime = process.hrtime(startTime);
+    const executionTime = endTime[0] * 1000 + endTime[1] / 1000000; // Convert to milliseconds
+
+    // Adjust the acceptable execution time according to your requirements
+    const acceptableExecutionTime = 1000; // Specify the acceptable execution time in milliseconds
+
+    expect(executionTime).toBeLessThanOrEqual(acceptableExecutionTime);
   });
 });
