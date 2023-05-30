@@ -1,40 +1,62 @@
-import { Node, arrayToLinkedList } from '../linkedList';
-import { returnKthToLast } from './returnKthToLast'; // Replace 'yourFile' with the actual file name
+import { arrayToLinkedList } from '../linkedList';
+import { returnKthToLast } from './returnKthToLast';
 
 describe('returnKthToLast', () => {
-  it('should return the kth to last element in a singly linked list', () => {
+  it('returns the kth to last element correctly when the list is not empty', () => {
+    // Create a linked list: 1 -> 2 -> 3 -> 4 -> 5
     const head = arrayToLinkedList([1, 2, 3, 4, 5]);
-    const kthToLast = returnKthToLast(head, 2);
-    expect(kthToLast?.value).toBe(4);
+    const k = 2;
+    const expectedOutput = 4;
+
+    expect(returnKthToLast(head, k)?.value).toBe(expectedOutput);
   });
 
-  it('should return the head element when k is 0', () => {
-    const head = arrayToLinkedList([1, 2, 3, 4, 5]);
-    const kthToLast = returnKthToLast(head, 0);
-    expect(kthToLast?.value).toBe(1);
-  });
-
-  it('should return null when k is greater than the linked list length', () => {
-    const head = arrayToLinkedList([1, 2, 3, 4, 5]);
-    const kthToLast = returnKthToLast(head, 6);
-    expect(kthToLast).toBeNull();
-  });
-
-  it('should return the head element when the linked list has only one node', () => {
-    const head = new Node(1);
-    const kthToLast = returnKthToLast(head, 0);
-    expect(kthToLast?.value).toBe(1);
-  });
-
-  it('should return null when the linked list is empty', () => {
+  it('returns null when the list is empty', () => {
     const head = null;
-    const kthToLast = returnKthToLast(head, 2);
-    expect(kthToLast).toBeNull();
+    const k = 2;
+
+    expect(returnKthToLast(head, k)).toBeNull();
   });
 
-  it('should return the kth to last element when k is equal to the linked list length', () => {
-    const head = arrayToLinkedList([1, 2, 3, 4, 5]);
-    const kthToLast = returnKthToLast(head, 5);
-    expect(kthToLast?.value).toBe(1);
+  it('returns null when k is greater than the length of the list', () => {
+    // Create a linked list: 1 -> 2 -> 3
+    const head = arrayToLinkedList([1, 2, 3]);
+    const k = 4;
+
+    expect(returnKthToLast(head, k)).toBeNull();
+  });
+
+  it('returns the head node when k is equal to the length of the list', () => {
+    // Create a linked list: 1 -> 2 -> 3
+    const head = arrayToLinkedList([1, 2, 3]);
+    const k = 3;
+    const expectedOutput = 1;
+
+    expect(returnKthToLast(head, k)?.value).toBe(expectedOutput);
+  });
+
+  it('returns the last node when k is 1', () => {
+    // Create a linked list: 1 -> 2 -> 3
+    const head = arrayToLinkedList([1, 2, 3]);
+    const k = 1;
+    const expectedOutput = 3;
+
+    expect(returnKthToLast(head, k)?.value).toBe(expectedOutput);
+  });
+
+  it('returns null when k is 0', () => {
+    // Create a linked list: 1 -> 2 -> 3
+    const head = arrayToLinkedList([1, 2, 3]);
+    const k = 0;
+
+    expect(returnKthToLast(head, k)).toBeNull();
+  });
+
+  it('returns null when k is negative', () => {
+    // Create a linked list: 1 -> 2 -> 3
+    const head = arrayToLinkedList([1, 2, 3]);
+    const k = -2;
+
+    expect(returnKthToLast(head, k)).toBeNull();
   });
 });
