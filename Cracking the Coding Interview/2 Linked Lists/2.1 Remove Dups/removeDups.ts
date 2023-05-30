@@ -4,10 +4,10 @@ export const removeDups = (head: Node | null): void => {
   const set = new Set();
   let current = head;
   let previous = null;
-  if (current === null) {
+  if (current == null) {
     return;
   }
-  while (current !== null) {
+  while (current != null) {
     if (!set.has(current.value)) {
       set.add(current.value);
       previous = current;
@@ -25,9 +25,9 @@ export const removeDups = (head: Node | null): void => {
 export const removeDupsNoBuffer = (head: Node | null): void => {
   let current = head;
 
-  while (current !== null) {
+  while (current != null) {
     let runner = current;
-    while (runner.next !== null) {
+    while (runner.next != null) {
       if (runner.next.value === current.value) {
         runner.next = runner.next.next;
       } else {

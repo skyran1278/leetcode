@@ -24,7 +24,7 @@ export const arrayToLinkedList = (arr: number[]) => {
 export const linkedListToArray = (head: Node | null) => {
   const arr = [];
   let current = head;
-  while (current !== null) {
+  while (current != null) {
     arr.push(current.value);
     current = current.next;
   }
@@ -37,7 +37,7 @@ export const createLinkedList = (length: number) => {
   let current: Node | null = null;
   for (let i = 1; i <= length; i++) {
     const newNode = new Node(i);
-    if (head === null) {
+    if (head == null) {
       head = newNode;
       current = newNode;
     } else {

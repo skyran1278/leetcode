@@ -3,8 +3,8 @@ export const checkPermutation = (str1: string, str2: string) => {
   if (str1.length !== str2.length) return false;
   const str1Arr = str1.split('');
   const str2Arr = str2.split('');
-  const str1Obj: { [key: string]: number } = {};
-  const str2Obj: { [key: string]: number } = {};
+  const str1Obj: Record<string, number> = {};
+  const str2Obj: Record<string, number> = {};
   str1Arr.forEach((char: string | number) => {
     str1Obj[char] = str1Obj[char] + 1 || 1;
   });
@@ -31,17 +31,13 @@ export const checkPermutation1 = (str1: string, str2: string) => {
 // Space Complexity: O(n)
 export const checkPermutation2 = (str1: string, str2: string) => {
   if (str1.length !== str2.length) return false;
-  const charCount: { [key: string]: number } = {};
-  for (let i = 0; i < str1.length; i++) {
-    if (charCount[str1[i]]) {
-      charCount[str1[i]]++;
-    } else {
-      charCount[str1[i]] = 1;
-    }
+  const charCount: Record<string, number> = {};
+  for (const char of str1) {
+    charCount[char] = charCount[char] + 1 || 1;
   }
-  for (let i = 0; i < str2.length; i++) {
-    if (charCount[str2[i]]) {
-      charCount[str2[i]]--;
+  for (const char of str2) {
+    if (charCount[char]) {
+      charCount[char]--;
     } else {
       return false;
     }
