@@ -53,15 +53,19 @@ describe('stringCompression2', () => {
 });
 
 describe('Performance comparison', () => {
-  it('should compare the performance of stringCompression and stringCompression2', () => {
+  it('stringCompression should better than stringCompression2', () => {
     const longStr = 'a'.repeat(1000000);
 
-    console.time('stringCompression');
+    const startTime1 = process.hrtime();
     stringCompression(longStr);
-    console.timeEnd('stringCompression');
+    const endTime1 = process.hrtime(startTime1);
+    const executionTime1 = endTime1[0] * 1000 + endTime1[1] / 1000000; // Convert to milliseconds
 
-    console.time('stringCompression2');
+    const startTime2 = process.hrtime();
     stringCompression2(longStr);
-    console.timeEnd('stringCompression2');
+    const endTime2 = process.hrtime(startTime2);
+    const executionTime2 = endTime2[0] * 1000 + endTime2[1] / 1000000; // Convert to milliseconds
+
+    expect(executionTime1).toBeLessThanOrEqual(executionTime2);
   });
 });

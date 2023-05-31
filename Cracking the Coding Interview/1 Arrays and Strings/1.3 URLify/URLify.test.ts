@@ -59,16 +59,22 @@ describe('URLify2', () => {
 });
 
 describe('Performance comparison', () => {
-  it('should compare the performance of URLify and URLify2', () => {
+  it('URLify2 should almost same as URLify"', () => {
     const longStr = 'a '.repeat(500000) + 'b';
     const len = longStr.length;
 
-    console.time('URLify');
+    const startTime1 = process.hrtime();
     URLify(longStr, len);
-    console.timeEnd('URLify');
+    const endTime1 = process.hrtime(startTime1);
+    const executionTime1 = endTime1[0] * 1000 + endTime1[1] / 1000000; // Convert to milliseconds
 
-    console.time('URLify2');
+    const startTime2 = process.hrtime();
     URLify2(longStr, len);
-    console.timeEnd('URLify2');
+    const endTime2 = process.hrtime(startTime2);
+    const executionTime2 = endTime2[0] * 1000 + endTime2[1] / 1000000; // Convert to milliseconds
+
+    const acceptableExecutionTime = 100; // Specify the acceptable execution time in milliseconds
+    expect(executionTime1).toBeLessThan(acceptableExecutionTime);
+    expect(executionTime2).toBeLessThan(acceptableExecutionTime);
   });
 });

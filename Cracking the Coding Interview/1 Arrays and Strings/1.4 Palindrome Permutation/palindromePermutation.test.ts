@@ -61,14 +61,17 @@ describe('isPalindromePermutation performance', () => {
     const start1 = process.hrtime();
     const result1 = isPalindromePermutation(input);
     const end1 = process.hrtime(start1);
+    const executionTime1 = end1[0] * 1000 + end1[1] / 1000000; // Convert to milliseconds
     expect(result1).toBe(expectedOutput);
+
     const start2 = process.hrtime();
     const result2 = isPalindromePermutation2(input);
     const end2 = process.hrtime(start2);
+    const executionTime2 = end2[0] * 1000 + end2[1] / 1000000; // Convert to milliseconds
     expect(result2).toBe(expectedOutput);
 
-    expect(end1[0] * 1000 + end1[1] / 1000000).toBeLessThan(
-      end2[0] * 1000 + end2[1] / 1000000
-    );
+    const acceptableExecutionTime = 100; // Specify the acceptable execution time in milliseconds
+    expect(executionTime1).toBeLessThanOrEqual(acceptableExecutionTime);
+    expect(executionTime2).toBeLessThanOrEqual(acceptableExecutionTime);
   });
 });

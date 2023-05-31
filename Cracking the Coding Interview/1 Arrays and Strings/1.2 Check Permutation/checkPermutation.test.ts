@@ -78,16 +78,23 @@ describe('Performance comparison', () => {
     const longStr1 = 'a'.repeat(500000) + 'b';
     const longStr2 = 'b'.repeat(500000) + 'a';
 
-    console.time('checkPermutation');
+    const startTime1 = process.hrtime();
     checkPermutation(longStr1, longStr2);
-    console.timeEnd('checkPermutation');
+    const endTime1 = process.hrtime(startTime1);
+    const executionTime1 = endTime1[0] * 1000 + endTime1[1] / 1000000; // Convert to milliseconds
 
-    console.time('checkPermutation1');
+    const startTime2 = process.hrtime();
     checkPermutation1(longStr1, longStr2);
-    console.timeEnd('checkPermutation1');
+    const endTime2 = process.hrtime(startTime2);
+    const executionTime2 = endTime2[0] * 1000 + endTime2[1] / 1000000; // Convert to milliseconds
 
-    console.time('checkPermutation2');
+    const startTime3 = process.hrtime();
     checkPermutation2(longStr1, longStr2);
-    console.timeEnd('checkPermutation2');
+    const endTime3 = process.hrtime(startTime3);
+    const executionTime3 = endTime3[0] * 1000 + endTime3[1] / 1000000; // Convert to milliseconds
+
+    expect(executionTime3).toBeLessThan(executionTime1);
+    expect(executionTime3).toBeLessThan(executionTime2);
+    expect(executionTime1).toBeLessThan(executionTime2);
   });
 });

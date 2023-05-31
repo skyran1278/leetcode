@@ -41,24 +41,16 @@ describe('Performance comparison', () => {
     const longStr1 = 'a'.repeat(1000000);
     const longStr2 = 'b'.repeat(1000000);
 
-    console.time('oneAway');
-    for (let index = 0; index < 100000; index++) {
-      oneAway('pale', 'ple');
-      oneAway('pales', 'pale');
-      oneAway('pale', 'bale');
-      oneAway('pale', 'bake');
-    }
+    const startTime1 = process.hrtime();
     oneAway(longStr1, longStr2);
-    console.timeEnd('oneAway');
+    const endTime1 = process.hrtime(startTime1);
+    const executionTime1 = endTime1[0] * 1000 + endTime1[1] / 1000000; // Convert to milliseconds
 
-    console.time('oneAway2');
+    const startTime2 = process.hrtime();
     oneAway2(longStr1, longStr2);
-    for (let index = 0; index < 100000; index++) {
-      oneAway2('pale', 'ple');
-      oneAway2('pales', 'pale');
-      oneAway2('pale', 'bale');
-      oneAway2('pale', 'bake');
-    }
-    console.timeEnd('oneAway2');
+    const endTime2 = process.hrtime(startTime2);
+    const executionTime2 = endTime2[0] * 1000 + endTime2[1] / 1000000; // Convert to milliseconds
+
+    expect(executionTime2).toBeLessThanOrEqual(executionTime1 / 3);
   });
 });
