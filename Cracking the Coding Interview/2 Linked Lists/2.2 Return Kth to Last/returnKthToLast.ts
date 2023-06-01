@@ -27,3 +27,23 @@ export const returnKthToLast = (head: Node | null, k: number): Node | null => {
 // Time: O(n)
 // Space: O(1)
 // where n is the length of the linked list
+
+export const returnKthToLast2 = (head: Node | null, k: number): Node | null => {
+  let i = 0;
+  const counter = (node: Node | null): Node | null => {
+    if (node == null) {
+      return null;
+    }
+    const nd = counter(node.next);
+    i += 1;
+    if (i === k) {
+      return node;
+    }
+    return nd;
+  };
+  return counter(head);
+};
+
+// Time: O(n)
+// Space: O(n)
+// where n is the length of the linked list
