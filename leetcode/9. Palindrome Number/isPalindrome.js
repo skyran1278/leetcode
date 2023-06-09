@@ -9,7 +9,6 @@
 //   return s.split('').reverse().join('') === s;
 // };
 
-
 /**
  * avoid toString solution
  * @param {number} x
@@ -28,7 +27,6 @@
 //   return parseInt(number.join(''), 10) === x;
 // };
 
-
 /**
  * best speed solution
  * @param {number} x
@@ -41,7 +39,7 @@ const isPalindrome = (x) => {
 
   let i = x;
   while (i > 0) {
-    rev = (rev * 10) + (i % 10);
+    rev = rev * 10 + (i % 10);
     i = Math.floor(i / 10);
   }
   return rev === x;

@@ -7,7 +7,9 @@ const convert = (s, numRows) => {
   // return original string if can't zigzag
   if (numRows === 1 || s.length < numRows) return s;
 
-  const x = Array(numRows).fill(null).map(() => ([]));
+  const x = Array(numRows)
+    .fill(null)
+    .map(() => []);
   let row = 0;
   let positive = false;
   for (let i = 0; i < s.length; i += 1) {

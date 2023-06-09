@@ -3,12 +3,12 @@
 // E.g. the example input should output aeiiooouuu
 const solved = (str) => {
   const tracks = [];
-  const arr = str.split("");
+  const arr = str.split('');
   backtrack(arr, [], tracks);
 
   return tracks.reduce((longestChar, value) => {
     return longestChar.length < value.length ? value : longestChar;
-  }, "");
+  }, '');
 };
 
 /**
@@ -27,9 +27,9 @@ const backtrack = (rest, track, tracks) => {
     track.pop();
   }
 
-  tracks.push(track.join(""));
+  tracks.push(track.join(''));
 };
 
-console.log(solved("aeiaouaaaa") === "aaaaaa");
-console.log(solved("aeiaouaaa") === "aeiou");
-console.log(solved("aeiaaioooaauuaeiu") === "aeiiooouuu");
+console.log(solved('aeiaouaaaa') === 'aaaaaa');
+console.log(solved('aeiaouaaa') === 'aeiou');
+console.log(solved('aeiaaioooaauuaeiu') === 'aeiiooouuu');

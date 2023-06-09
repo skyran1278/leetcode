@@ -5,5 +5,6 @@
 [algorithm 4](https://algs4.cs.princeton.edu/home/)
 
 Getting Started
+
 1. F5
 2. input example: < tiny.txt

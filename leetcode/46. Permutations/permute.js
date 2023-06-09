@@ -1,7 +1,7 @@
 /**
-* @param {number[]} nums
-* @return {number[][]}
-*/
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
 const permute = (nums) => {
   // 最終輸出的排列組合
   const permutations = [];

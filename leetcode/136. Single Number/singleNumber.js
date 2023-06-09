@@ -23,7 +23,9 @@
  */
 const singleNumber = (nums) => {
   let one = 0;
-  nums.forEach((num) => { one ^= num; });
+  nums.forEach((num) => {
+    one ^= num;
+  });
   return one;
 };
 

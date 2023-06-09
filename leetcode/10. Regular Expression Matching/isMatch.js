@@ -6,7 +6,7 @@
 const isMatch = (s, p) => {
   if (s === p) return true;
 
-  const firstMatch = s[0] !== undefined && (p[0] === s[0] || p[0] === '.');
+  const firstMatch = s[0] !== undefined && (p[0] === s[0] || p.startsWith('.'));
 
   if (p.length >= 2 && p[1] === '*') {
     return (
@@ -54,11 +54,11 @@ const isMatchDpTopDown = (s, p) => {
   return dp(s, p);
 };
 
-console.log(isMatch('aa', 'a') === false);
-console.log(isMatch('aa', 'a*') === true);
-console.log(isMatch('aa', 'b*aa') === true);
-console.log(isMatch('ab', '.*') === true);
-console.log(isMatch('aaa', 'a*a') === true);
+console.log(!isMatch('aa', 'a'));
+console.log(isMatch('aa', 'a*'));
+console.log(isMatch('aa', 'b*aa'));
+console.log(isMatch('ab', '.*'));
+console.log(isMatch('aaa', 'a*a'));
 
 /**
  * ERROR: still error

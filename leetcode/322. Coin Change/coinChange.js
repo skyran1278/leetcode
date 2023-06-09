@@ -31,7 +31,6 @@ const coinChange = (coins, amount) => {
 };
 
 const coinChange = (coins, amount) => {
-
   coins.sort((a, b) => b - a);
   // 初始化
   const dp = Array(amount + 1).fill(Infinity);

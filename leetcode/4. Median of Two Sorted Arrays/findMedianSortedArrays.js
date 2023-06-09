@@ -48,6 +48,5 @@ const findMedianSortedArrays = (nums1, nums2) => {
   return (Math.max(leftI, leftJ) + Math.min(rightI, rightJ)) / 2;
 };
 
-
 console.log(findMedianSortedArrays([1, 3], [2]));
 console.log(findMedianSortedArrays([1, 2], [3, 4]));

@@ -20,4 +20,5 @@ const myAtoi = (str) => {
  * @param {string} str
  * @return {number}
  */
-const myAtoi = (str) => (Math.min(Math.max(parseInt(str, 10) || 0, -0x80000000), 0x7fffffff));
+const myAtoi = (str) =>
+  Math.min(Math.max(parseInt(str, 10) || 0, -0x80000000), 0x7fffffff);

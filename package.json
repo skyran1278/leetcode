@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "leetcode",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch",
+    "lint": "eslint --ext .ts . --fix",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
