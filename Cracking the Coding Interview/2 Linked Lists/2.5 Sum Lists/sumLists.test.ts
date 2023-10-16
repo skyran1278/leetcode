@@ -1,4 +1,9 @@
-import { Node, arrayToLinkedList, linkedListToArray } from '../linkedList';
+import {
+  Node,
+  arrayToLinkedList,
+  createLinkedList,
+  linkedListToArray,
+} from '../linkedList';
 import { sumLists, sumLists2 } from './sumLists';
 
 describe('sumLists', () => {
@@ -132,22 +137,6 @@ describe('sumLists2', () => {
 });
 
 describe('performance comparison', () => {
-  // Helper function to create a linked list of a specific length
-  const createLinkedList = (length: number) => {
-    let head: Node | null = null;
-    let current: Node | null = null;
-    for (let i = 1; i <= length; i++) {
-      const newNode = new Node(9);
-      if (head == null) {
-        head = newNode;
-        current = newNode;
-      } else {
-        current!.next = newNode;
-        current = newNode;
-      }
-    }
-    return head;
-  };
   const list1 = createLinkedList(1000); // Create a linked list of length 10,000
   const list2 = createLinkedList(1000);
 

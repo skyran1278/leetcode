@@ -73,8 +73,7 @@ describe('Performance comparison', () => {
     const endTime2 = process.hrtime(startTime2);
     const executionTime2 = endTime2[0] * 1000 + endTime2[1] / 1000000; // Convert to milliseconds
 
-    const acceptableExecutionTime = 100; // Specify the acceptable execution time in milliseconds
-    expect(executionTime1).toBeLessThan(acceptableExecutionTime);
-    expect(executionTime2).toBeLessThan(acceptableExecutionTime);
+    expect(executionTime1 * 2).toBeGreaterThan(executionTime2);
+    expect(executionTime1 / 2).toBeLessThan(executionTime2);
   });
 });
