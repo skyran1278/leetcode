@@ -2,8 +2,9 @@ import { Node, createLinkedList, linkedListToArray } from './linkedList';
 
 describe('createLinkedList', () => {
   it('should create an empty linked list when length is 0', () => {
-    const result = createLinkedList(0);
-    expect(result).toBe(null);
+    expect(() => {
+      createLinkedList(0);
+    }).toThrow(new Error('Invalid linked list length'));
   });
 
   it('should create a linked list with a single node when length is 1', () => {
@@ -27,7 +28,7 @@ describe('createLinkedList', () => {
     const result = createLinkedList(length);
 
     // Check if the length of the linked list is as expected
-    let current = result;
+    let current: Node | null = result;
     let count = 0;
     while (current) {
       count++;

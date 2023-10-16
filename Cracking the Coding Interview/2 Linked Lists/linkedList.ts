@@ -32,9 +32,9 @@ export const linkedListToArray = (head: Node | null) => {
 };
 
 // Helper function to create a linked list of a specific length
-export const createLinkedList = (length: number) => {
+export const createLinkedList = (length: number): Node => {
   if (length <= 0) {
-    return null;
+    throw new Error('Invalid linked list length');
   }
 
   const head = new Node(1);
@@ -46,4 +46,16 @@ export const createLinkedList = (length: number) => {
   }
 
   return head;
+};
+
+export const reverseLinkedList = (head: Node | null) => {
+  let current = head;
+  let prev = null;
+  while (current) {
+    const next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
 };
