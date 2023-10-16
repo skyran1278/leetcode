@@ -33,17 +33,17 @@ export const linkedListToArray = (head: Node | null) => {
 
 // Helper function to create a linked list of a specific length
 export const createLinkedList = (length: number) => {
-  let head: Node | null = null;
-  let current: Node | null = null;
-  for (let i = 1; i <= length; i++) {
-    const newNode = new Node(i);
-    if (head == null) {
-      head = newNode;
-      current = newNode;
-    } else {
-      current!.next = newNode;
-      current = newNode;
-    }
+  if (length <= 0) {
+    return null;
   }
+
+  const head = new Node(1);
+  let current = head;
+  for (let i = 2; i <= length; i++) {
+    const newNode = new Node(i);
+    current.next = newNode;
+    current = newNode;
+  }
+
   return head;
 };
