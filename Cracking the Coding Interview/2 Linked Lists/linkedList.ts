@@ -1,15 +1,15 @@
-export class Node {
-  public value: number;
-  public next: Node | null;
+export class Node<T = unknown> {
+  public value: T;
+  public next: Node<T> | null;
 
-  constructor(value: number) {
+  constructor(value: T) {
     this.value = value;
     this.next = null;
   }
 }
 
 // Helper function to convert an array to a linked list
-export const arrayToLinkedList = (arr: number[]) => {
+export const arrayToLinkedList = <T>(arr: T[]) => {
   const head = new Node(arr[0]);
   let current = head;
   for (let i = 1; i < arr.length; i++) {
@@ -32,7 +32,7 @@ export const linkedListToArray = (head: Node | null) => {
 };
 
 // Helper function to create a linked list of a specific length
-export const createLinkedList = (length: number): Node => {
+export const createLinkedList = (length: number) => {
   if (length <= 0) {
     throw new Error('Invalid linked list length');
   }
@@ -48,7 +48,7 @@ export const createLinkedList = (length: number): Node => {
   return head;
 };
 
-export const reverseLinkedList = (head: Node | null) => {
+export const reverseLinkedList = <T>(head: Node<T> | null) => {
   let current = head;
   let prev = null;
   while (current) {

@@ -1,17 +1,17 @@
 import { Node } from '../linkedList';
 
 export const sumLists = (
-  list1: Node | null,
-  list2: Node | null
+  list1: Node<number> | null,
+  list2: Node<number> | null,
 ): Node | null => {
   if (list1 == null && list2 == null) {
     return null;
   }
 
-  const addedList: Node = new Node(0);
-  let current: Node = addedList;
+  const addedList = new Node(0);
+  let current = addedList;
   while (list1 != null || list2 != null) {
-    let addedValue: number = current.value;
+    let addedValue = current.value;
     if (list1 != null) {
       addedValue += list1.value;
       list1 = list1.next;
@@ -32,9 +32,9 @@ export const sumLists = (
 
 const sum = (
   digit: number,
-  list1: Node | null | undefined,
-  list2: Node | null | undefined
-): Node | null => {
+  list1: Node<number> | null | undefined,
+  list2: Node<number> | null | undefined,
+): Node<number> | null => {
   if (list1 == null && list2 == null && digit === 0) {
     return null;
   }
@@ -53,8 +53,8 @@ const sum = (
   return currentDigit;
 };
 export const sumLists2 = (
-  list1: Node | null,
-  list2: Node | null
-): Node | null => {
+  list1: Node<number> | null,
+  list2: Node<number> | null,
+): Node<number> | null => {
   return sum(0, list1, list2);
 };

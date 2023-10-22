@@ -1,13 +1,13 @@
 import { Node, arrayToLinkedList } from '../linkedList';
 
 export const partition = (
-  head: Node | null,
-  partitionValue: number
-): Node | null => {
+  head: Node<number> | null,
+  partitionValue: number,
+): Node<number> | null => {
   if (head == null) {
     return null;
   }
-  let current: Node | null = head;
+  let current: Node<number> | null = head;
   const lessThanPartitionValues: number[] = [];
   const greaterThanPartitionValues: number[] = [];
   while (current != null) {
@@ -19,6 +19,6 @@ export const partition = (
     current = current.next;
   }
   return arrayToLinkedList(
-    lessThanPartitionValues.concat(greaterThanPartitionValues)
+    lessThanPartitionValues.concat(greaterThanPartitionValues),
   );
 };
