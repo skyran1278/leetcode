@@ -2,9 +2,11 @@
 
 ## Question
 
-String Rotation: Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, sl and s2, write code to check if s2 is a rotation of sl using only one call to isSubstring (e.g.,"waterbottle" is a rotation of"erbottlewat").
+String Rotation: Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings, sl and s2, write code to check if s2 is a rotation of sl using only one call to isSubstring (e.g.,"waterbottle" is a rotation of "erbottlewat").
 
 ## Solution
+
+- hard, 有點 tricky, 偏向數學
 
 - original
   we can ask what the rotation point is
