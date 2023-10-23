@@ -1,4 +1,5 @@
 // Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
+// 關鍵在於 Condition, 字元有幾種可能性? ascii 256, unicode 65536
 
 export const isUnique = (str: string) => {
   const strArr = str.split('');
