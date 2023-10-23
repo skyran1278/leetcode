@@ -6,22 +6,22 @@ export const returnKthToLast = (head: Node | null, k: number): Node | null => {
     return null;
   }
 
-  let pointer1: Node | null = head;
-  let pointer2: Node | null = head;
+  let kPointer: Node | null = head;
+  let lastPointer: Node | null = head;
 
   for (let i = 0; i < k; i++) {
-    if (pointer2 == null) {
+    if (lastPointer == null) {
       return null;
     }
-    pointer2 = pointer2.next;
+    lastPointer = lastPointer.next;
   }
 
-  while (pointer2 != null && pointer1 != null) {
-    pointer1 = pointer1.next;
-    pointer2 = pointer2.next;
+  while (lastPointer != null && kPointer != null) {
+    kPointer = kPointer.next;
+    lastPointer = lastPointer.next;
   }
 
-  return pointer1;
+  return kPointer;
 };
 
 // Time: O(n)
