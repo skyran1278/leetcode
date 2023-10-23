@@ -2,19 +2,19 @@ import { Node } from '../linkedList';
 
 export const removeDups = (head: Node | null): void => {
   const set = new Set();
-  let current = head;
-  let previous = null;
-  if (current == null) {
+  let runner = head;
+  if (runner == null) {
     return;
   }
-  while (current != null) {
-    if (!set.has(current.value)) {
-      set.add(current.value);
-      previous = current;
+  let removeRunner: Node | null = null;
+  while (runner != null) {
+    if (!set.has(runner.value)) {
+      set.add(runner.value);
+      removeRunner = runner;
     } else {
-      previous!.next = current.next;
+      if (removeRunner != null) removeRunner.next = runner.next;
     }
-    current = current.next;
+    runner = runner.next;
   }
 };
 
