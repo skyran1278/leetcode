@@ -9,6 +9,8 @@ Result: nothing is returned, but the new linked list looks like a->b->d->e->f
 
 ## Solution
 
+直接覆寫就好
+
 注意: js function pass by reference
 
 <!--
