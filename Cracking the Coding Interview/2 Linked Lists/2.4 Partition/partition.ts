@@ -22,3 +22,27 @@ export const partition = (
     lessThanPartitionValues.concat(greaterThanPartitionValues),
   );
 };
+
+export const partition2 = (
+  node: Node<number> | null,
+  partitionValue: number,
+): Node<number> | null => {
+  if (node == null) {
+    return null;
+  }
+  let head = node;
+  let tail = node;
+  while (node != null) {
+    const next: Node<number> | null = node.next;
+    if (node.value < partitionValue) {
+      node.next = head;
+      head = node;
+    } else {
+      tail.next = node;
+      tail = node;
+    }
+    node = next;
+  }
+  tail.next = null;
+  return head;
+};

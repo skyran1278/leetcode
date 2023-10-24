@@ -8,3 +8,6 @@ Input: 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 [partition=5]
 Output: 3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8
 
 ## Solution
+
+1. 可以用笨方法, 先把小於 x 的 node 挑出來, 再把大於等於 x 的 node 挑出來, 最後再把兩個 list 接起來
+2. Elements bigger than the pivot element are put at the tail and elements smaller are put at the head.
