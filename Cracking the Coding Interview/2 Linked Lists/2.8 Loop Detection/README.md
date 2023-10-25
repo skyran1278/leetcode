@@ -11,6 +11,8 @@ Output: C
 
 ## Solution
 
+two pointer approach + math = hard
+
 1. memo node address in hash table, if node address is already in hash table, return the node
 2. use two pointers, one is fast, another is slow, if they meet, there is a loop
 
