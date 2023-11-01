@@ -7,3 +7,6 @@ Three in One: Describe how you could use a single array to implement three stack
 Hints: #2, #72, #38, #58
 
 ## Solution
+
+- fixed division
+- flexible division
