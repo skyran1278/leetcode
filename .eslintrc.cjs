@@ -24,8 +24,11 @@ module.exports = {
       'error',
       'always',
       {
-        null: 'never',
+        null: 'ignore',
       },
     ],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'error',
+    '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
   },
 };
