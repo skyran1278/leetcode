@@ -6,16 +6,9 @@ Is Unique: Implement an algorithm to determine if a string has all unique charac
 
 ## Solution
 
-關鍵在於 Condition, 字元有幾種可能性? ascii 256, unicode 65536
+The key consideration is the range of possible characters: ASCII with 256 possible characters or Unicode with 65,536 possible characters.
 
-1. key-value pair O(1)
-2. create all characters array O(1)
-   if can't use additional data structures
-3. for loop in-place O(n^2)
-4. sort the string O(n log n) + for loop O(n)
-
-if is ascii, there is only 256 character, then I can use an array to store the character and check if it is already in the array
-O(n) time complexity
-if is unicode
-if cannot use additional data structures, only can compare each character with the rest of the string
-O(n^2) time complexity
+1. **Using a key-value pair:** This approach offers O(1) time complexity for lookups.
+2. **Using an array for all characters:** If additional data structures are allowed, you can create an array to track characters. This would provide O(n) time complexity.
+3. **In-place comparison:** If additional data structures are not allowed, compare each character with the rest of the string using a nested loop. This results in O(n²) time complexity.
+4. **Sorting the string:** You can sort the string in O(n log n) time and then check for adjacent duplicates in O(n) time.
