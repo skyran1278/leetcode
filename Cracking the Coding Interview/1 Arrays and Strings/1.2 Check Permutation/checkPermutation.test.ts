@@ -1,28 +1,24 @@
-import {
-  checkPermutation,
-  checkPermutation1,
-  checkPermutation2,
-} from './checkPermutation'; // Replace 'your-module' with the actual module path
+import { checkPermutation1, checkPermutation2 } from './checkPermutation'; // Replace 'your-module' with the actual module path
 
 describe('checkPermutation', () => {
   it('should return true if one string is a permutation of the other', () => {
     const str1 = 'abcd';
     const str2 = 'dcba';
-    const result = checkPermutation(str1, str2);
+    const result = checkPermutation2(str1, str2);
     expect(result).toBe(true);
   });
 
   it('should return false if the lengths of the strings are different', () => {
     const str1 = 'abc';
     const str2 = 'abcd';
-    const result = checkPermutation(str1, str2);
+    const result = checkPermutation2(str1, str2);
     expect(result).toBe(false);
   });
 
   it('should return false if one string is not a permutation of the other', () => {
     const str1 = 'abcd';
     const str2 = 'abce';
-    const result = checkPermutation(str1, str2);
+    const result = checkPermutation2(str1, str2);
     expect(result).toBe(false);
   });
 });
@@ -78,11 +74,6 @@ describe('Performance comparison', () => {
     const longStr1 = 'a'.repeat(500000) + 'b';
     const longStr2 = 'b'.repeat(500000) + 'a';
 
-    const startTime1 = process.hrtime();
-    checkPermutation(longStr1, longStr2);
-    const endTime1 = process.hrtime(startTime1);
-    const executionTime1 = endTime1[0] * 1000 + endTime1[1] / 1000000; // Convert to milliseconds
-
     const startTime2 = process.hrtime();
     checkPermutation1(longStr1, longStr2);
     const endTime2 = process.hrtime(startTime2);
@@ -93,7 +84,6 @@ describe('Performance comparison', () => {
     const endTime3 = process.hrtime(startTime3);
     const executionTime3 = endTime3[0] * 1000 + endTime3[1] / 1000000; // Convert to milliseconds
 
-    expect(executionTime3).toBeLessThan(executionTime1);
     expect(executionTime3).toBeLessThan(executionTime2);
     // expect(executionTime1).toBeLessThan(executionTime2);
   });

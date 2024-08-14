@@ -1,27 +1,11 @@
 // Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
-export const checkPermutation = (str1: string, str2: string) => {
-  if (str1.length !== str2.length) return false;
-  const str1Arr = str1.split('');
-  const str2Arr = str2.split('');
-  const str1Obj: Record<string, number> = {};
-  const str2Obj: Record<string, number> = {};
-  str1Arr.forEach((char: string | number) => {
-    str1Obj[char] = str1Obj[char] + 1 || 1;
-  });
-  str2Arr.forEach((char: string | number) => {
-    str2Obj[char] = str2Obj[char] + 1 || 1;
-  });
-  for (const key in str1Obj) {
-    if (str1Obj[key] !== str2Obj[key]) return false;
-  }
-  return true;
-};
 
 // Solution #1: Sort the strings.
 // Time Complexity: O(n log n)
 // Space Complexity: O(1)
 export const checkPermutation1 = (str1: string, str2: string) => {
   if (str1.length !== str2.length) return false;
+
   return str1.split('').sort().join('') === str2.split('').sort().join('');
 };
 
@@ -31,10 +15,13 @@ export const checkPermutation1 = (str1: string, str2: string) => {
 // Space Complexity: O(n)
 export const checkPermutation2 = (str1: string, str2: string) => {
   if (str1.length !== str2.length) return false;
+
   const charCount: Record<string, number> = {};
+
   for (const char of str1) {
     charCount[char] = charCount[char] + 1 || 1;
   }
+
   for (const char of str2) {
     if (charCount[char]) {
       charCount[char]--;
@@ -42,5 +29,6 @@ export const checkPermutation2 = (str1: string, str2: string) => {
       return false;
     }
   }
+
   return true;
 };
