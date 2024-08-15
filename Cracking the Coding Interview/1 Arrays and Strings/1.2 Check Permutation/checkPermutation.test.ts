@@ -1,28 +1,5 @@
 import { checkPermutation1, checkPermutation2 } from './checkPermutation'; // Replace 'your-module' with the actual module path
 
-describe('checkPermutation', () => {
-  it('should return true if one string is a permutation of the other', () => {
-    const str1 = 'abcd';
-    const str2 = 'dcba';
-    const result = checkPermutation2(str1, str2);
-    expect(result).toBe(true);
-  });
-
-  it('should return false if the lengths of the strings are different', () => {
-    const str1 = 'abc';
-    const str2 = 'abcd';
-    const result = checkPermutation2(str1, str2);
-    expect(result).toBe(false);
-  });
-
-  it('should return false if one string is not a permutation of the other', () => {
-    const str1 = 'abcd';
-    const str2 = 'abce';
-    const result = checkPermutation2(str1, str2);
-    expect(result).toBe(false);
-  });
-});
-
 describe('checkPermutation1', () => {
   it('should return true if one string is a permutation of the other', () => {
     const str1 = 'abcd';

@@ -19,7 +19,7 @@ export const checkPermutation2 = (str1: string, str2: string) => {
   const charCount: Record<string, number> = {};
 
   for (const char of str1) {
-    charCount[char] = charCount[char] + 1 || 1;
+    charCount[char] = (charCount[char] ?? 0) + 1;
   }
 
   for (const char of str2) {
