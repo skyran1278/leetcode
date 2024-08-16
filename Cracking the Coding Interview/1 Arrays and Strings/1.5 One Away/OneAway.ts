@@ -6,62 +6,6 @@
 // pales, pale -> true
 // pale, bale -> true
 // pale, bake -> false
-// 第二種方法的可讀性更好
-
-enum PerformedType {
-  Insert,
-  Remove,
-  Replace,
-  Undefined,
-}
-
-export const oneAway = (str1: string, str2: string): boolean => {
-  if (Math.abs(str1.length - str2.length) > 1) {
-    return false;
-  }
-
-  const longerStr = str1.length > str2.length ? str1 : str2;
-  const shorterStr = str1.length > str2.length ? str2 : str1;
-
-  const performedType =
-    longerStr.length === shorterStr.length
-      ? PerformedType.Replace
-      : PerformedType.Insert;
-
-  let differentCount = 0;
-  if (performedType === PerformedType.Insert) {
-    for (
-      let str1Index = 0, str2Index = 0;
-      str1Index < longerStr.length;
-      str1Index++
-    ) {
-      if (differentCount === 2) {
-        return false;
-      }
-      const char1 = longerStr[str1Index];
-      const char2 = shorterStr[str2Index];
-      if (char1 !== char2) {
-        differentCount += 1;
-        continue;
-      }
-      str2Index++;
-    }
-  }
-  if (performedType === PerformedType.Replace) {
-    for (let index = 0; index < str1.length; index++) {
-      if (differentCount === 2) {
-        return false;
-      }
-      const char1 = str1[index];
-      const char2 = str2[index];
-      if (char1 !== char2) {
-        differentCount += 1;
-      }
-    }
-  }
-  return true;
-};
-
 const oneEditReplace = (str1: string, str2: string): boolean => {
   let foundDifference = false;
   for (let i = 0; i < str1.length; i++) {
