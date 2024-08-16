@@ -1,5 +1,7 @@
 // Zero Matrix: Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0.
+
 // easy: 先記起來要改的 row 和 column, 再一次性改, O(MxN)
+
 export const zeroMatrix = (matrix: number[][]): number[][] => {
   const zeroRows: number[] = [];
   const zeroColumns: number[] = [];

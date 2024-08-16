@@ -4,6 +4,7 @@
 // A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
 // Input: Tact Coa
 // Output: True (permutations: "taco cat", "atco cta", etc.)
+
 export const isPalindromePermutation2 = (str: string): boolean => {
   const charMap = new Map<string, number>();
 

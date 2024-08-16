@@ -1,5 +1,7 @@
 // Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+
 // 就實實在在地轉 90 度
+
 export const rotateMatrix = (matrix: number[][]) => {
   const n = matrix.length;
   for (let layer = 0; layer < n / 2; layer++) {

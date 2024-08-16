@@ -4,6 +4,7 @@
 // EXAMPLE
 // Input: "Mr John Smith     ", 13
 // Output: "Mr%203ohn%20Smith"
+
 export const URLify = (str: string | string[], len: number) => {
   let newStr = '';
 

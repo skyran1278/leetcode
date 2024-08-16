@@ -6,6 +6,7 @@
 // pales, pale -> true
 // pale, bale -> true
 // pale, bake -> false
+
 const oneEditReplace = (str1: string, str2: string): boolean => {
   let foundDifference = false;
   for (let i = 0; i < str1.length; i++) {
