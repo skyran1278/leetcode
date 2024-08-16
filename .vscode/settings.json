@@ -2,6 +2,6 @@
   "[python]": {
     "editor.tabSize": 4
   },
-  "cSpell.words": ["abce", "atco", "dcba", "leetcode", "Lify"],
+  "cSpell.words": ["abce", "atco", "dcba", "Dups", "leetcode", "Lify"],
   "npm.packageManager": "pnpm"
 }
