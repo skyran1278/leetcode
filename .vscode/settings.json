@@ -3,5 +3,15 @@
     "editor.tabSize": 4
   },
   "cSpell.words": ["abce", "atco", "dcba", "Dups", "leetcode", "Lify"],
-  "npm.packageManager": "pnpm"
+  "npm.packageManager": "pnpm",
+  "files.associations": {
+    ".clang-format": "yaml",
+    "*.cls": "vb",
+    ".env.dev": "properties",
+    ".env.example": "properties",
+    "string": "cpp",
+    "string_view": "cpp",
+    "unordered_map": "cpp",
+    "__bit_reference": "cpp"
+  }
 }
