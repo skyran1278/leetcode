@@ -31,7 +31,7 @@ class Solution {
       Node* copy = new Node(head->val);
       cachedNode[head] = copy;
       copy->next = copyRandomList(head->next);
-      copy->random = copyRandomList(head->random);
+      copy->random = cachedNode[head->random];
     }
 
     return cachedNode[head];
