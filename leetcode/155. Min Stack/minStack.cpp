@@ -2,7 +2,7 @@
 
 /**
  * @brief O(1)
- * 18m 57s
+ * 18 m 57 s
  */
 class MinStack {
  public:
