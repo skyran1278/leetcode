@@ -3,22 +3,25 @@
 
 using namespace std;
 
+/**
+ * @brief 1 hrs 0 m 48 s
+ * O(n)
+ */
 class Solution {
  public:
   vector<int> twoSum(vector<int>& numbers, int target) {
-    for (int i = 0; i < numbers.size(); i++) {
-      int x1 = numbers[i];
-      int x2 = target - x1;
+    int i = 0;
+    int j = numbers.size() - 1;
 
-      for (int j = i + 1; j < numbers.size(); j++) {
-        if (numbers[j] == x2) {
-          vector<int> index = {i + 1, j + 1};
-          return index;
-        }
+    while (numbers[i] + numbers[j] != target) {
+      if (numbers[i] + numbers[j] > target) {
+        j--;
+      } else if (numbers[i] + numbers[j] < target) {
+        i++;
       }
     }
 
-    vector<int> index;
+    vector<int> index = {i + 1, j + 1};
     return index;
   }
 };
