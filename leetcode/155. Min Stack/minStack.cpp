@@ -1,8 +1,8 @@
 #include <stack>
 
 /**
- * @brief O(1)
- * 18 m 57 s
+ * @brief 18 m 57 s
+ * O(1)
  */
 class MinStack {
  public:

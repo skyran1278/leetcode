@@ -14,8 +14,8 @@ struct ListNode {
 };
 
 /**
- * @brief O(1)
- * 6 m 7 s
+ * @brief 6 m 7 s
+ * O(1)
  */
 class Solution {
  public:

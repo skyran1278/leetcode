@@ -1,8 +1,8 @@
 #include <stack>
 
 /**
- * @brief push: O(n), other: O(1)
- * 14 m 28 s
+ * @brief 14 m 28 s
+ * push: O(n), other: O(1)
  */
 class MyQueue {
  public:

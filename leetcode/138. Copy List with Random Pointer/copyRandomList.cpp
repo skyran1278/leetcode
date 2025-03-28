@@ -15,8 +15,8 @@ class Node {
 };
 
 /**
- * @brief O(n)
- * 1 hrs 11 m 19 s
+ * @brief 1 hrs 11 m 19 s
+ * O(n)
  */
 class Solution {
   std::unordered_map<Node*, Node*> cachedNode;

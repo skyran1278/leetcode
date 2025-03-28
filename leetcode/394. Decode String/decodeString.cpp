@@ -4,8 +4,9 @@
 #include <string>
 
 /**
- * @brief O(n) n == decoded string length
- * 59 m 56 s
+ * @brief 59 m 56 s
+ *
+ * O(n) n == decoded string length
  */
 class Solution {
  public:

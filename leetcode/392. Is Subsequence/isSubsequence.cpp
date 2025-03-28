@@ -28,8 +28,7 @@ class Solution {
 };
 
 /**
- * @brief 我目前仍寫不出來動態規劃的程式，這是看官方解答的
- *
+ * 我目前仍寫不出來動態規劃的程式，這是看官方解答的
  */
 class Solution2 {
  public:

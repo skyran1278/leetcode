@@ -2,8 +2,8 @@
 #include <string>
 
 /**
- * @brief O(n)
- * 10 m 54 s
+ * @brief 10 m 54 s
+ * O(n)
  */
 class Solution {
  public:
