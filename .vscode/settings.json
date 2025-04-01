@@ -57,6 +57,7 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "queue": "cpp",
-    "__split_buffer": "cpp"
+    "__split_buffer": "cpp",
+    "ios": "cpp"
   }
 }
