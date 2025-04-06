@@ -18,16 +18,16 @@ function TreeNode(val) {
 const maxDepth = (root) => {
   let ans = 0;
 
-  const recurssive = (node, depth) => {
+  const recursive = (node, depth) => {
     if (!node) {
       ans = Math.max(ans, depth);
       return;
     }
-    recurssive(node.left, depth + 1);
-    recurssive(node.right, depth + 1);
+    recursive(node.left, depth + 1);
+    recursive(node.right, depth + 1);
   };
 
-  recurssive(root, 0);
+  recursive(root, 0);
 
   return ans;
 };
