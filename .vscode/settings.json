@@ -59,6 +59,7 @@
     "queue": "cpp",
     "__split_buffer": "cpp",
     "ios": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "unordered_set": "cpp"
   }
 }
