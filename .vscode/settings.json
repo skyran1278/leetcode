@@ -60,6 +60,7 @@
     "__split_buffer": "cpp",
     "ios": "cpp",
     "set": "cpp",
-    "unordered_set": "cpp"
+    "unordered_set": "cpp",
+    "__node_handle": "cpp"
   }
 }
