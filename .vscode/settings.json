@@ -61,6 +61,8 @@
     "ios": "cpp",
     "set": "cpp",
     "unordered_set": "cpp",
-    "__node_handle": "cpp"
+    "__node_handle": "cpp",
+    "locale": "cpp",
+    "__locale": "cpp"
   }
 }
