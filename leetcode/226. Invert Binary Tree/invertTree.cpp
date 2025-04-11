@@ -21,7 +21,21 @@ struct TreeNode {
       : val(x), left(left), right(right) {}
 };
 
+/**
+ * @brief 3 m 42 s
+ * O(n)
+ */
 class Solution {
  public:
-  TreeNode *invertTree(TreeNode *root) {}
+  TreeNode *invertTree(TreeNode *root) {
+    if (root != nullptr) {
+      TreeNode *tmp = root->left;
+      root->left = root->right;
+      root->right = tmp;
+      invertTree(root->left);
+      invertTree(root->right);
+    }
+
+    return root;
+  }
 };
