@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Compute average and median runtimes from @brief annotations in C++ files.
+Compute average and median runtimes from @brief annotations.
 
 Usage:
     1. conda env update --file environment.yml  --prune
@@ -18,7 +18,7 @@ from typing import Optional, Tuple, List
 from pyspark.sql import SparkSession
 
 
-PATH_GLOB = "leetcode/**/*.cpp"
+PATH_GLOB = "leetcode/**/*"
 
 BRIEF_PATTERN = re.compile(
     r"@brief\s+"
@@ -32,13 +32,14 @@ SECONDS_IN_MIN = 60
 SECONDS_IN_HOUR = 60 * SECONDS_IN_MIN
 
 # ANSI colors (no external dependency)
-CLR_RESET   = "\033[0m"
-CLR_BOLD    = "\033[1m"
-CLR_GREEN   = "\033[32m"
-CLR_CYAN    = "\033[36m"
-CLR_YELLOW  = "\033[33m"
+CLR_RESET = "\033[0m"
+CLR_BOLD = "\033[1m"
+CLR_GREEN = "\033[32m"
+CLR_CYAN = "\033[36m"
+CLR_YELLOW = "\033[33m"
 CLR_MAGENTA = "\033[35m"
-CLR_RED     = "\033[31m"
+CLR_RED = "\033[31m"
+
 
 def parse_brief(line: str) -> Optional[int]:
     """
@@ -54,6 +55,7 @@ def parse_brief(line: str) -> Optional[int]:
     s = int(match.group("seconds") or 0)
 
     return h * SECONDS_IN_HOUR + m * SECONDS_IN_MIN + s
+
 
 def humanize(seconds: float) -> str:
     minutes, secs = divmod(int(seconds), SECONDS_IN_MIN)
@@ -82,6 +84,7 @@ def compute_runtime_stats() -> Tuple[int, int]:
     matched_file_count = times.count()
 
     return avg_sec, median_sec, matched_file_count
+
 
 def main() -> None:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
