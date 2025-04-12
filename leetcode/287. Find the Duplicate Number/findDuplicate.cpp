@@ -3,7 +3,7 @@
 using namespace std;
 
 /**
- * @brief hard, I read answer to solve this problem
+ * hard, I read answer to solve this problem
  * O(n)
  */
 class Solution {
