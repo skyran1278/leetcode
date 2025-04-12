@@ -1,0 +1,9 @@
+name: leetcode
+channels:
+  - conda-forge
+  - defaults
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - python=3.10
+  - pip
+  - pyspark=3.5.5
