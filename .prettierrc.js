@@ -1,13 +1,16 @@
 // typescript
+//
+// https://www.npmjs.com/package/@ianvs/prettier-plugin-sort-imports
+// @ianvs/prettier-plugin-sort-imports 與 prettier-plugin-import-sort 相差無幾
+// @ianvs/prettier-plugin-sort-imports 沒有區分大小寫
+// @ianvs/prettier-plugin-sort-imports 可以客製化
 module.exports = {
   singleQuote: true,
   trailingComma: 'all',
-  plugins: [
-    'prettier-plugin-embed',
-    'prettier-plugin-sql',
-    'prettier-plugin-import-sort', // prettier-plugin-import-sort should be place after prettier-plugin-embed
-  ],
-  language: 'postgresql',
-  keywordCase: 'upper',
-  expressionWidth: 1000,
+  plugins: ['@ianvs/prettier-plugin-sort-imports'],
+
+  // @ianvs/prettier-plugin-sort-imports
+  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
+  importOrderTypeScriptVersion: '5.7.3',
+  importOrder: ['<BUILTIN_MODULES>', '', '<THIRD_PARTY_MODULES>', '', '^[.]'],
 };
