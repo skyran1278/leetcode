@@ -37,7 +37,6 @@ CLR_BOLD = "\033[1m"
 CLR_GREEN = "\033[32m"
 CLR_CYAN = "\033[36m"
 CLR_YELLOW = "\033[33m"
-CLR_MAGENTA = "\033[35m"
 CLR_RED = "\033[31m"
 
 
@@ -90,11 +89,28 @@ def main() -> None:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     avg_sec, med_sec, matched_files_count = compute_runtime_stats()
 
-    print("")
-    print(f"{CLR_BOLD}{CLR_CYAN}LeetCode Timing Stats{CLR_RESET} ({timestamp})")
-    print(f"{CLR_GREEN}Problems               :{CLR_RESET} {matched_files_count}")
-    print(f"{CLR_GREEN}Average Time           :{CLR_RESET} {humanize(avg_sec)}")
-    print(f"{CLR_GREEN}Median Time            :{CLR_RESET} {humanize(med_sec)}")
+    # |                     | Problems | Average  | Median    |
+    # | ------------------- | -------- | -------- | --------- |
+    # | 2025-04-12 12:25:09 | 50       | 31 m 0 s | 23 m 45 s |
+    # print("")
+    # print(f"{CLR_BOLD}{CLR_CYAN}LeetCode Timing Stats{CLR_RESET} ({timestamp})")
+    # print(f"{CLR_BOLD}{CLR_CYAN}{timestamp}{CLR_RESET}")
+    # print(f"{CLR_GREEN}Problems     :{CLR_RESET} {matched_files_count}")
+    # print(f"{CLR_GREEN}Average Time :{CLR_RESET} {humanize(avg_sec)}")
+    # print(f"{CLR_GREEN}Median Time  :{CLR_RESET} {humanize(med_sec)}")
+    print(
+        f"| {CLR_BOLD}{CLR_CYAN}{'Date':<19}{CLR_RESET} | "
+        f"{CLR_BOLD}{CLR_CYAN}{'Problems':<8}{CLR_RESET} | "
+        f"{CLR_BOLD}{CLR_CYAN}{'Average':<8}{CLR_RESET} | "
+        f"{CLR_BOLD}{CLR_CYAN}{'Median':<9}{CLR_RESET} |"
+    )
+    print(f"| ------------------- | -------- | -------- | --------- |")
+    print(
+        f"| {timestamp:<19} | "
+        f"{CLR_YELLOW}{str(matched_files_count):<8}{CLR_RESET} | "
+        f"{CLR_RED}{humanize(avg_sec):<8}{CLR_RESET} | "
+        f"{CLR_GREEN}{humanize(med_sec):<9}{CLR_RESET} |"
+    )
 
 
 if __name__ == "__main__":  # pragma: no cover
