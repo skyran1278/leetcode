@@ -24,7 +24,19 @@
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": ["gcc -v"],
+  "postCreateCommand": [
+    // c++
+    "gcc -v",
+    "g++ -v",
+
+    // Install conda environment.
+    "conda init zsh",
+    "conda config --set auto_activate_base false",
+    "conda env create -f environment.yml",
+
+    // Install node packages.
+    "pnpm install"
+  ],
 
   // Configure tool-specific properties.
   "customizations": {
