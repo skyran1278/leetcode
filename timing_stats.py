@@ -81,6 +81,7 @@ def compute_runtime_stats() -> Tuple[int, int]:
     median_sec = statistics.median(times.collect())
 
     matched_file_count = times.count()
+    spark.stop()
 
     return avg_sec, median_sec, matched_file_count
 
@@ -101,14 +102,14 @@ def main() -> None:
     print(
         f"| {CLR_BOLD}{CLR_CYAN}{'Date':<19}{CLR_RESET} | "
         f"{CLR_BOLD}{CLR_CYAN}{'Problems':<8}{CLR_RESET} | "
-        f"{CLR_BOLD}{CLR_CYAN}{'Average':<8}{CLR_RESET} | "
+        f"{CLR_BOLD}{CLR_CYAN}{'Average':<9}{CLR_RESET} | "
         f"{CLR_BOLD}{CLR_CYAN}{'Median':<9}{CLR_RESET} |"
     )
-    print(f"| ------------------- | -------- | -------- | --------- |")
+    print(f"| ------------------- | -------- | --------- | --------- |")
     print(
         f"| {timestamp:<19} | "
         f"{CLR_YELLOW}{str(matched_files_count):<8}{CLR_RESET} | "
-        f"{CLR_RED}{humanize(avg_sec):<8}{CLR_RESET} | "
+        f"{CLR_RED}{humanize(avg_sec):<9}{CLR_RESET} | "
         f"{CLR_GREEN}{humanize(med_sec):<9}{CLR_RESET} |"
     )
 
