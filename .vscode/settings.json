@@ -64,6 +64,11 @@
     "__node_handle": "cpp",
     "locale": "cpp",
     "__locale": "cpp",
-    "climits": "cpp"
+    "climits": "cpp",
+    "format": "cpp",
+    "charconv": "cpp",
+    "ctime": "cpp",
+    "span": "cpp",
+    "variant": "cpp"
   }
 }
