@@ -32,3 +32,27 @@ RUN git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.z
 
 RUN git clone https://github.com/skyran1278/zshrc.git ~/Documents/zshrc
 RUN ln -sf ~/Documents/zshrc/.zshrc ~/.zshrc
+
+# Download and install Miniconda
+RUN arch="$(uname -m)" && \
+    mkdir -p ~/miniconda3 && \
+    if [ "$arch" = "x86_64" ]; then \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh; \
+    elif [ "$arch" = "aarch64" ]; then \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O ~/miniconda3/miniconda.sh; \
+    else \
+    echo "❌ Unsupported architecture: $arch" && exit 1; \
+    fi
+
+# Install Miniconda silently
+RUN bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+
+# Clean up installer
+RUN rm ~/miniconda3/miniconda.sh
+
+# Initialize conda in all shells (must be bash)
+RUN bash -c "~/miniconda3/bin/conda init --all"
+
+# Turn off auto-activation of base environment
+RUN bash -c "~/miniconda3/bin/conda config --set auto_activate_base false"
+
