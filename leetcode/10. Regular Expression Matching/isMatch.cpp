@@ -4,7 +4,7 @@
 using namespace std;
 
 /**
- * 看解答，沒做出來
+ * @brief 看解答，沒做出來
  */
 class Solution {
  public:
