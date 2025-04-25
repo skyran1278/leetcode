@@ -62,4 +62,6 @@ else
     echo "Successfully created '$SOLUTION_FILE'."
 fi
 
+code "$SOLUTION_FILE"
+
 exit 0
