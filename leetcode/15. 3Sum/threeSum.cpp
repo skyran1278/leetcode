@@ -4,7 +4,7 @@ using namespace std;
 
 /**
  * @brief 1 hrs 9 m 50 s
- * O(n2)
+ * O(n^2)
  */
 class Solution {
  public:
