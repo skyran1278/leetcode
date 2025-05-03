@@ -14,6 +14,7 @@ BASE_DIR="leetcode"
 CPP_TEMPLATE=$(cat << 'EOF'
 #include <string>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
