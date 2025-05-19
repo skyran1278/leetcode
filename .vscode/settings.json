@@ -70,5 +70,8 @@
     "ctime": "cpp",
     "span": "cpp",
     "variant": "cpp"
+  },
+  "github.copilot.enable": {
+    "cpp": false
   }
 }
