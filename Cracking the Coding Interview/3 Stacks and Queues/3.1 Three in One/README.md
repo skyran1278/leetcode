@@ -8,5 +8,5 @@ Hints: #2, #72, #38, #58
 
 ## Solution
 
-- fixed division
-- flexible division
+- Simulate three stacks using a single array.
+- Each stack will have its own index to keep track of the top element.
