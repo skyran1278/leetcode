@@ -7,48 +7,68 @@
 using namespace std;
 
 /**
- * @brief 6 m 45 s
+ * @brief 20 m 24 s
  *
  */
-class MyQueue {
+class StackOfPlates {
  public:
-  MyQueue() {}
+  StackOfPlates(int cap) : cap_(cap) {}
 
-  void push(int x) {
-    while (!stack2_.empty()) {
-      int value = stack2_.top();
-      stack2_.pop();
-      stack1_.push(value);
+  void push(int val) {
+    if (cap_ == 0) {
+      return;
     }
-    stack1_.push(x);
 
-    while (!stack1_.empty()) {
-      int value = stack1_.top();
-      stack1_.pop();
-      stack2_.push(value);
+    if (stacks_.empty() || stacks_.back().size() == cap_) {
+      stacks_.push_back({});
     }
+
+    stacks_.back().push(val);
   }
 
   int pop() {
-    int value = stack2_.top();
-    stack2_.pop();
+    if (stacks_.empty()) {
+      return -1;
+    }
+
+    stack<int> &lastStack = stacks_.back();
+
+    int value = lastStack.top();
+    lastStack.pop();
+
+    if (lastStack.empty()) {
+      stacks_.pop_back();
+    }
+
     return value;
   }
 
-  int peek() { return stack2_.top(); }
+  int popAt(int index) {
+    if (index >= stacks_.size()) {
+      return -1;
+    }
 
-  bool empty() { return stack2_.empty(); }
+    stack<int> &specificStack = stacks_[index];
+
+    int value = specificStack.top();
+    specificStack.pop();
+
+    if (specificStack.empty()) {
+      stacks_.erase(stacks_.begin() + index);
+    }
+
+    return value;
+  }
 
  private:
-  stack<int> stack1_;
-  stack<int> stack2_;
+  vector<stack<int>> stacks_;
+  int cap_;
 };
 
 /**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue* obj = new MyQueue();
- * obj->push(x);
+ * Your StackOfPlates object will be instantiated and called as such:
+ * StackOfPlates* obj = new StackOfPlates(cap);
+ * obj->push(val);
  * int param_2 = obj->pop();
- * int param_3 = obj->peek();
- * bool param_4 = obj->empty();
+ * int param_3 = obj->popAt(index);
  */
