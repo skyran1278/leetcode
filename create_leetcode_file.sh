@@ -13,6 +13,7 @@ BASE_DIR="leetcode"
 # Default C++ template content
 CPP_TEMPLATE=$(cat << 'EOF'
 #include <queue>
+#include <stack>
 #include <string>
 #include <unordered_map>
 #include <vector>
