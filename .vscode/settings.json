@@ -69,7 +69,8 @@
     "charconv": "cpp",
     "ctime": "cpp",
     "span": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "list": "cpp"
   },
   "github.copilot.enable": {
     "*": true,
