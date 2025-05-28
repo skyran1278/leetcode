@@ -9,6 +9,7 @@
 
 # Base directory for all LeetCode problems
 BASE_DIR="leetcode"
+BASE_DIR="Cracking the Coding Interview/4 Trees and Graphs"
 
 # Default C++ template content
 CPP_TEMPLATE=$(cat << 'EOF'
