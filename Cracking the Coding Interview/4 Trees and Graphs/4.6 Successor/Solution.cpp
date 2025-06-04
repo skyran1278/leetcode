@@ -17,37 +17,24 @@ struct TreeNode {
 
 /**
  * @brief 1 hrs 5 m 13 s
- *
+ * O(h) h = tree height
+ * O(1)
  */
 class Solution {
  public:
   TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
-    TreeNode* previous = nullptr;
-    return inorder(root, p, previous);
-  }
+    TreeNode* successor = nullptr;
 
-  TreeNode* inorder(TreeNode* root, TreeNode* p, TreeNode*& previous) {
-    if (root == nullptr) {
-      return nullptr;
+    while (root != nullptr) {
+      if (root->val > p->val) {
+        successor = root;
+        root = root->left;
+      } else {
+        root = root->right;
+      }
     }
 
-    TreeNode* left = inorder(root->left, p, previous);
-    if (left != nullptr) {
-      return left;
-    }
-
-    if (previous == p) {
-      return root;
-    }
-
-    previous = root;
-
-    TreeNode* right = inorder(root->right, p, previous);
-    if (right != nullptr) {
-      return right;
-    }
-
-    return nullptr;
+    return successor;
   }
 };
 
