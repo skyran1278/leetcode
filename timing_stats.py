@@ -18,7 +18,7 @@ from typing import Optional, Tuple, List
 from pyspark.sql import SparkSession
 
 
-PATH_GLOB = "leetcode/**/*"
+PATH_GLOB = "{leetcode,Cracking the Coding Interview}/**/*"
 
 BRIEF_PATTERN = re.compile(
     r"@brief\s+"
