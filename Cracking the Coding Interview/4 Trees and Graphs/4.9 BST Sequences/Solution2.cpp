@@ -20,52 +20,44 @@ struct TreeNode {
 
 /**
  * @brief 28 m 8 s
+ * @brief 5 m 41 s
  *
  */
 class Solution {
  public:
   vector<vector<int>> BSTSequences(TreeNode *root) {
-    if (root == nullptr) {
-      return {{}};
-    }
+    if (root == nullptr) return {{}};
 
-    vector<vector<int>> results;
+    vector<vector<int>> possibleArrays;
     vector<int> path;
     deque<TreeNode *> choices = {root};
-    backtrack(results, path, choices);
-    return results;
+    backtrack(possibleArrays, path, choices);
+
+    return possibleArrays;
   }
 
-  void backtrack(vector<vector<int>> &results, vector<int> &path,
+  void backtrack(vector<vector<int>> &results, vector<int> &state,
                  deque<TreeNode *> &choices) {
     if (choices.empty()) {
-      results.emplace_back(path);
-      return;
+      results.emplace_back(state);
     }
 
-    int choicesSize = choices.size();
-    for (size_t i = 0; i < choicesSize; i++) {
+    int size = choices.size();
+    for (size_t i = 0; i < size; i++) {
       TreeNode *choice = choices.front();
-
       choices.pop_front();
-      path.emplace_back(choice->val);
-      if (choice->left != nullptr) {
-        choices.push_back(choice->left);
-      }
-      if (choice->right != nullptr) {
-        choices.push_back(choice->right);
-      }
 
-      backtrack(results, path, choices);
+      state.push_back(choice->val);
 
-      if (choice->left != nullptr) {
-        choices.pop_back();
-      }
-      if (choice->right != nullptr) {
-        choices.pop_back();
-      }
-      path.pop_back();
+      if (choice->left != nullptr) choices.push_back(choice->left);
+      if (choice->right != nullptr) choices.push_back(choice->right);
+
+      backtrack(results, state, choices);
+
+      if (choice->left != nullptr) choices.pop_back();
+      if (choice->right != nullptr) choices.pop_back();
       choices.push_back(choice);
+      state.pop_back();
     }
   }
 };
