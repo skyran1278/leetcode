@@ -30,16 +30,16 @@ class Solution {
   bool isSymmetric(TreeNode *root) {
     if (root == nullptr) return true;
 
-    return dfs(root->left, root->right);
+    return isSameTree(root->left, root->right);
   }
 
-  bool dfs(TreeNode *left, TreeNode *right) {
+  bool isSameTree(TreeNode *left, TreeNode *right) {
     if (left == nullptr && right == nullptr) return true;
     if (left == nullptr || right == nullptr) return false;
     if (left->val != right->val) return false;
 
-    if (!dfs(left->left, right->right)) return false;
-    if (!dfs(left->right, right->left)) return false;
+    if (!isSameTree(left->left, right->right)) return false;
+    if (!isSameTree(left->right, right->left)) return false;
 
     return true;
   }
