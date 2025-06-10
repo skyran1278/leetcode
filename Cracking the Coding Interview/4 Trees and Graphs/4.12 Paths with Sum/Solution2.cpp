@@ -20,6 +20,7 @@ struct TreeNode {
 
 /**
  * @brief 14 m 50 s
+ * @brief 32 m 35 s
  * O(n)
  * O(n)
  */
@@ -27,33 +28,27 @@ class Solution {
  public:
   int pathSum(TreeNode *root, int sum) {
     int result = 0;
-    unordered_map<int, int> prefixSum;
-    prefixSum[0] = 1;
-
-    backtrack(result, prefixSum, 0, sum, root);
-
+    unordered_map<int, int> prefix;
+    prefix[0] = 1;
+    backtrack(result, prefix, 0, sum, root);
     return result;
   }
 
-  void backtrack(int &result, unordered_map<int, int> &prefixSum, int current,
+  void backtrack(int &result, unordered_map<int, int> &prefix, int current,
                  int sum, TreeNode *choice) {
     if (choice == nullptr) {
       return;
     }
 
     current += choice->val;
-
-    int prefix = current - sum;
-    if (prefixSum.count(prefix)) {
-      result += prefixSum[prefix];
+    if (prefix.count(current - sum)) {
+      result += prefix[current - sum];
     }
 
-    prefixSum[current]++;
-
-    backtrack(result, prefixSum, current, sum, choice->left);
-    backtrack(result, prefixSum, current, sum, choice->right);
-
-    prefixSum[current]--;
+    prefix[current]++;
+    backtrack(result, prefix, current, sum, choice->left);
+    backtrack(result, prefix, current, sum, choice->right);
+    prefix[current]--;
   }
 };
 
