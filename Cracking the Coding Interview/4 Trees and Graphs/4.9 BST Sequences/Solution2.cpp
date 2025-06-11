@@ -21,7 +21,10 @@ struct TreeNode {
 /**
  * @brief 28 m 8 s
  * @brief 5 m 41 s
- *
+ * @brief 6 m 16 s
+ * backtrack
+ * O(n!)
+ * O(n * n!)
  */
 class Solution {
  public:
