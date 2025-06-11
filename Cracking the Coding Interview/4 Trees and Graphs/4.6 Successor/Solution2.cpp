@@ -15,26 +15,48 @@ struct TreeNode {
   TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-// O(n) time, O(h) space
+/**
+ * @brief 46 m 35 s
+ * dfs
+ * O(n)
+ * O(h)
+ */
 class Solution {
  public:
   TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
-    TreeNode* prev = nullptr;  // last visited node
-    TreeNode* succ = nullptr;  // answer to return
-    inorder(root, p, prev, succ);
-    return succ;
+    TreeNode* successor = nullptr;
+    TreeNode* previous = nullptr;
+    inorder(root, previous, successor, p);
+    return successor;
   }
 
- private:
-  void inorder(TreeNode* node, TreeNode* target, TreeNode*& prev,
-               TreeNode*& succ) {
-    if (!node || succ) return;  // early exit if found
+  void inorder(TreeNode* current, TreeNode*& previous, TreeNode*& successor,
+               TreeNode* target) {
+    if (current == nullptr || successor != nullptr) {
+      return;
+    }
 
-    inorder(node->left, target, prev, succ);
+    inorder(current->left, previous, successor, target);
 
-    if (prev == target) succ = node;  // first node after target
-    prev = node;
+    if (previous == target) {
+      successor = current;
+    }
 
-    inorder(node->right, target, prev, succ);
+    previous = current;
+
+    inorder(current->right, previous, successor, target);
   }
 };
+
+int main() {
+  Solution s;
+
+  //   TreeNode* node = new TreeNode(2);
+  //   node->left = new TreeNode(1);
+  //   node->right = new TreeNode(3);
+  //   s.inorderSuccessor(node, node->left);
+
+  TreeNode* node = new TreeNode(2);
+  node->right = new TreeNode(3);
+  s.inorderSuccessor(node, node);
+}

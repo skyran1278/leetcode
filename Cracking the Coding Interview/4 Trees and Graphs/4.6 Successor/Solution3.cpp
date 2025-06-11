@@ -16,6 +16,7 @@ struct TreeNode {
 };
 
 /**
+ * @brief 34 m 41 s
  * dfs stack
  * O(h) h = tree height
  * O(h)
@@ -25,8 +26,8 @@ class Solution {
   TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
     stack<TreeNode*> s;
 
-    TreeNode* previous = nullptr;
     TreeNode* current = root;
+    TreeNode* previous = nullptr;
     while (!s.empty() || current != nullptr) {
       while (current != nullptr) {
         s.push(current);
@@ -41,7 +42,6 @@ class Solution {
       }
 
       previous = current;
-
       current = current->right;
     }
 
