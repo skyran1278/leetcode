@@ -15,6 +15,12 @@ struct TreeNode {
   TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+/**
+ * @brief 10 m 41 s
+ * dfs
+ * O(n)
+ * O(n)
+ */
 class Solution {
  public:
   TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
