@@ -21,31 +21,28 @@ struct TreeNode {
 
 /**
  * @brief 1 hrs 45 m 44 s
+ * @brief 7 m 21 s
  * O(n)
  */
 class Solution {
  public:
   bool isValidBST(TreeNode *root) {
     long last = LONG_MIN;
-    return inOrder(root, last);
+    return inorder(root, last);
   }
-
- private:
-  bool inOrder(TreeNode *node, long &last) {
-    if (node == nullptr) {
+  bool inorder(TreeNode *current, long &last) {
+    if (current == nullptr) {
       return true;
     }
 
-    if (!inOrder(node->left, last)) {
+    long left = inorder(current->left, last);
+
+    if (current->val <= last) {
       return false;
     }
 
-    if (node->val <= last) {
-      return false;
-    }
+    last = current->val;
 
-    last = node->val;
-
-    return inOrder(node->right, last);
+    return left && inorder(current->right, last);
   }
 };
