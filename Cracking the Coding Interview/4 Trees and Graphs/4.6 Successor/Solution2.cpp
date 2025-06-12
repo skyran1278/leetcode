@@ -17,6 +17,7 @@ struct TreeNode {
 
 /**
  * @brief 46 m 35 s
+ * @brief 13 m
  * dfs
  * O(n)
  * O(h)
@@ -24,19 +25,19 @@ struct TreeNode {
 class Solution {
  public:
   TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
-    TreeNode* successor = nullptr;
     TreeNode* previous = nullptr;
-    inorder(root, previous, successor, p);
+    TreeNode* successor = nullptr;
+    inorder(root, p, previous, successor);
     return successor;
   }
 
-  void inorder(TreeNode* current, TreeNode*& previous, TreeNode*& successor,
-               TreeNode* target) {
+  void inorder(TreeNode* current, TreeNode* target, TreeNode*& previous,
+               TreeNode*& successor) {
     if (current == nullptr || successor != nullptr) {
       return;
     }
 
-    inorder(current->left, previous, successor, target);
+    inorder(current->left, target, previous, successor);
 
     if (previous == target) {
       successor = current;
@@ -44,7 +45,7 @@ class Solution {
 
     previous = current;
 
-    inorder(current->right, previous, successor, target);
+    inorder(current->right, target, previous, successor);
   }
 };
 
