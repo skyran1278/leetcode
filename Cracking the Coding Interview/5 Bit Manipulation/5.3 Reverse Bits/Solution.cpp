@@ -11,30 +11,29 @@ using namespace std;
 /**
  * @brief 23 m 16 s
  * get bit
+ * can do it in a reverse way, but not intuitive
  * O(1)
  * O(1)
  */
 class Solution {
  public:
   int reverseBits(int num) {
-    int maxLen = 0;
-    int currOnes = 0;
-    int prevOnes = 0;
-
+    int maxLength = 0;
+    int currentLength = 0;
+    int previousLength = 0;
     for (size_t i = 0; i < 32; i++) {
-      bool bit = num & (1 << i);
-
-      if (bit) {
-        currOnes++;
+      bool is1 = (1 << i) & num;
+      if (is1) {
+        currentLength++;
       } else {
-        prevOnes = currOnes;
-        currOnes = 0;
+        previousLength = currentLength;
+        currentLength = 0;
       }
 
-      maxLen = max(maxLen, prevOnes + currOnes + 1);
+      maxLength = max(maxLength, currentLength + previousLength + 1);
     }
 
-    return min(maxLen, 32);
+    return min(maxLength, 32);
   }
 };
 
