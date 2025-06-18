@@ -10,75 +10,85 @@ using namespace std;
 
 /**
  * @brief 1 hrs 24 m 55 s
+ * @brief 20 m 46 s
  * feel hard, need more time to understand it
+ * O(1)
+ * O(1)
  */
 class Solution {
  public:
   vector<int> findClosedNumbers(int num) {
-    int large = num;
+    int big = -1;
     for (size_t i = 0; i < 31; i++) {
-      bool currentIs1 = (1 << i) & num;
-      bool nextIs0 = !((1 << i + 1) & num);
+      bool currentIs1 = num & 1 << i;
+      bool nextIs0 = !(num & 1 << i + 1);
+
       if (currentIs1 && nextIs0) {
-        large &= ~(1 << i);
-        large |= (1 << i + 1);
+        big = num;
+        big &= ~(1 << i);
+        big |= 1 << i + 1;
 
-        int left = i - 1;
-        int right = 0;
-        while (left > right) {
-          while (left > right && !((1 << left) & num)) {
-            left--;
+        int left = 0;
+        int right = i - 1;
+        while (left < right) {
+          while (left < right && num & 1 << left) {
+            left++;
           }
-          while (left > right && ((1 << right) & num)) {
-            right++;
-          }
-          if (left > right) {
-            large &= ~(1 << left);
-            large |= (1 << right);
+          while (left < right && !(num & 1 << right)) {
+            right--;
           }
 
-          left--;
-          right++;
+          if (left < right) {
+            big |= 1 << left;
+            big &= ~(1 << right);
+          }
+
+          left++;
+          right--;
         }
 
         break;
       }
     }
 
-    int small = num;
-    for (size_t i = 1; i < 32; i++) {
-      bool currentIs1 = (1 << i) & num;
-      bool previousIs0 = !((1 << i - 1) & num);
-      if (currentIs1 && previousIs0) {
-        small &= ~(1 << i);
-        small |= (1 << i - 1);
+    int small = -1;
+    for (size_t i = 0; i < 31; i++) {
+      bool currentIs0 = !(num & 1 << i);
+      bool nextIs1 = num & 1 << i + 1;
 
-        int left = i - 2;
-        int right = 0;
-        while (left > right) {
-          while (left > right && ((1 << left) & num)) {
-            left--;
+      if (currentIs0 && nextIs1) {
+        small = num;
+        small |= 1 << i;
+        small &= ~(1 << i + 1);
+
+        int left = 0;
+        int right = i - 1;
+        while (left < right) {
+          while (left < right && !(num & 1 << left)) {
+            left++;
           }
-          while (left > right && !((1 << right) & num)) {
-            right++;
+          while (left < right && num & 1 << right) {
+            right--;
           }
-          if (left > right) {
-            small &= ~(1 << right);
-            small |= (1 << left);
+
+          if (left < right) {
+            small &= ~(1 << left);
+            small |= 1 << right;
           }
-          left--;
-          right++;
+
+          left++;
+          right--;
         }
 
         break;
       }
     }
 
-    if (large == num || num == __INT_MAX__) {
-      large = -1;
+    if (num == __INT_MAX__) {
+      big = -1;
     }
 
-    return {large, small == num ? -1 : small};
+    return {big, small};
   }
 };
 
