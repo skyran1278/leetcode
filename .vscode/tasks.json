@@ -26,6 +26,30 @@
       "args": [
         "-fdiagnostics-color=always",
         "-g",
+
+        // debugging options
+        "-ggdb",
+
+        // optimization options
+        // "-O2",
+        // "-DNDEBUG",
+
+        // Disable compiler extensions to ensure your programs (and coding practices) remain compliant with C++ standards and will work on any system.
+        "-pedantic-errors",
+
+        // Increasing your warning levels
+        "-Wall",
+        "-Weffc++",
+        "-Wextra",
+        "-Wconversion",
+        "-Wsign-conversion",
+
+        // Enable “Treat warnings as errors”. This will force you to resolve all issues causing warnings.
+        "-Werror",
+
+        // language standard
+        "-std=c++23",
+
         "${file}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}.out"
