@@ -16,18 +16,37 @@ struct ListNode {
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+/**
+ * @brief 15 m 2 s
+ *
+ */
 class Solution {
  public:
-  ListNode* reverseList(ListNode* head) {
-    ListNode* l = new ListNode();
+  ListNode* reverseList(ListNode* head) {  // [1, 2, 3, 4, 5]
+    ListNode* node = nullptr;
 
     while (head != nullptr) {
+      // 1. current = [1, 2, 3, 4, 5]
+      // 2. [2, 3, 4, 5]
+      // 3. [3, 4, 5]
+      // 4. [4, 5]
+      // 5. [5]
       ListNode* current = head;
+      // 1. head = [2, 3, 4, 5]
+      // 2. [3, 4, 5]
+      // 3. [4, 5]
+      // 4. [5]
+      // 5. []
       head = head->next;
-      current->next = l->next;
-      l->next = current;
+      // 1. current = [1]
+      // 2. [2, 1]
+      // 3. [3, 2, 1]
+      // 4. [4, 3, 2, 1]
+      // 5. [5, 4, 3, 2, 1]
+      current->next = node;
+      node = current;
     }
 
-    return l->next;
+    return node;
   }
 };
