@@ -17,7 +17,7 @@ struct ListNode {
 };
 
 /**
- * @brief 15 m 2 s
+ * @brief
  * O(n)
  * O(1)
  */
@@ -27,25 +27,18 @@ class Solution {
     ListNode* prev = nullptr;
 
     while (head != nullptr) {
-      // 1. current = [1, 2, 3, 4, 5]
-      // 2. [2, 3, 4, 5]
-      // 3. [3, 4, 5]
-      // 4. [4, 5]
-      // 5. [5]
-      ListNode* current = head;
+      // 1. next = [2, 3, 4, 5]
+      // 2. next = [3, 4, 5]
+      ListNode* next = head->next;
+
+      // 1. prev = [1]
+      // 2. prev = [2, 1]
+      head->next = prev;
+      prev = head;
+
       // 1. head = [2, 3, 4, 5]
-      // 2. [3, 4, 5]
-      // 3. [4, 5]
-      // 4. [5]
-      // 5. []
-      head = head->next;
-      // 1. current = [1]
-      // 2. [2, 1]
-      // 3. [3, 2, 1]
-      // 4. [4, 3, 2, 1]
-      // 5. [5, 4, 3, 2, 1]
-      current->next = prev;
-      prev = current;
+      // 2. head = [3, 4, 5]
+      head = next;
     }
 
     return prev;
