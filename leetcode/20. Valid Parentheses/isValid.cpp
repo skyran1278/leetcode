@@ -1,43 +1,39 @@
 #include <stack>
 #include <string>
 
+using namespace std;
+
 /**
  * @brief 10 m 54 s
+ * @brief 12 m 47 s
  * O(n)
  */
 class Solution {
  public:
-  bool isValid(std::string s) {
-    std::stack<char> charStack;
+  // s = "()[]{}"
+  bool isValid(string s) {
+    stack<char> charStack;
 
     for (auto &&c : s) {
-      switch (c) {
-        case '(':
-        case '{':
-        case '[':
-          charStack.push(c);
-          break;
-        case ')':
-          if (charStack.empty() || charStack.top() != '(') {
-            return false;
-          }
-          charStack.pop();
-          break;
-        case '}':
-          if (charStack.empty() || charStack.top() != '{') {
-            return false;
-          }
-          charStack.pop();
-          break;
-        case ']':
-          if (charStack.empty() || charStack.top() != '[') {
-            return false;
-          }
-          charStack.pop();
-          break;
+      if (c == '(') {
+        // 1. charStack = [')']
+        charStack.push(')');
+      } else if (c == '[') {
+        charStack.push(']');
+      } else if (c == '{') {
+        charStack.push('}');
+      } else {
+        if (charStack.empty()) {
+          return false;
+        }
 
-        default:
-          break;
+        // 2. charStack = []
+        char prevChar = charStack.top();
+        charStack.pop();
+
+        if (prevChar != c) {
+          return false;
+        }
       }
     }
 
