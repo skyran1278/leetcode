@@ -1,39 +1,47 @@
 #include <stack>
 
+using namespace std;
+
 /**
  * @brief 14 m 28 s
- * push: O(n), other: O(1)
+ * @brief 13 m 54 s
+ * push: O(1), other: O(mostly 1, rarely n)
  */
 class MyQueue {
  public:
-  std::stack<int> stack1;
-  std::stack<int> stack2;
-
   MyQueue() {}
 
-  void push(int x) {
-    while (!stack2.empty()) {
-      stack1.push(stack2.top());
-      stack2.pop();
-    }
-
-    stack2.push(x);
-
-    while (!stack1.empty()) {
-      stack2.push(stack1.top());
-      stack1.pop();
-    }
-  }
+  void push(int x) { inputStack_.push(x); }
 
   int pop() {
-    int x = stack2.top();
-    stack2.pop();
-    return x;
+    moveInputToOutput();
+
+    int first = outputStack_.top();
+    outputStack_.pop();
+    return first;
   }
 
-  int peek() { return stack2.top(); }
+  int peek() {
+    moveInputToOutput();
 
-  bool empty() { return stack2.empty(); }
+    return outputStack_.top();
+  }
+
+  bool empty() { return inputStack_.empty() && outputStack_.empty(); }
+
+  void moveInputToOutput() {
+    if (outputStack_.empty()) {
+      while (!inputStack_.empty()) {
+        int last = inputStack_.top();
+        inputStack_.pop();
+        outputStack_.push(last);
+      }
+    }
+  }
+
+ private:
+  stack<int> inputStack_;
+  stack<int> outputStack_;
 };
 
 /**
@@ -43,4 +51,25 @@ class MyQueue {
  * int param_2 = obj->pop();
  * int param_3 = obj->peek();
  * bool param_4 = obj->empty();
+ *
+ * Input
+ * ["MyQueue", "push", "push", "peek", "pop", "empty"]
+ * [[], [1], [2], [], [], []]
+ * Output
+ * [null, null, null, 1, 1, false]
+ *
+ * stack1_ = []
+ * stack2_ = []
+ *
+ * stack1_ = [1]
+ * stack2_ = []
+ *
+ * stack1_ = [1, 2]
+ * stack2_ = []
+ *
+ * stack1_ = []
+ * stack2_ = [2, 1]
+ *
+ * stack1_ = []
+ * stack2_ = [2]
  */
