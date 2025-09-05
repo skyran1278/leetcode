@@ -1,7 +1,8 @@
-#include <deque>
 #include <iostream>
 #include <stack>
 #include <string>
+
+using namespace std;
 
 /**
  * @brief 59 m 56 s
@@ -10,32 +11,48 @@
  */
 class Solution {
  public:
-  std::string decodeString(std::string s) {
-    std::stack<std::string> strStack;
-    std::stack<int> numStack;
-    std::string current;
-    int k = 0;
+  // s = "3[a2[c]]"
+  // s = "3[a]2[bc]"
+  string decodeString(string s) {
+    stack<int> countStack;
+    stack<string> decodedStack;
+    string current = "";
+    string k = "";
 
     for (auto&& c : s) {
       if (isdigit(c)) {
-        k = k * 10 + (c - '0');
+        k += c;
       } else if (c == '[') {
-        numStack.push(k);
-        strStack.push(current);
+        // countStack = [3]
+        // countStack = [3, 2]
+        countStack.push(stoi(k));
+        k.clear();
+
+        // currentStack = [""]
+        // currentStack = ["", "a"]
+        decodedStack.push(current);
         current.clear();
-        k = 0;
       } else if (c == ']') {
-        std::string decoded = strStack.top();
-        strStack.pop();
+        // decode = "a"
+        // decode = ""
+        string decoded = decodedStack.top();
+        decodedStack.pop();
 
-        int k = numStack.top();
-        numStack.pop();
+        // k = 2
+        // k = 3
+        int count = countStack.top();
+        countStack.pop();
 
-        for (size_t i = 0; i < k; i++) {
+        for (size_t i = 0; i < count; i++) {
           decoded += current;
         }
+
+        // current = "acc"
+        // current = "accaccacc"
         current = decoded;
       } else {
+        // current = "a"
+        // current = "c"
         current += c;
       }
     }
