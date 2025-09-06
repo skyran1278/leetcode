@@ -1,4 +1,3 @@
-#include <climits>
 #include <queue>
 
 using namespace std;
@@ -9,55 +8,32 @@ using namespace std;
  * findMedian: O(1)
  */
 class MedianFinder {
- private:
-  // Initialize a min heap
-  priority_queue<double, vector<double>, greater<double>> minHeap;
-  // Initialize a max heap
-  priority_queue<double, vector<double>, less<double>> maxHeap;
-
-  double medium = LONG_MAX;
-
  public:
-  MedianFinder() {
-    minHeap.push(LONG_MAX);
-    maxHeap.push(LONG_MIN);
-  }
+  MedianFinder() {}
 
   void addNum(int num) {
-    if (medium == LONG_MAX) {
-      double large = minHeap.top();
-      double small = maxHeap.top();
+    leftHeap_.push(num);
 
-      if (num > large) {
-        medium = large;
-        minHeap.pop();
-        minHeap.push(num);
-      } else if (num < small) {
-        medium = small;
-        maxHeap.pop();
-        maxHeap.push(num);
-      } else {
-        medium = num;
-      }
-    } else {
-      if (num > medium) {
-        minHeap.push(num);
-        maxHeap.push(medium);
-      } else {
-        maxHeap.push(num);
-        minHeap.push(medium);
-      }
-      medium = LONG_MAX;
+    rightHeap_.push(leftHeap_.top());
+    leftHeap_.pop();
+
+    if (leftHeap_.size() < rightHeap_.size()) {
+      leftHeap_.push(rightHeap_.top());
+      rightHeap_.pop();
     }
   }
 
   double findMedian() {
-    if (medium != LONG_MAX) {
-      return medium;
+    if (leftHeap_.size() > rightHeap_.size()) {
+      return leftHeap_.top();
     }
 
-    return (maxHeap.top() + minHeap.top()) / 2;
+    return (leftHeap_.top() + rightHeap_.top()) / 2.0;
   }
+
+ private:
+  priority_queue<int, vector<int>, less<int>> leftHeap_;
+  priority_queue<int, vector<int>, greater<int>> rightHeap_;
 };
 
 /**
