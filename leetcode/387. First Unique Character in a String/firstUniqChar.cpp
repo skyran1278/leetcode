@@ -1,17 +1,18 @@
 #include <array>
-#include <climits>
 #include <string>
 
 using namespace std;
 
 /**
  * @brief 28 m 28 s
+ * @brief 24 m 10 s
  * O(n)
  */
 class Solution {
  public:
   int firstUniqChar(string s) {
-    int alphabet[26] = {};
+    array<int, 26> alphabet;
+
     for (size_t i = 0; i < s.size(); i++) {
       alphabet[s[i] - 'a']++;
     }
