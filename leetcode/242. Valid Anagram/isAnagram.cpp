@@ -14,7 +14,7 @@ class Solution {
       return false;
     }
 
-    int alphabet[26] = {0};
+    array<int, 26> alphabet;
 
     for (size_t i = 0; i < s.size(); i++) {
       char c = s[i];
