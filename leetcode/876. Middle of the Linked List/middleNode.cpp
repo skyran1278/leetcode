@@ -9,10 +9,6 @@
  * };
  */
 
-/**
- * @brief 9 m 16 s
- * O(n)
- */
 struct ListNode {
   int val;
   ListNode* next;
@@ -21,17 +17,29 @@ struct ListNode {
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+/**
+ * @brief 9 m 16 s
+ * @brief 3 m 35 s
+ * O(n)
+ * O(1)
+ */
 class Solution {
  public:
+  // head = [1,2,3,4,5,6]
   ListNode* middleNode(ListNode* head) {
-    ListNode* fastRunner = head;
-    ListNode* slowRunner = head;
+    ListNode* fast = head;
+    ListNode* slow = head;
 
-    while (fastRunner != nullptr && fastRunner->next != nullptr) {
-      fastRunner = fastRunner->next->next;
-      slowRunner = slowRunner->next;
+    while (fast != nullptr && fast->next != nullptr) {
+      // slow = [2,3,4,5,6]
+      // slow = [3,4,5,6]
+      // slow = [4,5,6]
+      slow = slow->next;
+
+      // fast = []
+      fast = fast->next->next;
     }
 
-    return slowRunner;
+    return slow;
   }
 };
