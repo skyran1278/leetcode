@@ -1,5 +1,5 @@
+#include <array>
 #include <string>
-#include <unordered_map>
 
 using namespace std;
 
@@ -9,33 +9,34 @@ using namespace std;
  */
 class Solution {
  public:
+  // s = "abccccdd"
+  // s = "bananas"
   int longestPalindrome(string s) {
     // http://sticksandstones.kstrom.com/appen.html
     // A: 065
     // Z: 090
     // a: 097
     // z: 122
-    int palindrome[58] = {};
+    array<int, 256> countList = {};
 
-    for (size_t i = 0; i < s.length(); i++) {
-      palindrome[s[i] - 'A']++;
+    for (auto &&c : s) {
+      countList[c]++;
     }
 
-    int longest = 0;
+    int length = 0;
     bool hasOdd = false;
-    for (size_t i = 0; i < 58; i++) {
-      int length = palindrome[i];
-      if (length % 2 != 0) {
-        longest += length - 1;
-        hasOdd = true;
-      } else {
-        longest += length;
+    for (auto &&count : countList) {
+      length += count;
+      if (count % 2 == 1) {
+        if (hasOdd) {
+          length--;
+        } else {
+          hasOdd = true;
+        }
       }
     }
 
-    if (hasOdd) longest += 1;
-
-    return longest;
+    return length;
   }
 };
 
