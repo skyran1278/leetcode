@@ -13,10 +13,9 @@ from __future__ import annotations
 import re
 import statistics
 from datetime import datetime
-from typing import Optional, Tuple
+from typing import Optional, Tuple, cast
 
 from pyspark.sql import SparkSession
-
 
 PATH_GLOB = "{leetcode,Cracking the Coding Interview}/**/*.{cpp,py,ts,js}"
 
@@ -56,17 +55,20 @@ def parse_brief(line: str) -> Optional[int]:
     return h * SECONDS_IN_HOUR + m * SECONDS_IN_MIN + s
 
 
-def humanize(seconds: float) -> str:
+def humanize(seconds: float | int) -> str:
+    """Render seconds as a human-readable m/s string.
+
+    Accepts int or float; value is truncated toward zero for display granularity.
+    """
     minutes, secs = divmod(int(seconds), SECONDS_IN_MIN)
     return f"{minutes} m {secs} s"
 
 
-def compute_runtime_stats() -> Tuple[int, int, int]:
-    spark = SparkSession.builder.appName(  # pyright: ignore[reportAttributeAccessIssue]
-        "brief-stats"
-    ).getOrCreate()
+def compute_runtime_stats() -> Tuple[float, float, int]:
+    spark = SparkSession.builder.appName("brief-stats").getOrCreate()
     sc = spark.sparkContext
 
+    # After filtering with the type guard, the resulting RDD holds only ints.
     times = (
         sc.textFile(PATH_GLOB)
         .filter(lambda line: "@brief" in line)
@@ -80,7 +82,11 @@ def compute_runtime_stats() -> Tuple[int, int, int]:
         return (0, 0, 0)
 
     avg_sec = times.mean()
-    median_sec = statistics.median(times.collect())
+    # statistics.median may return int or float depending on cardinality; treat as float
+    collected_raw = times.collect()
+    # At runtime all elements are ints because of _is_int filter; help the type checker.
+    collected = cast(list[int], collected_raw)
+    median_sec = float(statistics.median(collected))
 
     matched_file_count = times.count()
     spark.stop()
@@ -107,7 +113,7 @@ def main() -> None:
         f"{CLR_BOLD}{CLR_CYAN}{'Average':<9}{CLR_RESET} | "
         f"{CLR_BOLD}{CLR_CYAN}{'Median':<9}{CLR_RESET} |"
     )
-    print(f"| ------------------- | -------- | --------- | --------- |")
+    print("| ------------------- | -------- | --------- | --------- |")
     print(
         f"| {timestamp:<19} | "
         f"{CLR_YELLOW}{str(matched_files_count):<8}{CLR_RESET} | "
