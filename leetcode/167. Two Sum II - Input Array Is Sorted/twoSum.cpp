@@ -5,24 +5,31 @@ using namespace std;
 
 /**
  * @brief 1 hrs 0 m 48 s
+ * @brief 4 m 10 s
  * O(n)
+ * O(1)
  */
 class Solution {
  public:
+  // numbers = [2,7,11,15], target = 9
   vector<int> twoSum(vector<int>& numbers, int target) {
-    int i = 0;
-    int j = numbers.size() - 1;
+    int left = 0;
+    int right = numbers.size() - 1;
 
-    while (numbers[i] + numbers[j] != target) {
-      if (numbers[i] + numbers[j] > target) {
-        j--;
-      } else if (numbers[i] + numbers[j] < target) {
-        i++;
+    // left = 0, right = 3
+    int sum = __INT_MAX__;
+    while (sum != target) {
+      sum = numbers[left] + numbers[right];
+      if (sum > target) {
+        // right = 2
+        // right = 1
+        right--;
+      } else if (sum < target) {
+        left++;
       }
     }
 
-    vector<int> index = {i + 1, j + 1};
-    return index;
+    return {left + 1, right + 1};
   }
 };
 
