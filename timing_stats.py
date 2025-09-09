@@ -13,15 +13,15 @@ from __future__ import annotations
 import re
 import statistics
 from datetime import datetime
-from typing import Optional, Tuple, List
+from typing import Optional, Tuple
 
 from pyspark.sql import SparkSession
 
 
-PATH_GLOB = "{leetcode,Cracking the Coding Interview}/**/*"
+PATH_GLOB = "{leetcode,Cracking the Coding Interview}/**/*.{cpp,py,ts,js}"
 
 BRIEF_PATTERN = re.compile(
-    r"@brief\s+"
+    r"@brief\s*"
     r"(?:(?P<hours>\d+)\s*hrs?\s*)?"
     r"(?:(?P<minutes>\d+)\s*m\s*)?"
     r"(?:(?P<seconds>\d+)\s*s)?",
@@ -46,7 +46,7 @@ def parse_brief(line: str) -> Optional[int]:
     """
     match = BRIEF_PATTERN.search(line)
     if not match:
-        print(f"{CLR_YELLOW}⚠ No match: {line.strip()}{CLR_RESET}")
+        print(f"{CLR_RED}⚠ No match: {line.strip()}{CLR_RESET}")
         return None
 
     h = int(match.group("hours") or 0)
@@ -61,8 +61,10 @@ def humanize(seconds: float) -> str:
     return f"{minutes} m {secs} s"
 
 
-def compute_runtime_stats() -> Tuple[int, int]:
-    spark = SparkSession.builder.appName("brief-stats").getOrCreate()
+def compute_runtime_stats() -> Tuple[int, int, int]:
+    spark = SparkSession.builder.appName(  # pyright: ignore[reportAttributeAccessIssue]
+        "brief-stats"
+    ).getOrCreate()
     sc = spark.sparkContext
 
     times = (
@@ -75,7 +77,7 @@ def compute_runtime_stats() -> Tuple[int, int]:
     if times.isEmpty():
         print("No valid @brief timings found.")
         spark.stop()
-        return
+        return (0, 0, 0)
 
     avg_sec = times.mean()
     median_sec = statistics.median(times.collect())
