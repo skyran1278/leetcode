@@ -15,10 +15,14 @@ struct ListNode {
 
 /**
  * @brief 33 m 51 s
- * O(n)
+ * @brief 12 m 23 s
+ * O(m+n)
+ * O(1)
  */
 class Solution {
  public:
+  // intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2,
+  // skipB = 3
   ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
     ListNode *a = headA;
     ListNode *b = headB;
