@@ -16,8 +16,9 @@
 
 # Timing Statistics
 
-```
-python timing_stats.py
+```sh
+sh scripts/create_leetcode_file.sh <file name>
+uv run scripts/timing_stats.py
 ```
 
 |                     | Problems | Average   | Median    |
