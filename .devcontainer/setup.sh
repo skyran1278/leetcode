@@ -3,7 +3,7 @@ gcc -v
 g++ -v
 
 # Install python packages.
-conda env create -f environment.yml
+uv sync --locked
 
 # Install node packages.
 pnpm install
