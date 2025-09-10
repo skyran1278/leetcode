@@ -15,36 +15,45 @@ struct ListNode {
 
 /**
  * @brief 21 m 38 s
+ * @brief 15 m 20 s
  * O(n)
+ * O(1)
  */
 class Solution {
  public:
+  // head = [3,2,0,-4], pos = 1
   ListNode *detectCycle(ListNode *head) {
-    ListNode *fastRunner = head;
-    ListNode *slowRunner = head;
-    while (fastRunner != nullptr && fastRunner->next != nullptr) {
-      fastRunner = fastRunner->next->next;
-      slowRunner = slowRunner->next;
+    ListNode *fast = head;
+    ListNode *slow = head;
 
-      if (fastRunner == slowRunner) {
+    while (fast != nullptr && fast->next != nullptr) {
+      // fast = 0
+      // fast = 2
+      // fast = -4
+      fast = fast->next->next;
+      // slow = 2
+      // slow = 0
+      // slow = -4
+      slow = slow->next;
+
+      if (fast == slow) {
         break;
       }
     }
 
-    if (fastRunner == nullptr || fastRunner->next == nullptr) {
+    if (fast == nullptr || fast->next == nullptr) {
       return nullptr;
     }
 
-    fastRunner = head;
+    ListNode *runner = head;
 
-    while (fastRunner != nullptr) {
-      if (fastRunner == slowRunner) {
-        return fastRunner;
-      }
-      fastRunner = fastRunner->next;
-      slowRunner = slowRunner->next;
+    while (runner != fast) {
+      // runner = 2
+      runner = runner->next;
+      // fast = 2
+      fast = fast->next;
     }
 
-    return nullptr;
+    return runner;
   }
 };
