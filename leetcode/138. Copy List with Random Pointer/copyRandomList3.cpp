@@ -22,6 +22,8 @@ class Solution {
   Node* copyRandomList(Node* head) {
     Node* runner = head;
 
+    // Step 1: Clone each node and insert the clone right after the original
+    // node
     while (runner != nullptr) {
       Node* intervalNode = new Node(runner->val);
       intervalNode->next = runner->next;
@@ -31,6 +33,7 @@ class Solution {
     // head =
     // [[7,null],[7,null],[13,0],[13,null],[11,4],[11,null],[10,2],[10,null],[1,0],[1,null]]
 
+    // Step 2: Assign random pointers for the cloned nodes
     runner = head;
     while (runner != nullptr) {
       // 1. runner =
@@ -46,14 +49,16 @@ class Solution {
     // head =
     // [[7,null],[7,null],[13,0],[13,0],[11,4],[11,4],[10,2],[10,2],[1,0],[1,0]]
 
+    // Step 3: Separate the two lists (original and cloned)
     Node* copy = new Node(0);
     Node* copyRunner = copy;
     runner = head;
     while (runner != nullptr) {
       copyRunner->next = runner->next;
+      copyRunner = copyRunner->next;
+
       runner->next = runner->next->next;
       runner = runner->next;
-      copyRunner = copyRunner->next;
     }
     // copy =
     // [[0,null],[7,null],[13,0],[11,4],[10,2],[1,0]]
