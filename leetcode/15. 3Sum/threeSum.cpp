@@ -1,17 +1,21 @@
 #include <algorithm>
 #include <vector>
+
 using namespace std;
 
 /**
  * @brief 1 hrs 9 m 50 s
+ * @brief 42 m 3 s
  * O(n^2)
  */
 class Solution {
  public:
+  // nums = [-1,0,1,2,-1,-4]
   vector<vector<int>> threeSum(vector<int>& nums) {
-    vector<vector<int>> result;
+    // nums = [-4,-1,-1,0,1,2]
     sort(nums.begin(), nums.end());
 
+    vector<vector<int>> output;
     for (size_t i = 0; i < nums.size() - 2; i++) {
       if (i > 0 && nums[i] == nums[i - 1]) {
         continue;
@@ -31,7 +35,9 @@ class Solution {
         } else if (sum < 0) {
           left++;
         } else {
-          result.push_back({nums[i], nums[left], nums[right]});
+          // output = [-1,-1,2]
+          output.push_back({nums[i], nums[left], nums[right]});
+
           left++;
           right--;
 
@@ -42,7 +48,7 @@ class Solution {
       }
     }
 
-    return result;
+    return output;
   }
 };
 
