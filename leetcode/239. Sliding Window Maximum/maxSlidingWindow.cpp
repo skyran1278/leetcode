@@ -1,35 +1,49 @@
-#include <climits>
 #include <deque>
-#include <set>
 #include <vector>
 
 using namespace std;
 
 /**
  * @brief 1 hrs 40 m 39 s
+ * @brief 24 m 5 s
  * O(n)
+ * O(k)
  */
 class Solution {
  public:
-  vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-    deque<int> window;
-    vector<int> result;
+  // nums = [1,3,-1,-3,5,3,6,7], k = 3
+  vector<int> maxSlidingWindow(vector<int>& nums, size_t k) {
+    vector<int> results;
+    deque<size_t> window;
 
-    for (int i = 0; i < nums.size(); i++) {
-      // Remove indices outside the current window
-      if (!window.empty() && window.front() <= i - k) window.pop_front();
+    for (size_t i = 0; i < nums.size(); i++) {
+      if (!window.empty() && window.front() + k <= i) {
+        // 4. window = [2, 3]
+        window.pop_front();
+      }
 
-      // Remove elements smaller than the current one
-      while (!window.empty() && nums[window.back()] <= nums[i])
+      while (!window.empty() && nums[window.back()] <= nums[i]) {
+        // 1. window = []
+        // 4. window = []
         window.pop_back();
+      }
 
+      // 0. window = [0]
+      // 1. window = [1]
+      // 2. window = [1, 2]
+      // 3. window = [1, 2, 3]
+      // 4. window = [4]
       window.push_back(i);
 
-      // Add to result once window has at least k elements
-      if (i >= k - 1) result.push_back(nums[window.front()]);
+      if (i + 1 >= k) {
+        // 2. results = [3]
+        // 3. results = [3, 3]
+        // 4. results = [3, 3, 5]
+        results.push_back(nums[window.front()]);
+      }
     }
 
-    return result;
+    return results;
   }
 };
 
