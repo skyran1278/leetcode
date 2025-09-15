@@ -6,8 +6,10 @@ using namespace std;
 
 /**
  * @brief 59 m 56 s
+ * @brief 14 m 4 s
  *
  * O(n) n == decoded string length
+ * O(n)
  */
 class Solution {
  public:
