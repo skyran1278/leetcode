@@ -5,24 +5,32 @@ using namespace std;
 
 /**
  * @brief 29 m 20 s
+ * @brief 17 m 49 s
+ * O(n)
  * O(n)
  */
 class Solution {
  public:
+  // pushed = [1,2,3,4,5], popped = [4,5,3,2,1]
+  // pushed = [1,2,3,4,5], popped = [4,3,5,1,2]
   bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
-    stack<int> stack;
+    stack<int> s;
 
-    size_t i = 0;
-    size_t j = 0;
-    while (i < pushed.size()) {
-      stack.push(pushed[i++]);
-      while (!stack.empty() && stack.top() == popped[j]) {
-        stack.pop();
-        j++;
+    size_t length = pushed.size();
+    size_t pushIndex = 0;
+    size_t popIndex = 0;
+
+    while (pushIndex < length) {
+      s.push(pushed[pushIndex++]);
+
+      while (!s.empty() && s.top() == popped[popIndex]) {
+        s.pop();
+
+        popIndex++;
       }
     }
 
-    return stack.empty();
+    return s.empty();
   }
 };
 
