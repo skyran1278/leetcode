@@ -5,15 +5,16 @@ using namespace std;
 /**
  * @brief 55 m 50 s
  * O(n)
+ * O(1) extra (aside from the output list)
  */
 class Solution {
  public:
   vector<int> spiralOrder(vector<vector<int>>& matrix) {
     int left = 0;
-    int right = matrix[0].size();
+    int right = (int)matrix[0].size();
     int top = 0;
-    int bottom = matrix.size();
-    int matrixSize = right * bottom;
+    int bottom = (int)matrix.size();
+    size_t matrixSize = (size_t)(right * bottom);
 
     vector<int> result;
     result.reserve(matrixSize);
@@ -23,22 +24,22 @@ class Solution {
     while (result.size() < matrixSize) {
       top++;
       while (j < right - 1) {
-        result.push_back(matrix[i][++j]);
+        result.push_back(matrix[(size_t)i][(size_t)++j]);
       }
 
       right--;
       while (i < bottom - 1) {
-        result.push_back(matrix[++i][j]);
+        result.push_back(matrix[(size_t)++i][(size_t)j]);
       }
 
       bottom--;
       while (j > left && bottom >= top) {
-        result.push_back(matrix[i][--j]);
+        result.push_back(matrix[(size_t)i][(size_t)--j]);
       }
 
       left++;
       while (i > top && left <= right) {
-        result.push_back(matrix[--i][j]);
+        result.push_back(matrix[(size_t)--i][(size_t)j]);
       }
     }
 
