@@ -4,10 +4,13 @@ using namespace std;
 
 /**
  * @brief 28 m 25 s
+ * @brief 20 m 48 s
+ * O(n)
  * O(1)
  */
 class Solution {
  public:
+  // 42
   int myAtoi(string s) {
     size_t i = 0;
 
@@ -38,8 +41,8 @@ class Solution {
     while (i < s.length() && isdigit(s[i])) {
       int digit = s[i] - '0';
 
-      if (result > (INT_MAX - digit) / 10) {
-        return (sign == 1) ? INT_MAX : INT_MIN;
+      if (result > (__INT_MAX__ - digit) / 10) {
+        return (sign == 1) ? __INT_MAX__ : -__INT_MAX__ - 1;
       }
 
       result = result * 10 + digit;
