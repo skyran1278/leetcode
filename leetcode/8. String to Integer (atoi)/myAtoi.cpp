@@ -37,19 +37,18 @@ class Solution {
     // [-2^31, 2^31 - 1], then round the integer to remain in the range.
     // Specifically, integers less than -2^31 should be rounded to -2^31, and
     // integers greater than 2^31 - 1 should be rounded to 2^31 - 1.
-    int result = 0;
+    long num = 0;  // use long to detect overflow
     while (i < s.length() && isdigit(s[i])) {
-      int digit = s[i] - '0';
+      num = num * 10 + (s[i] - '0');
 
-      if (result > (__INT_MAX__ - digit) / 10) {
-        return (sign == 1) ? __INT_MAX__ : -__INT_MAX__ - 1;
-      }
+      // 4. check overflow
+      if (num * sign > __INT_MAX__) return __INT_MAX__;
+      if (num * sign < -__INT_MAX__ - 1) return -__INT_MAX__ - 1;
 
-      result = result * 10 + digit;
       i++;
     }
 
-    return sign * result;
+    return (int)(sign * num);
   }
 };
 
