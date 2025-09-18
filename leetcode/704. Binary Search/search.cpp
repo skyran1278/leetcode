@@ -5,21 +5,26 @@ using namespace std;
 /**
  * @brief 9 m 12 s
  * O(log n)
+ * O(1)
  */
 class Solution {
  public:
+  // nums = [-1,0,3,5,9,12], target = 9
+  // nums = [-1,0,3,5,9,12], target = 2
   int search(vector<int>& nums, int target) {
     int left = 0;
-    int right = nums.size() - 1;
+    int right = nums.size() - 1;  // right = 5
 
     while (left <= right) {
-      int i = (left + right) / 2;
-      if (nums[i] < target) {
-        left = i + 1;
-      } else if (nums[i] > target) {
-        right = i - 1;
+      int mid = (left + right) / 2;
+      if (nums[mid] > target) {
+        // right = 1
+        right = mid - 1;
+      } else if (nums[mid] < target) {
+        // left = 1
+        left = mid + 1;
       } else {
-        return i;
+        return mid;
       }
     }
 
