@@ -70,7 +70,8 @@
     "ctime": "cpp",
     "span": "cpp",
     "variant": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "sstream": "cpp"
   },
   "github.copilot.enable": {
     "*": true,
