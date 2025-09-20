@@ -8,23 +8,31 @@ using namespace std;
  */
 class Solution {
  public:
+  // nums = [1,3,4,2,2]
   int findDuplicate(vector<int>& nums) {
-    int slowRunner = 0;
-    int fastRunner = 0;
+    int fast = 0;
+    int slow = 0;
 
     do {
-      slowRunner = nums[slowRunner];
-      fastRunner = nums[nums[fastRunner]];
-    } while (slowRunner != fastRunner);
+      // fast = 3, slow = 1
+      // fast = 4, slow = 3
+      // fast = 4, slow = 2
+      // fast = 4, slow = 4
+      fast = nums[nums[fast]];
+      slow = nums[slow];
+    } while (fast != slow);
 
-    slowRunner = 0;
+    fast = 0;
 
-    while (slowRunner != fastRunner) {
-      slowRunner = nums[slowRunner];
-      fastRunner = nums[fastRunner];
+    while (fast != slow) {
+      // fast = 2, slow = 1
+      // fast = 4, slow = 3
+      // fast = 2, slow = 2
+      fast = nums[fast];
+      slow = nums[slow];
     }
 
-    return slowRunner;
+    return fast;
   }
 };
 
