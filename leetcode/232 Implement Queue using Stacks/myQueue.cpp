@@ -14,7 +14,9 @@ class MyQueue {
   void push(int x) { inputStack_.push(x); }
 
   int pop() {
-    moveInputToOutput();
+    if (outputStack_.empty()) {
+      moveInputToOutput();
+    }
 
     int first = outputStack_.top();
     outputStack_.pop();
@@ -22,7 +24,9 @@ class MyQueue {
   }
 
   int peek() {
-    moveInputToOutput();
+    if (outputStack_.empty()) {
+      moveInputToOutput();
+    }
 
     return outputStack_.top();
   }
@@ -30,12 +34,10 @@ class MyQueue {
   bool empty() { return inputStack_.empty() && outputStack_.empty(); }
 
   void moveInputToOutput() {
-    if (outputStack_.empty()) {
-      while (!inputStack_.empty()) {
-        int last = inputStack_.top();
-        inputStack_.pop();
-        outputStack_.push(last);
-      }
+    while (!inputStack_.empty()) {
+      int last = inputStack_.top();
+      inputStack_.pop();
+      outputStack_.push(last);
     }
   }
 
