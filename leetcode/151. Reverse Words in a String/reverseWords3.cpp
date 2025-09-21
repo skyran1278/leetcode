@@ -1,4 +1,4 @@
-#include <sstream>
+#include <algorithm>
 #include <stack>
 #include <string>
 
@@ -13,31 +13,41 @@ class Solution {
  public:
   // s = "  hello world  "
   string reverseWords(string s) {
-    size_t left = s.length();
-    size_t right = s.length();
+    // s = "  dlrow olleh  "
+    reverse(s.begin(), s.end());
 
-    string reverse;
-    while (left > 0) {
-      // skip trailing spaces
-      while (left > 0 && s[left - 1] == ' ') {
-        left--;
-      }
-      right = left;
+    size_t idx = 0;
+    size_t left = 0;
 
-      // find the start of the word
-      while (left > 0 && s[left - 1] != ' ') {
-        left--;
+    while (left < s.size()) {
+      if (s[left] != ' ') {
+        // left = 2
+        if (idx != 0) {
+          // s = "world w olleh  "
+          s[idx++] = ' ';
+        }
+
+        size_t right = left;  // right = 8
+        while (right < s.size() && s[right] != ' ') {
+          s[idx++] = s[right++];
+        }
+        // right = 13
+        // idx = 11
+        // s = "world ollehh  "
+
+        reverse(s.begin() + idx - (right - left), s.begin() + idx);
+        // s = "worldow olleh  "
+
+        // left = 7
+        left = right;
       }
 
-      // append the word if found
-      if (right > left) {
-        // reverse = "world"
-        // reverse = "world hello"
-        if (!reverse.empty()) reverse += " ";  // add space before appending
-        reverse += s.substr(left + 1, right - left) + " ";
-      }
+      left++;
     }
-    return reverse;
+
+    s.erase(s.begin() + idx, s.end());
+
+    return s;
   }
 };
 
