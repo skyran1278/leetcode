@@ -5,7 +5,7 @@
 using namespace std;
 
 /**
- * @brief
+ * @brief 11 m 25 s
  * O(n)
  * O(1)
  */
@@ -21,7 +21,7 @@ class Solution {
 
     while (left < s.size()) {
       if (s[left] != ' ') {
-        // left = 2
+        // left = 8
         if (idx != 0) {
           // s = "world w olleh  "
           s[idx++] = ' ';
@@ -33,10 +33,10 @@ class Solution {
         }
         // right = 13
         // idx = 11
-        // s = "world ollehh  "
+        // s = "world olleheh  "
 
         reverse(s.begin() + idx - (right - left), s.begin() + idx);
-        // s = "worldow olleh  "
+        // s = "world helloeh  "
 
         // left = 7
         left = right;
