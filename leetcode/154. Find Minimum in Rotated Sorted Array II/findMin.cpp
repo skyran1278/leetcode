@@ -5,10 +5,17 @@ using namespace std;
 
 /**
  * @brief 35 m 49 s
+ * @brief 13 m 2 s
+ * If you face east (nums[right]), you always know whether to turn left or right
+ * to reach the treasure. If you face west (nums[left]), sometimes you don’t
+ * even know if the treasure is behind you.
  * O(log n)
+ * O(1)
  */
 class Solution {
  public:
+  // nums = [2,2,2,0,1]
+  // nums = [1,3,5]
   int findMin(vector<int>& nums) {
     int left = 0;
     int right = nums.size() - 1;
