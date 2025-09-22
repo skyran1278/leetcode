@@ -1,4 +1,4 @@
-#include <deque>
+#include <queue>
 #include <vector>
 
 using namespace std;
@@ -27,38 +27,41 @@ struct TreeNode {
 
 /**
  * @brief 36 m 9 s
+ * @brief 12 m 50 s
+ * O(n)
  * O(n)
  */
 class Solution {
  public:
+  // root = [3,9,20,null,null,15,7]
   vector<vector<int>> levelOrder(TreeNode *root) {
-    vector<vector<int>> levels = {};
+    vector<vector<int>> levels;
 
-    if (root == nullptr) {
-      return levels;
+    queue<TreeNode *> nodes;
+    if (root != nullptr) {
+      nodes.push(root);
     }
 
-    deque<TreeNode *> nodes = {root};
-
     while (!nodes.empty()) {
-      int n = nodes.size();
-      vector<int> values = {};
-      for (size_t i = 0; i < n; i++) {
-        TreeNode *node = nodes.front();
-        nodes.pop_front();
+      vector<int> values;
 
-        values.push_back(node->val);
+      size_t count = nodes.size();  // count = 2
+      for (size_t i = 0; i < count; i++) {
+        TreeNode *node = nodes.front();
+        nodes.pop();
+
+        values.push_back(node->val);  // level = [15, 7]
 
         if (node->left != nullptr) {
-          nodes.push_back(node->left);
+          nodes.push(node->left);
         }
 
         if (node->right != nullptr) {
-          nodes.push_back(node->right);
+          nodes.push(node->right);
         }
       }
 
-      levels.push_back(values);
+      levels.push_back(values);  // result = [[3], [9, 20], [15, 7]]
     }
 
     return levels;
