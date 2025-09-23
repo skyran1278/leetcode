@@ -1,4 +1,5 @@
-#include <deque>
+#include <algorithm>
+#include <queue>
 #include <vector>
 
 using namespace std;
@@ -27,55 +28,49 @@ struct TreeNode {
 
 /**
  * @brief 13 m 45 s
+ * @brief 13 m 48 s
+ * O(n)
  * O(n)
  */
 class Solution {
  public:
+  // root = [3,9,20,null,null,15,7]
   vector<vector<int>> zigzagLevelOrder(TreeNode *root) {
-    vector<vector<int>> levels = {};
+    vector<vector<int>> levels;
 
-    if (root == nullptr) {
-      return {};
+    queue<TreeNode *> nodes;
+    if (root != nullptr) {
+      nodes.push(root);
     }
+    // nodes = [3]
 
-    deque<TreeNode *> nodes = {root};
-    bool asc = true;
+    bool isReverse = false;
     while (!nodes.empty()) {
-      vector<int> values = {};
-      size_t levelSize = nodes.size();
-      for (size_t i = 0; i < levelSize; i++) {
-        if (asc) {
-          TreeNode *node = nodes.front();
-          nodes.pop_front();
+      vector<int> values;
 
-          values.push_back(node->val);
+      size_t count = nodes.size();
+      for (size_t i = 0; i < count; i++) {
+        TreeNode *node = nodes.front();
+        nodes.pop();
 
-          if (node->left != nullptr) {
-            nodes.push_back(node->left);
-          }
+        values.push_back(node->val);
 
-          if (node->right != nullptr) {
-            nodes.push_back(node->right);
-          }
-        } else {
-          TreeNode *node = nodes.back();
-          nodes.pop_back();
-
-          values.push_back(node->val);
-
-          if (node->right != nullptr) {
-            nodes.push_front(node->right);
-          }
-
-          if (node->left != nullptr) {
-            nodes.push_front(node->left);
-          }
+        if (node->left != nullptr) {
+          nodes.push(node->left);
+        }
+        if (node->right != nullptr) {
+          nodes.push(node->right);
         }
       }
+      // nodes = [15, 7]
 
-      asc = !asc;
+      if (isReverse) {
+        reverse(values.begin(), values.end());
+      }
 
-      levels.push_back(values);
+      isReverse = !isReverse;
+
+      levels.push_back(values);  // levels = [[3], [20, 9]]
     }
 
     return levels;
