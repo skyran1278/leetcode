@@ -5,12 +5,15 @@ using namespace std;
 
 /**
  * @brief 7 m
- * O(nlog n)
+ * @brief 9 m 9 s
+ * O(n log k)
+ * O(n)
  */
 class Solution {
  public:
+  // nums = [3,2,1,5,6,4], k = 2
   int findKthLargest(vector<int>& nums, int k) {
-    priority_queue<double, vector<double>, greater<double>> heap;
+    priority_queue<int, vector<int>, greater<int>> heap;
 
     for (size_t i = 0; i < k; i++) {
       heap.push(nums[i]);
