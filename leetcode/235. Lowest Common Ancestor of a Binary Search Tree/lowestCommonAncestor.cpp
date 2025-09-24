@@ -16,10 +16,13 @@ struct TreeNode {
 
 /**
  * @brief 12 m 37 s
- *
+ * @brief 8 m 42 s
+ * O(n)
+ * O(1)
  */
 class Solution {
  public:
+  // root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
   TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
     if (p->val < q->val) return lowestCommonAncestor(root, q, p);
 
