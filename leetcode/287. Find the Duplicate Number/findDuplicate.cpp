@@ -3,33 +3,26 @@
 using namespace std;
 
 /**
- * hard, I read answer to solve this problem
+ * @brief 7 m 5 s
  * O(n)
+ * O(1)
  */
 class Solution {
  public:
   // nums = [1,3,4,2,2]
   int findDuplicate(vector<int>& nums) {
-    int fast = 0;
-    int slow = 0;
+    size_t slow = 0;
+    size_t fast = 0;
 
     do {
-      // fast = 3, slow = 1
-      // fast = 4, slow = 3
-      // fast = 4, slow = 2
-      // fast = 4, slow = 4
-      fast = nums[nums[fast]];
-      slow = nums[slow];
-    } while (fast != slow);
+      slow = nums[slow];        // slow = 1, 3, 2, 4
+      fast = nums[nums[fast]];  // fast = 3, 4, 4, 4
+    } while (slow != fast);
 
-    fast = 0;
-
-    while (fast != slow) {
-      // fast = 2, slow = 1
-      // fast = 4, slow = 3
-      // fast = 2, slow = 2
-      fast = nums[fast];
-      slow = nums[slow];
+    slow = 0;
+    while (slow != fast) {
+      slow = nums[slow];  // slow = 1, 3, 2
+      fast = nums[fast];  // fast = 2, 4, 2
     }
 
     return fast;
