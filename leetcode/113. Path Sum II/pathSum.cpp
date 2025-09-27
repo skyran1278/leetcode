@@ -28,6 +28,7 @@ struct TreeNode {
 /**
  * @brief 27 m 7 s
  * O(n^2)
+ * O(n)
  */
 class Solution {
  public:
