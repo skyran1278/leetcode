@@ -6,8 +6,7 @@ using namespace std;
  * @brief 16 m 37 s
  * @brief 23 m 30 s
  * O(n * n!)
- * n! for the total number of permutations.
- * n for copying each permutation into the result list.
+ * O(n) for recursion depth, plus O(n * n!) output.
  */
 class Solution {
  public:
