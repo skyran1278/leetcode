@@ -1,23 +1,43 @@
+#include <algorithm>
+#include <string>
 #include <vector>
 
 using namespace std;
 
 /**
  * @brief 1 hrs 10 m 12 s
+ * @brief 53 m 44 s
  * O(M * N * 3^L)
+ * O(MN)
  */
 class Solution {
  public:
+  // board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
+  // word = "SEE"
   bool exist(vector<vector<char>>& board, string word) {
-    int rowSize = board.size();
-    int colSize = board[0].size();
-    for (int row = 0; row < rowSize; row++) {
-      for (int col = 0; col < colSize; col++) {
+    vector<vector<bool>> used(board.size(),
+                              vector<bool>(board[0].size(), false));
+
+    // --- Word reversal trick ---
+    vector<int> counts(2, 0);
+    for (size_t row = 0; row < board.size(); row++) {
+      for (size_t col = 0; col < board[row].size(); col++) {
         if (board[row][col] == word[0]) {
-          vector<vector<bool>> used(rowSize, vector<bool>(colSize, false));
-          if (dfs(word, 0, board, used, row, col)) {
-            return true;
-          }
+          counts[0]++;
+        } else if (board[row][col] == word[word.size() - 1]) {
+          counts[1]++;
+        }
+      }
+    }
+
+    if (counts[0] > counts[1]) {
+      reverse(word.begin(), word.end());
+    }
+
+    for (size_t row = 0; row < board.size(); row++) {
+      for (size_t col = 0; col < board[row].size(); col++) {
+        if (backtrack(board, used, row, col, word, 0)) {
+          return true;
         }
       }
     }
@@ -25,16 +45,16 @@ class Solution {
     return false;
   }
 
-  bool dfs(string& word, int wordIndex, vector<vector<char>>& board,
-           vector<vector<bool>>& used, int row, int col) {
-    if (wordIndex == word.length()) {
+  bool backtrack(vector<vector<char>>& board, vector<vector<bool>>& used,
+                 int row, int col, string& word, int idx) {
+    if (idx == word.size()) {
       return true;
     }
 
-    int rowSize = board.size();
-    int colSize = board[0].size();
-    if (row >= rowSize || row < 0 || col < 0 || col >= colSize ||
-        used[row][col] || board[row][col] != word[wordIndex]) {
+    int m = board.size();
+    int n = board[0].size();
+    if (row >= m || row < 0 || col < 0 || col >= n || used[row][col] ||
+        board[row][col] != word[idx]) {
       return false;
     }
 
@@ -42,13 +62,13 @@ class Solution {
 
     static const vector<pair<int, int>> directions = {
         {1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
     for (auto&& [dr, dc] : directions) {
-      int i = row + dr;
-      int j = col + dc;
-      if (dfs(word, wordIndex + 1, board, used, i, j)) {
+      if (backtrack(board, used, row + dr, col + dc, word, idx + 1)) {
         return true;
       }
     }
+
     used[row][col] = false;
 
     return false;
