@@ -23,15 +23,19 @@ struct TreeNode {
 
 /**
  * @brief 3 m 42 s
+ * @brief 6 m 49 s
  * O(n)
+ * O(h)
  */
 class Solution {
  public:
+  // root = [4,2,7,1,3,6,9]
   TreeNode *invertTree(TreeNode *root) {
     if (root != nullptr) {
-      TreeNode *tmp = root->left;
+      TreeNode *tmp = root->left;  // tmp = 2
       root->left = root->right;
       root->right = tmp;
+
       invertTree(root->left);
       invertTree(root->right);
     }
