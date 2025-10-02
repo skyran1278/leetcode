@@ -22,24 +22,28 @@ struct TreeNode {
 };
 
 /**
+ * @brief 17 m 58 s
  * @brief 10 m 2 s
  * O(n)
+ * O(h)
  */
 class Solution {
  public:
+  // root = [1,2,2,3,4,4,3]
   bool isSymmetric(TreeNode *root) {
     if (root == nullptr) return true;
 
-    return isSameTree(root->left, root->right);
+    return isMirror(root->left, root->right);
   }
 
-  bool isSameTree(TreeNode *left, TreeNode *right) {
+  bool isMirror(TreeNode *left, TreeNode *right) {
     if (left == nullptr && right == nullptr) return true;
-    if (left == nullptr || right == nullptr) return false;
-    if (left->val != right->val) return false;
 
-    if (!isSameTree(left->left, right->right)) return false;
-    if (!isSameTree(left->right, right->left)) return false;
+    if (left == nullptr || right == nullptr || left->val != right->val ||
+        !isMirror(left->right, right->left) ||
+        !isMirror(left->left, right->right)) {
+      return false;
+    }
 
     return true;
   }
