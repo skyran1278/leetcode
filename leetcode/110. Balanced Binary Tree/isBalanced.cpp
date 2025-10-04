@@ -1,16 +1,3 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
- * right(right) {}
- * };
- */
-
 #include <algorithm>
 
 using namespace std;
@@ -26,33 +13,10 @@ struct TreeNode {
 };
 
 /**
- * O(n)
- */
-class Solution {
- public:
-  bool isBalanced(TreeNode *root) { return depth(root) >= 0; }
-
-  int depth(TreeNode *root) {
-    if (root == nullptr) return 0;
-
-    int leftDepth = depth(root->left);
-    int rightDepth = depth(root->right);
-
-    int d = abs(leftDepth - rightDepth);
-
-    if (leftDepth == -1 || rightDepth == -1 || d > 1) {
-      return -1;
-    }
-
-    return max(leftDepth, rightDepth) + 1;
-  }
-};
-
-/**
  * @brief 54 m 35 s
  * O(n^2)
  */
-class Solution2 {
+class Solution {
  public:
   bool isBalanced(TreeNode *root) {
     if (root == nullptr) return true;
