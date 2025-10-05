@@ -17,7 +17,7 @@ struct TreeNode {
  * @brief 18 m 26 s
  * @brief 34 m 6 s
  * O(n)
- * O(h)
+ * O(n) recursion stack + hashmap
  */
 class Solution {
  public:
