@@ -1,18 +1,9 @@
-#include <format>
 #include <queue>
+#include <sstream>
 #include <string>
 
 using namespace std;
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
 struct TreeNode {
   int val;
   TreeNode* left;
@@ -20,15 +11,12 @@ struct TreeNode {
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
-/**
- * @brief 1 hrs 46 m 31 s
- * O(n)
- */
 class Codec {
  public:
   // Encodes a tree to a single string.
+  // root = [1,2,3,null,null,4,5]
   string serialize(TreeNode* root) {
-    string s;
+    string result;
 
     queue<TreeNode*> q;
     q.push(root);
@@ -40,66 +28,56 @@ class Codec {
         TreeNode* node = q.front();
         q.pop();
 
-        if (node == nullptr) {
-          s += format("{:05}", nullValue);
-          continue;
-        }
+        if (node != nullptr) {
+          result += to_string(node->val) + ",";
 
-        s += format("{:05}", node->val);
-        q.push(node->left);
-        q.push(node->right);
+          q.push(node->left);
+          q.push(node->right);
+        } else {
+          result += "null,";
+        }
       }
     }
 
-    return s;
+    return result;
   }
 
   // Decodes your encoded data to tree.
   TreeNode* deserialize(string data) {
-    vector<int> values;
+    stringstream ss(data);
+    string item;
 
-    for (size_t i = 0; i + chunkSize <= data.size(); i += chunkSize) {
-      string intValue = data.substr(i, chunkSize);
-      values.push_back(stoi(intValue));
-    }
-
-    if (values[0] == nullValue) {
+    getline(ss, item, ',');
+    if (item == "null") {
       return nullptr;
     }
-
-    TreeNode* root = new TreeNode(values[0]);
+    TreeNode* root = new TreeNode(stoi(item));
 
     queue<TreeNode*> q;
     q.push(root);
 
-    size_t valueIndex = 1;
     while (!q.empty()) {
-      TreeNode* node = q.front();
-      q.pop();
+      size_t n = q.size();
+      for (size_t i = 0; i < n; i++) {
+        TreeNode* node = q.front();
+        q.pop();
 
-      if (node == nullptr) {
-        continue;
+        getline(ss, item, ',');
+        if (item != "null") {
+          node->left = new TreeNode(stoi(item));
+          q.push(node->left);
+        }
+
+        getline(ss, item, ',');
+        if (item != "null") {
+          node->right = new TreeNode(stoi(item));
+          q.push(node->right);
+        }
       }
-
-      if (values[valueIndex] != nullValue) {
-        node->left = new TreeNode(values[valueIndex]);
-        q.push(node->left);
-      }
-
-      if (values[valueIndex + 1] != nullValue) {
-        node->right = new TreeNode(values[valueIndex + 1]);
-        q.push(node->right);
-      }
-
-      valueIndex += 2;
     }
 
     return root;
   }
-
- private:
-  int chunkSize = 5;
-  int nullValue = 11111;
 };
 
 // Your Codec object will be instantiated and called as such:
