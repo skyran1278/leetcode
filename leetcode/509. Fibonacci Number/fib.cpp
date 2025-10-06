@@ -4,10 +4,13 @@ using namespace std;
 
 /**
  * @brief 12 m 14 s
+ * @brief 6 m 24 s
  * O(n)
+ * O(1)
  */
 class Solution {
  public:
+  // n = 4
   int fib(int n) {
     vector<int> dp = {0, 1};
     for (size_t i = 0; i < n; i++) {
