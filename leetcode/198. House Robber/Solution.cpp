@@ -4,25 +4,24 @@ using namespace std;
 
 /**
  * @brief 20 m 29 s
+ * @brief 9 m 54 s
  * O(n)
+ * O(1)
  */
 class Solution {
  public:
+  // nums = [1,2,3,1]
+  // nums = [2,7,9,3,1]
+  // nums = [2,1,1,2]
   int rob(vector<int>& nums) {
-    int n = nums.size();
-    if (n == 1) {
-      return nums[0];
+    int pre1 = 0;
+    int pre2 = 0;
+    for (auto&& num : nums) {
+      int cur = max(pre2 + num, pre1);
+      pre2 = pre1;
+      pre1 = cur;
     }
 
-    int first = nums[0];
-    int second = max(nums[0], nums[1]);
-
-    for (size_t i = 2; i < n; i++) {
-      int tmp = max(first + nums[i], second);
-      first = second;
-      second = tmp;
-    }
-
-    return second;
+    return pre1;
   }
 };
