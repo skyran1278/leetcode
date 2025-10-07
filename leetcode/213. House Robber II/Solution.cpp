@@ -5,33 +5,32 @@ using namespace std;
 
 /**
  * @brief 52 m 48 s
+ * @brief 5 m 38 s
  * O(n)
+ * O(1)
  */
 class Solution {
  public:
   int rob(vector<int>& nums) {
-    int n = nums.size();
+    size_t n = nums.size();
     if (n == 1) {
       return nums[0];
     }
-    if (n == 2) {
-      return max(nums[0], nums[1]);
-    }
 
-    return max(_rob(nums, 0, n - 1), _rob(nums, 1, n));
+    return max(robRange(nums, 0, n - 1), robRange(nums, 1, n));
   }
 
-  int _rob(vector<int>& nums, int left, int right) {
-    int first = nums[left];
-    int second = max(first, nums[left + 1]);
+  int robRange(vector<int>& nums, size_t start, size_t end) {
+    int pre2 = 0;
+    int pre1 = 0;
 
-    for (size_t i = left + 2; i < right; i++) {
-      int tmp = max(nums[i] + first, second);
-      first = second;
-      second = tmp;
+    for (size_t i = start; i < end; i++) {
+      int cur = max(pre2 + nums[i], pre1);
+      pre2 = pre1;
+      pre1 = cur;
     }
 
-    return second;
+    return pre1;
   }
 };
 
