@@ -10,26 +10,26 @@ using namespace std;
 class Solution {
  public:
   int nthUglyNumber(int n) {
-    vector<int> dp(n);
-    dp[0] = 1;
+    vector<int> ugly(n);
+    ugly[0] = 1;
+    int i2 = 0;
+    int i3 = 0;
+    int i5 = 0;
 
-    int index2 = 0;
-    int index3 = 0;
-    int index5 = 0;
-    for (size_t i = 1; i < n; i++) {
-      dp[i] = min(min(dp[index2] * 2, dp[index3] * 3), dp[index5] * 5);
-      if (dp[i] == dp[index2] * 2) {
-        index2++;
-      }
-      if (dp[i] == dp[index3] * 3) {
-        index3++;
-      }
-      if (dp[i] == dp[index5] * 5) {
-        index5++;
-      }
+    for (int i = 1; i < n; i++) {
+      int next2 = ugly[i2] * 2;
+      int next3 = ugly[i3] * 3;
+      int next5 = ugly[i5] * 5;
+
+      int nextUgly = min({next2, next3, next5});
+      ugly[i] = nextUgly;
+
+      if (nextUgly == next2) i2++;
+      if (nextUgly == next3) i3++;
+      if (nextUgly == next5) i5++;
     }
 
-    return dp[n - 1];
+    return ugly[n - 1];
   }
 };
 
