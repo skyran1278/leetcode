@@ -5,20 +5,21 @@ using namespace std;
 
 /**
  * @brief 27 m 27 s
+ * @brief 3 m 8 s
  * O(n)
+ * O(1)
  */
 class Solution {
  public:
   int maxProfit(vector<int>& prices) {
-    int accPrice = 0;
-    int lastPrice = prices[0];
-    for (auto&& price : prices) {
-      if (price > lastPrice) {
-        accPrice += price - lastPrice;
+    int accProfit = 0;
+    for (size_t i = 1; i < prices.size(); i++) {
+      int profit = prices[i] - prices[i - 1];
+      if (profit > 0) {
+        accProfit += profit;
       }
-      lastPrice = price;
     }
 
-    return accPrice;
+    return accProfit;
   }
 };
