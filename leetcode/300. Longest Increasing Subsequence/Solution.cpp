@@ -2,38 +2,6 @@
 
 using namespace std;
 
-/**
- * @brief 1 hrs 2 m 59 s
- * O(n^2)
- */
-class Solution2 {
- public:
-  int lengthOfLIS(vector<int>& nums) {
-    size_t n = nums.size();
-    vector<int> dp(n, 1);
-
-    dp[n - 1] = 1;
-    for (int i = n - 2; i >= 0; i--) {
-      int num = nums[i];
-
-      for (size_t j = i + 1; j < n; j++) {
-        if (num < nums[j] && dp[i] < dp[j] + 1) {
-          dp[i] = dp[j] + 1;
-        }
-      }
-    }
-
-    int longest = 1;
-    for (size_t i = 0; i < dp.size(); i++) {
-      if (dp[i] > longest) {
-        longest = dp[i];
-      }
-    }
-
-    return longest;
-  }
-};
-
 // O(n log n)
 // greedy + binary search
 class Solution {
