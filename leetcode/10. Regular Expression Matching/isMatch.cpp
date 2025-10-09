@@ -4,39 +4,57 @@
 using namespace std;
 
 /**
- * @brief 看解答，沒做出來
+ * @brief 41 m 13 s
+ * O(mn)
+ * O(mn)
  */
 class Solution {
  public:
+  // s = "aab", p = "c*a*b"
   bool isMatch(string s, string p) {
-    int sLen = s.length();
-    int pLen = p.length();
+    // [0,0,0,0,0,0]
+    // [0,0,0,0,0,0]
+    // [0,0,0,0,0,0]
+    // [0,0,0,0,0,0]
+    vector<vector<bool>> dp(s.size() + 1, vector<bool>(p.size() + 1, false));
 
-    vector<vector<bool>> dp(sLen + 1, vector<bool>(pLen + 1));
-
-    // Empty string matches empty pattern
+    // [1,0,0,0,0,0]
+    // [0,0,0,0,0,0]
+    // [0,0,0,0,0,0]
+    // [0,0,0,0,0,0]
     dp[0][0] = true;
 
-    for (size_t j = 2; j <= pLen; j++) {
-      if (p[j - 1] == '*') {
-        dp[0][j] = dp[0][j - 2];  // zero
+    // [1,0,1,0,1,0]
+    // [0,0,0,0,0,0]
+    // [0,0,0,0,0,0]
+    // [0,0,0,0,0,0]
+    for (size_t col = 2; col < p.size() + 1; col++) {
+      if (p[col - 1] == '*') {
+        dp[0][col] = dp[0][col - 2];
       }
     }
 
-    for (size_t i = 1; i <= sLen; i++) {
-      for (size_t j = 1; j <= pLen; j++) {
-        if (p[j - 1] == s[i - 1] || p[j - 1] == '.') {
-          dp[i][j] = dp[i - 1][j - 1];
-        } else if (p[j - 1] == '*') {
-          dp[i][j] = dp[i][j - 2];  // zero
-          if (p[j - 2] == s[i - 1] || p[j - 2] == '.') {
-            dp[i][j] = dp[i - 1][j] || dp[i][j];  // one or more
+    //      c * a * b
+    //   [1,0,1,0,1,0]
+    // a [0,0,0,1,1,0]
+    // a [0,0,0,0,1,0]
+    // b [0,0,0,0,0,1]
+    for (size_t row = 1; row < dp.size(); row++) {
+      for (size_t col = 1; col < dp[row].size(); col++) {
+        size_t sIndex = row - 1;
+        size_t pIndex = col - 1;
+        if (s[sIndex] == p[pIndex] || p[pIndex] == '.') {
+          dp[row][col] = dp[row - 1][col - 1];
+        } else if (p[pIndex] == '*') {
+          dp[row][col] = dp[row][col - 2];
+          if (p[pIndex - 1] == s[sIndex] || p[pIndex - 1] == '.') {
+            dp[row][col] = dp[row][col] || dp[row - 1][col];
           }
         }
       }
     }
 
-    return dp[sLen][pLen];
+    return dp[s.size()][p.size()];
   }
 };
 
