@@ -4,32 +4,39 @@
 using namespace std;
 
 /**
- * @brief 沒寫出來
- *
+ * @brief 13 m 58 s
+ * O(n)
+ * O(n)
  */
 class Solution {
  public:
   int nthUglyNumber(int n) {
-    vector<int> ugly(n);
-    ugly[0] = 1;
-    int i2 = 0;
-    int i3 = 0;
-    int i5 = 0;
+    vector<int> dp(n);
 
-    for (int i = 1; i < n; i++) {
-      int next2 = ugly[i2] * 2;
-      int next3 = ugly[i3] * 3;
-      int next5 = ugly[i5] * 5;
+    size_t index2 = 0;
+    size_t index3 = 0;
+    size_t index5 = 0;
 
-      int nextUgly = min({next2, next3, next5});
-      ugly[i] = nextUgly;
+    dp[0] = 1;
+    for (size_t i = 1; i < n; i++) {
+      int next2 = dp[index2] * 2;
+      int next3 = dp[index3] * 3;
+      int next5 = dp[index5] * 5;
 
-      if (nextUgly == next2) i2++;
-      if (nextUgly == next3) i3++;
-      if (nextUgly == next5) i5++;
+      dp[i] = min({next2, next3, next5});
+
+      if (dp[i] == next2) {
+        index2++;
+      }
+      if (dp[i] == next3) {
+        index3++;
+      }
+      if (dp[i] == next5) {
+        index5++;
+      }
     }
 
-    return ugly[n - 1];
+    return dp[n - 1];
   }
 };
 
