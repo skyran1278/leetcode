@@ -13,24 +13,12 @@ class Solution {
   int lengthOfLIS(vector<int>& nums) {
     vector<int> subsequence;
 
-    // subsequence = [2,3]
     for (auto&& num : nums) {
-      int left = 0;
-      int right = subsequence.size();
-
-      while (left < right) {
-        int mid = left + (right - left) / 2;
-        if (num > subsequence[mid]) {
-          left = mid + 1;
-        } else {
-          right = mid;
-        }
-      }
-
-      if (left == subsequence.size()) {
+      auto it = lower_bound(subsequence.begin(), subsequence.end(), num);
+      if (it == subsequence.end()) {
         subsequence.push_back(num);
       } else {
-        subsequence[left] = num;
+        *it = num;
       }
     }
 
