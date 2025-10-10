@@ -4,6 +4,7 @@ using namespace std;
 
 /**
  * @brief 1 hrs 2 m 59 s
+ * @brief 8 m 32 s
  * O(n^2)
  * O(n)
  */
@@ -14,6 +15,7 @@ class Solution {
     size_t n = nums.size();
     vector<int> dp(n, 1);  // dp = [1,1,1,2,2,1,1,1]
 
+    // [1,1,1,2,2,3,4,4]
     int longest = 1;
     for (size_t i = 1; i < n; i++) {
       for (size_t j = 0; j < i; j++) {
