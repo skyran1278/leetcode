@@ -11,13 +11,50 @@ struct TreeNode {
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
+/**
+ * @brief 12 m 9 s
+ * O(n)
+ * O(n)
+ */
 class Codec {
  public:
   // Encodes a tree to a single string.
-  string serialize(TreeNode* root) {}
+  string serialize(TreeNode* root) {
+    if (root == nullptr) {
+      return "null";
+    }
+
+    return to_string(root->val) + "," + serialize(root->left) + "," +
+           serialize(root->right);
+  }
 
   // Decodes your encoded data to tree.
-  TreeNode* deserialize(string data) {}
+  TreeNode* deserialize(string data) {
+    stringstream ss(data);
+    queue<string> values;
+
+    string item;
+    while (getline(ss, item, ',')) {
+      values.push(item);
+    }
+
+    return dfs(values);
+  }
+
+  // [1,2,null,null,3,4,null,null,4,null,null]
+  TreeNode* dfs(queue<string>& values) {
+    string value = values.front();
+    values.pop();
+    if (value == "null") {
+      return nullptr;
+    }
+
+    TreeNode* node = new TreeNode(stoi(value));
+    node->left = dfs(values);
+    node->right = dfs(values);
+
+    return node;
+  }
 };
 
 // Your Codec object will be instantiated and called as such:
@@ -36,9 +73,9 @@ int main() {
   node5->left = node3;
   node5->right = node4;
   string s2s = s.serialize(node5);
-  TreeNode* s2d = s.deserialize(s2s);
+  s.deserialize(s2s);
 
   TreeNode* s1 = nullptr;
   string s1s = s.serialize(s1);
-  TreeNode* s1d = s.deserialize(s1s);
+  s.deserialize(s1s);
 }
