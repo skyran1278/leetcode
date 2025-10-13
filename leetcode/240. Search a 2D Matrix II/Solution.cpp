@@ -5,21 +5,26 @@ using namespace std;
 
 /**
  * @brief 1 hrs 16 m 36 s
+ * @brief 13 m 1 s
  * O(m + n)
+ * O(1)
  */
 class Solution {
  public:
   bool searchMatrix(vector<vector<int>>& matrix, int target) {
-    int rowSize = matrix.size() - 1;
-    int colSize = matrix[0].size() - 1;
+    int n = matrix.size();     // 1
+    int m = matrix[0].size();  // 1
 
-    int row = rowSize;
-    int col = 0;
-    while (row >= 0 && col <= colSize) {
-      if (target < matrix[row][col]) {
-        row--;
-      } else if (target > matrix[row][col]) {
-        col++;
+    int row = 0;
+    int col = m - 1;  // 0
+
+    while (row < n && col >= 0) {
+      int value = matrix[row][col];  // -5
+
+      if (target < value) {
+        col--;
+      } else if (target > value) {
+        row++;
       } else {
         return true;
       }
