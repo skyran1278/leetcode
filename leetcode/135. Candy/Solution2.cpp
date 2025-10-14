@@ -5,17 +5,19 @@
 using namespace std;
 
 /**
- * @brief 1 hrs 19 m 44 s
+ * @brief 12 m 46 s
+ * O(n)
  * O(n)
  * 貪心兩次
  */
 class Solution {
  public:
+  // [1,2,87,87,87,2,1]
   int candy(vector<int>& ratings) {
-    int n = ratings.size();
-
+    size_t n = ratings.size();
     vector<int> candies(n, 1);
 
+    // [1,2,3,1,2,2,1]
     for (size_t i = 1; i < n; i++) {
       if (ratings[i] > ratings[i - 1]) {
         candies[i] = candies[i - 1] + 1;
