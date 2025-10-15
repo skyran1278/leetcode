@@ -14,22 +14,23 @@ struct Compare {
 
 /**
  * @brief 1 hrs 35 m 3 s
+ * @brief 13 m 53 s
  * O(n log n)
+ * O(n)
  */
 class Solution {
  public:
-  string largestNumber(vector<int> &nums) {
+  string largestNumber(vector<int>& nums) {
     priority_queue<string, vector<string>, Compare> heap;
-    for (auto &&num : nums) {
-      string s = to_string(num);
-      heap.push(s);
+
+    for (auto&& num : nums) {
+      heap.push(to_string(num));
     }
 
     string result;
     while (!heap.empty()) {
-      string s = heap.top();
+      result += heap.top();
       heap.pop();
-      result += s;
     }
 
     if (result[0] == '0') {
