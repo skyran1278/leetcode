@@ -6,7 +6,9 @@ using namespace std;
 
 /**
  * @brief 2 m 42 s
- * O(log n)
+ * @brief 5 m 16 s
+ * O(k), where k is the number of 1 bits.
+ * O(1)
  */
 class Solution {
  public:
