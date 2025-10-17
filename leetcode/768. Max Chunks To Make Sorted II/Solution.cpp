@@ -1,5 +1,6 @@
 #include <climits>
 #include <queue>
+#include <stack>
 #include <string>
 #include <vector>
 
@@ -8,31 +9,28 @@ using namespace std;
 /**
  * @brief 寫不出來
  * O(n)
+ * O(n)
  * maximum value on the left is ≤ the minimum value on the right
  */
 class Solution {
  public:
+  // arr = [0,1,0,1,0]
   int maxChunksToSorted(vector<int>& arr) {
-    int n = arr.size();
+    stack<int> s;
 
-    vector<int> minRights(n + 1, INT_MAX);
-    for (int i = n - 1; i >= 0; i--) {
-      minRights[i] = min(arr[i], minRights[i + 1]);
-    }
-
-    int chunkCount = 0;
-    int maxLeft = 0;
-    for (size_t i = 0; i < n; i++) {
-      if (arr[i] > maxLeft) {
-        maxLeft = arr[i];
-      }
-
-      if (maxLeft <= minRights[i + 1]) {
-        chunkCount++;
+    for (auto&& num : arr) {
+      if (s.empty() || num >= s.top()) {
+        s.push(num);  // s = [0, 1, 1]
+      } else {
+        int top = s.top();
+        while (!s.empty() && s.top() > num) {
+          s.pop();
+        }
+        s.push(top);  // s = [0, 1]
       }
     }
 
-    return chunkCount;
+    return s.size();
   }
 };
 
