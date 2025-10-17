@@ -6,6 +6,8 @@ using namespace std;
 
 /**
  * @brief 7 m 26 s
+ * @brief 3 m 20 s
+ * O(1)
  * O(1)
  * bit
  */
