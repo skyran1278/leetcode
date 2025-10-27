@@ -7,7 +7,7 @@
 using namespace std;
 
 /**
- * @brief 寫不出來
+ * @brief 15 m 18 s
  * O(n)
  * O(n)
  * maximum value on the left is ≤ the minimum value on the right
