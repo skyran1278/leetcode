@@ -5,8 +5,9 @@
 using namespace std;
 
 /**
- * @brief 沒寫出來
+ * @brief 7 m 49 s
  * O(n)
+ * O(1)
  * count how many times that bit appears
  */
 class Solution {
@@ -16,12 +17,10 @@ class Solution {
     for (size_t i = 0; i < 32; i++) {
       int sum = 0;
       for (auto&& num : nums) {
-        sum += ((num >> i) & 1);
+        sum += num >> i & 1;
       }
 
-      if ((sum % 3) != 0) {
-        unique |= (1 << i);
-      }
+      unique |= sum % 3 << i;
     }
 
     return unique;
