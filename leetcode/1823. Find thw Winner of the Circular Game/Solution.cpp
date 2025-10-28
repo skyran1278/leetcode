@@ -6,7 +6,9 @@ using namespace std;
 
 /**
  * @brief 36 m 6 s
- * queue
+ * @brief 12 m 52 s
+ * O(n × k)
+ * O(n)
  */
 class Solution {
  public:
