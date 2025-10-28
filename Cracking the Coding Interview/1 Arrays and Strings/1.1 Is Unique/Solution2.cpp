@@ -9,7 +9,6 @@
 using namespace std;
 
 /**
- * @brief 1 m 19 s
  * bit
  */
 class Solution {
