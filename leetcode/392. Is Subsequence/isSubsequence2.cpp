@@ -5,14 +5,16 @@
 using namespace std;
 
 /**
- * @brief 我目前仍寫不出來動態規劃的程式，這是看官方解答的
+ * @brief 11 m 20 s
+ * O(mn)
+ * O(mn)
  */
 class Solution {
  public:
   // s = "abc", t = "ahbgdc"
   bool isSubsequence(string s, string t) {
-    int m = s.size(), n = t.size();
-    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+    size_t sSize = s.size();
+    size_t tSize = t.size();
 
     /**
      *     a h b g d c
@@ -21,23 +23,26 @@ class Solution {
      * b 0 0 0 2 2 2 2
      * c 0 0 0 0 0 0 3
      */
-    for (int i = 1; i <= m; ++i) {
-      for (int j = 1; j <= n; ++j) {
-        if (s[i - 1] == t[j - 1])
-          dp[i][j] = dp[i - 1][j - 1] + 1;
-        else
-          dp[i][j] = dp[i][j - 1];
+    vector<vector<size_t>> dp(sSize + 1, vector<size_t>(tSize + 1));
+
+    for (size_t row = 1; row <= sSize; row++) {
+      for (size_t col = 1; col <= tSize; col++) {
+        if (s[row - 1] == t[col - 1]) {
+          dp[row][col] = dp[row - 1][col - 1] + 1;
+        } else {
+          dp[row][col] = dp[row][col - 1];
+        }
       }
     }
 
-    return dp[m][n] == m;
+    return dp[sSize][tSize] == sSize;
   }
 };
 
 int main() {
   Solution s;
   bool s1 = s.isSubsequence("abc", "ahbgdc");
-  bool s2 = s.isSubsequence("axc", "ahbgdc");
+  // bool s2 = s.isSubsequence("axc", "ahbgdc");
 
   cout << s1 << std::endl;
 }
