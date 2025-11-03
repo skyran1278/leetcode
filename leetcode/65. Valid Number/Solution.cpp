@@ -6,120 +6,107 @@
 using namespace std;
 
 /**
- * @brief 看解答
+ * @brief 42 m 19 s
  * O(n)
- * State machine
+ * O(1)
  */
 class Solution {
  public:
-  bool isNumber(string s) {
-    State state = State::INITIAL;
-
-    for (auto &&c : s) {
-      CharType charType = getCharType(c);
-      state = transfer(charType, state);
-
-      if (state == State::INVALID) {
-        return false;
-      }
-    }
-
-    return state == State::INT || state == State::DECIMAL ||
-           state == State::EXPONENT_INT;
-  }
-
- private:
-  enum class CharType { INT, SIGN, POINT, EXPONENT, INVALID };
-
+  enum class CharType { Dot, Sign, Number, E, Invalid };
   enum class State {
-    INITIAL,
-    INT,
-    SIGN,
-    EXPONENT,
-    INVALID,
-    DECIMAL,
-    EXPONENT_INT,
-    EXPONENT_SIGN,
-    POINT_WITHOUT_INT,
+    Invalid,
+    Init,
+    Number,
+    NumberDot,
+    Dot,
+    DotNumber,
+    Sign,
+    E,
+    ENumber,
+    ESign,
   };
 
-  State transfer(CharType charType, State previousState) {
-    switch (previousState) {
-      case State::INITIAL:
-        if (charType == CharType::INT) {
-          return State::INT;
-        } else if (charType == CharType::SIGN) {
-          return State::SIGN;
-        } else if (charType == CharType::POINT) {
-          return State::POINT_WITHOUT_INT;
-        }
-        break;
+  bool isNumber(string s) {
+    unordered_map<State, unordered_map<CharType, State>> map = {
+        {State::Init,
+         {{CharType::Number, State::Number},
+          {CharType::Dot, State::Dot},
+          {CharType::Sign, State::Sign}}},
+        {
+            State::Number,
+            {
+                {CharType::Number, State::Number},
+                {CharType::Dot, State::NumberDot},
+                {CharType::E, State::E},
+            },
+        },
+        {
+            State::NumberDot,
+            {
+                {CharType::Number, State::DotNumber},
+                {CharType::E, State::E},
+            },
+        },
+        {
+            State::Dot,
+            {{CharType::Number, State::DotNumber}},
+        },
+        {State::DotNumber,
+         {
+             {CharType::Number, State::DotNumber},
+             {CharType::E, State::E},
+         }},
+        {State::Sign,
+         {
+             {CharType::Number, State::Number},
+             {CharType::Dot, State::Dot},
+         }},
+        {State::E,
+         {
+             {CharType::Number, State::ENumber},
+             {CharType::Sign, State::ESign},
+         }},
+        {State::ENumber,
+         {
+             {CharType::Number, State::ENumber},
+         }},
+        {State::ESign,
+         {
+             {CharType::Number, State::ENumber},
+         }}};
 
-      case State::INT:
-        if (charType == CharType::INT) {
-          return State::INT;
-        } else if (charType == CharType::POINT) {
-          return State::DECIMAL;
-        } else if (charType == CharType::EXPONENT) {
-          return State::EXPONENT;
-        }
-        break;
-
-      case State::SIGN:
-        if (charType == CharType::INT) {
-          return State::INT;
-        } else if (charType == CharType::POINT) {
-          return State::POINT_WITHOUT_INT;
-        }
-        break;
-
-      case State::EXPONENT:
-        if (charType == CharType::INT) {
-          return State::EXPONENT_INT;
-        } else if (charType == CharType::SIGN) {
-          return State::EXPONENT_SIGN;
-        }
-        break;
-
-      case State::DECIMAL:
-        if (charType == CharType::INT) {
-          return State::DECIMAL;
-        } else if (charType == CharType::EXPONENT) {
-          return State::EXPONENT;
-        }
-        break;
-
-      case State::EXPONENT_INT:
-      case State::EXPONENT_SIGN:
-        if (charType == CharType::INT) {
-          return State::EXPONENT_INT;
-        }
-        break;
-
-      case State::POINT_WITHOUT_INT:
-        if (charType == CharType::INT) {
-          return State::DECIMAL;
-        }
-        break;
-
-      default:
-        break;
+    State state = State::Init;
+    for (auto&& c : s) {
+      CharType charType = getCharType(c);
+      state = map[state][charType];
     }
 
-    return State::INVALID;
+    return state == State::Number || state == State::DotNumber ||
+           state == State::NumberDot || state == State::ENumber;
   }
 
   CharType getCharType(char c) {
-    if (isdigit(c)) {
-      return CharType::INT;
-    } else if (c == '-' || c == '+') {
-      return CharType::SIGN;
-    } else if (c == '.') {
-      return CharType::POINT;
-    } else if (c == 'E' || c == 'e') {
-      return CharType::EXPONENT;
-    } else {
-      return CharType::INVALID;
+    if (c == '.') {
+      return CharType::Dot;
     }
+
+    if (c == '-' || c == '+') {
+      return CharType::Sign;
+    }
+
+    if (isdigit(c)) {
+      return CharType::Number;
+    }
+
+    if (c == 'e' || c == 'E') {
+      return CharType::E;
+    }
+
+    return CharType::Invalid;
   }
 };
+
+int main() {
+  Solution s;
+  s.isNumber("e9");
+}
