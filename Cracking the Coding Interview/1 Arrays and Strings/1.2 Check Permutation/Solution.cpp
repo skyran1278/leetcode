@@ -10,6 +10,7 @@ using namespace std;
 
 /**
  * @brief 2 m 22 s
+ * @brief 2 m 42 s
  * O(n)
  * O(n)
  */
@@ -22,14 +23,14 @@ class Solution {
 
     unordered_map<char, int> charMap;
 
-    for (auto &&c : s1) {
+    for (auto&& c : s1) {
       if (!charMap.count(c)) {
         charMap[c] = 0;
       }
       charMap[c] += 1;
     }
 
-    for (auto &&c : s2) {
+    for (auto&& c : s2) {
       if (charMap.count(c)) {
         charMap[c] -= 1;
       }
