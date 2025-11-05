@@ -7,29 +7,35 @@
 using namespace std;
 
 /**
- * @brief 看解答
+ * @brief 12 m 46 s
  * O(log n)
+ * O(1)
  */
 class Solution {
  public:
-  int findNthDigit(int n) {
+  // n = 11
+  int findNthDigit(long n) {
+    // 1-9     9   1
+    // 10-99   90  2
+    // 100-999 900 3
     long digitLength = 1;
-    long count = 9;
+    long digitCount = 9;
     long start = 1;
 
-    // Step 1: Find the range that contains the nth digit
-    while (n > digitLength * count) {
-      n -= digitLength * count;
+    while (n > digitLength * digitCount) {
+      n -= digitLength * digitCount;
+      start += digitCount;
       digitLength++;
-      count *= 10;
-      start *= 10;
+      digitCount *= 10;
     }
 
-    // Step 2: Find the actual number
     start += (n - 1) / digitLength;
-
-    // Step 3: Find the digit within that number
-    string s = to_string(start);
-    return s[(n - 1) % digitLength] - '0';
+    string value = to_string(start);
+    return value[(size_t)((n - 1) % digitLength)] - '0';
   }
 };
+
+int main() {
+  Solution s;
+  s.findNthDigit(11);
+}
