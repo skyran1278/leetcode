@@ -9,7 +9,7 @@
 
 # Base directory for all LeetCode problems
 BASE_DIR="leetcode"
-BASE_DIR="Cracking the Coding Interview/7 Object-Oriented Design"
+BASE_DIR="Cracking the Coding Interview/1 Arrays and Strings"
 
 # Default C++ template content
 CPP_TEMPLATE=$(cat << 'EOF'
