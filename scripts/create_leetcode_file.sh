@@ -13,6 +13,7 @@ BASE_DIR="Cracking the Coding Interview/1 Arrays and Strings"
 
 # Default C++ template content
 CPP_TEMPLATE=$(cat << 'EOF'
+#include <algorithm>
 #include <climits>
 #include <list>
 #include <queue>
