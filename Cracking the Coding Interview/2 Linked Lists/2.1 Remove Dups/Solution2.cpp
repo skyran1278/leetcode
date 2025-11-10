@@ -19,27 +19,27 @@ struct ListNode {
 };
 
 /**
- * @brief 24 m 29 s
- * O(n)
+ * @brief 7 m 10 s
+ * O(n^2)
  * O(n)
  */
 class Solution {
  public:
   // [1, 2, 3, 3, 2, 1]
   ListNode* removeDuplicateNodes(ListNode* head) {
-    unordered_set<int> map;
+    ListNode* current = head;  // [1, 2, 3, 3, 2, 1]
+    while (current) {
+      ListNode* runner = current;  // [2, 3, 3]
 
-    ListNode* runner = head;  // [1, 2, 3, 3, 2, 1]
-    ListNode* prev = nullptr;
-    while (runner != nullptr) {
-      if (map.count(runner->val)) {
-        prev->next = runner->next;  // [3]
-      } else {
-        map.insert(runner->val);  // 1, 2, 3
-        prev = runner;            // [3, 3, 2, 1]
+      while (runner != nullptr && runner->next != nullptr) {
+        if (runner->next->val == current->val) {
+          runner->next = runner->next->next;  // [3]
+        } else {
+          runner = runner->next;  // [3, 3]
+        }
       }
 
-      runner = runner->next;  // []
+      current = current->next;  // [2, 3]
     }
 
     return head;
