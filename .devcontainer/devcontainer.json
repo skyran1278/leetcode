@@ -27,16 +27,21 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        // Python
         "njpwerner.autodocstring",
-        "ms-python.black-formatter",
         "ms-python.vscode-pylance",
         "ms-python.python",
+        "charliermarsh.ruff",
+        "tamasfe.even-better-toml",
 
+        // C++
         "ms-vscode.cpptools",
         "cschlosser.doxdocgen",
 
+        // Docker
         "ms-azuretools.vscode-containers",
 
+        // TypeScript
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "yoavbls.pretty-ts-errors",
