@@ -24,6 +24,7 @@ WORKDIR /home/vscode
 
 RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
 COPY --chown=vscode:vscode .p10k.zsh .
+RUN curl -sS https://starship.rs/install.sh | sh
 
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 RUN git clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh/zsh-nvm
