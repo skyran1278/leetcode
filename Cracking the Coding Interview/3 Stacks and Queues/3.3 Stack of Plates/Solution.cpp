@@ -8,6 +8,7 @@ using namespace std;
 
 /**
  * @brief 20 m 24 s
+ * @brief 27 m 7 s
  *
  */
 class StackOfPlates {
@@ -31,7 +32,7 @@ class StackOfPlates {
       return -1;
     }
 
-    stack<int> &lastStack = stacks_.back();
+    stack<int>& lastStack = stacks_.back();
 
     int value = lastStack.top();
     lastStack.pop();
@@ -48,7 +49,7 @@ class StackOfPlates {
       return -1;
     }
 
-    stack<int> &specificStack = stacks_[index];
+    stack<int>& specificStack = stacks_[index];
 
     int value = specificStack.top();
     specificStack.pop();
@@ -72,3 +73,12 @@ class StackOfPlates {
  * int param_2 = obj->pop();
  * int param_3 = obj->popAt(index);
  */
+
+int main() {
+  StackOfPlates* obj = new StackOfPlates(1);
+  obj->push(1);
+  obj->push(2);
+  obj->popAt(1);
+  obj->pop();
+  obj->pop();
+}
