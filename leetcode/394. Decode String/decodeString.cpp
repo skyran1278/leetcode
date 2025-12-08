@@ -7,6 +7,7 @@ using namespace std;
 /**
  * @brief 59 m 56 s
  * @brief 14 m 4 s
+ * @brief 16 m 54 s
  *
  * O(n) n == decoded string length
  * O(n)
@@ -19,16 +20,16 @@ class Solution {
     stack<int> countStack;
     stack<string> decodedStack;
     string current = "";
-    string k = "";
+    int k = 0;
 
     for (auto&& c : s) {
       if (isdigit(c)) {
-        k += c;
+        k = k * 10 + (c - '0');
       } else if (c == '[') {
         // countStack = [3]
         // countStack = [3, 2]
-        countStack.push(stoi(k));
-        k.clear();
+        countStack.push(k);
+        k = 0;
 
         // currentStack = [""]
         // currentStack = ["", "a"]
