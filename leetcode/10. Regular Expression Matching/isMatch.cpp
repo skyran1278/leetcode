@@ -5,6 +5,7 @@ using namespace std;
 
 /**
  * @brief 41 m 13 s
+ * @brief 59 m 25 s
  * O(mn)
  * O(mn)
  */
@@ -43,12 +44,12 @@ class Solution {
       for (size_t col = 1; col < dp[row].size(); col++) {
         size_t sIndex = row - 1;
         size_t pIndex = col - 1;
-        if (s[sIndex] == p[pIndex] || p[pIndex] == '.') {
+        if (p[pIndex] == s[sIndex] || p[pIndex] == '.') {
           dp[row][col] = dp[row - 1][col - 1];
         } else if (p[pIndex] == '*') {
-          dp[row][col] = dp[row][col - 2];
+          dp[row][col] = dp[row][col - 2];  // 0
           if (p[pIndex - 1] == s[sIndex] || p[pIndex - 1] == '.') {
-            dp[row][col] = dp[row][col] || dp[row - 1][col];
+            dp[row][col] = dp[row][col] || dp[row - 1][col];  // 1 or more
           }
         }
       }
