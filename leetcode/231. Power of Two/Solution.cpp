@@ -7,6 +7,7 @@ using namespace std;
 /**
  * @brief 7 m 26 s
  * @brief 3 m 20 s
+ * @brief 2 m 48 s
  * O(1)
  * O(1)
  * bit
