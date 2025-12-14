@@ -8,26 +8,27 @@ using namespace std;
 
 /**
  * @brief 19 m 29 s
+ * @brief 30 m 19 s
  * O(log n)
  * O(1)
  */
 class Solution {
  public:
-  // n = 13
+  // n = 201
   int countDigitOne(int n) {
     int count = 0;
 
-    for (size_t i = 1; i <= n; i *= 10) {
-      int high = n / (i * 10);     // 0
-      int current = (n / i) % 10;  // 1
-      int low = n % i;             // 3
+    for (long digit = 1; digit <= n; digit *= 10) {
+      long higher = n / (digit * 10);  // higher = 0;
+      long current = n / digit % 10;   // current = 2;
+      long lower = n % digit;          // lower = 1;
 
       if (current == 0) {
-        count += high * i;
+        count += higher * digit;  // count += 20;
       } else if (current == 1) {
-        count += high * i + (low + 1);  // 4
+        count += higher * digit + lower + 1;  // count += 21;
       } else {
-        count += (high + 1) * i;  // 2
+        count += (higher + 1) * digit;  // count += 100;
       }
     }
 
