@@ -1,31 +1,51 @@
-#include <array>
-#include <queue>
+#include <deque>
 #include <vector>
 
 using namespace std;
 
 /**
- * @brief 40 m 0 s
+ * @brief 1 hrs 40 m 39 s
+ * @brief 24 m 5 s
+ * @brief 17 m 5 s
+ * @brief 11 m 43 s
  * O(n)
  * O(k)
  */
 class Solution {
  public:
-  vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-    struct Compare {
-      bool operator()(array<int, 2> a, array<int, 2> b) { return a[1] < b[1]; };
-    };
-    priority_queue<array<int, 2>, vector<array<int, 2>>, Compare> heap;
+  // nums = [1,3,-1,-3,5,3,6,7], k = 3
+  vector<int> maxSlidingWindow(vector<int>& nums, size_t k) {
+    vector<int> results;
+    deque<size_t> window;
 
-    vector<int> result;
-    for (int i = 0; i < nums.size(); i++) {
-      heap.push({i, nums[i]});
-      while (heap.top()[0] <= i - k) heap.pop();
+    for (size_t i = 0; i < nums.size(); i++) {
+      if (!window.empty() && window.front() + k <= i) {
+        // 4. window = [2, 3]
+        window.pop_front();
+      }
 
-      if (i >= k - 1) result.push_back(heap.top()[1]);
+      while (!window.empty() && nums[window.back()] <= nums[i]) {
+        // 1. window = []
+        // 4. window = []
+        window.pop_back();
+      }
+
+      // 0. window = [0]
+      // 1. window = [1]
+      // 2. window = [1, 2]
+      // 3. window = [1, 2, 3]
+      // 4. window = [4]
+      window.push_back(i);
+
+      if (i + 1 >= k) {
+        // 2. results = [3]
+        // 3. results = [3, 3]
+        // 4. results = [3, 3, 5]
+        results.push_back(nums[window.front()]);
+      }
     }
 
-    return result;
+    return results;
   }
 };
 
