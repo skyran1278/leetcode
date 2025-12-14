@@ -4,6 +4,7 @@ bool isBadVersion(int version);
 /**
  * @brief 1 m 18 s
  * @brief 9 m 22 s
+ * @brief 2 m 52 s
  * O(log n)
  * O(1)
  */
@@ -15,17 +16,16 @@ class Solution {
     int left = 1;
     int right = n;
 
-    while (left < right) {
-      int i = left + (right - left) / 2;
+    while (right > left) {
+      int pivot = left + (right - left) / 2;
 
-      if (isBadVersion(i)) {
-        right = i;
+      if (isBadVersion(pivot)) {
+        right = pivot;
       } else {
-        left = i + 1;
+        left = pivot + 1;
       }
     }
 
-    // 此时有 left == right，区间缩为一个点，即为答案
-    return left;
+    return right;
   }
 };

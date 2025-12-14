@@ -4,6 +4,7 @@ using namespace std;
 
 /**
  * @brief 23 m 32 s
+ * @brief 9 m 43 s
  * addNum: O(logn)
  * findMedian: O(1)
  */
