@@ -12,6 +12,7 @@ using namespace std;
 
 /**
  * @brief 13 m 21 s
+ * @brief 39 m 42 s
  * O(nlogn)
  * O(n)
  * unstable
@@ -27,17 +28,17 @@ class Solution {
     quickSort(arr, pivot + 1, high);
   }
 
+ public:
   int partition(vector<int>& arr, int low, int high) {
-    int i = low;
-    int j = high;
-
-    while (i < j) {
-      while (i < j && arr[j] >= arr[low]) j--;
-      while (i < j && arr[i] <= arr[low]) i++;
-      swap(arr[i], arr[j]);
+    int pivot = low;
+    while (low < high) {
+      while (low < high && arr[high] >= arr[pivot]) high--;
+      while (low < high && arr[low] <= arr[pivot]) low++;
+      swap(arr[low], arr[high]);
     }
-    swap(arr[i], arr[low]);
 
-    return i;
+    swap(arr[pivot], arr[low]);
+
+    return low;
   }
 };
