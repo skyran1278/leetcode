@@ -26,7 +26,7 @@ class Solution {
   TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
     if (p->val < q->val) return lowestCommonAncestor(root, q, p);
 
-    while (true) {
+    while (root) {
       if (root->val > p->val) {
         root = root->left;
       } else if (root->val < q->val) {
