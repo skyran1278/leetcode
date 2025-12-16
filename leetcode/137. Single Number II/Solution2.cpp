@@ -5,7 +5,7 @@
 using namespace std;
 
 /**
- * @brief 沒寫出來
+ * @brief 5 s
  * O(n)
  * First time you see a number → mark it in once.
  * Second time you see it → move it to twice.
