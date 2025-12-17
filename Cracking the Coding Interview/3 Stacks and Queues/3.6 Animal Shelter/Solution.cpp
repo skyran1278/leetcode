@@ -9,69 +9,50 @@ using namespace std;
 
 /**
  * @brief 16 m 9 s
+ * @brief 30 m 55 s
  *
  */
 class AnimalShelf {
  public:
   AnimalShelf() {}
 
-  void enqueue(vector<int> animal) { list_.push_back(animal); }
+  void enqueue(vector<int> animal) {
+    if (animal[1] == 0) {
+      catQueue_.push(animal);
+    } else if (animal[1] == 1) {
+      dogQueue_.push(animal);
+    }
+  }
 
   vector<int> dequeueAny() {
-    if (list_.empty()) {
-      return {-1, -1};
+    if (dogQueue_.empty()) return dequeueCat();
+    if (catQueue_.empty()) return dequeueDog();
+
+    vector<int>& cat = catQueue_.front();
+    vector<int>& dog = dogQueue_.front();
+    if (cat[0] < dog[0]) {
+      return dequeueCat();
+    } else {
+      return dequeueDog();
     }
-
-    vector<int> value = list_.front();
-    list_.pop_front();
-
-    return value;
   }
 
   vector<int> dequeueDog() {
-    list<vector<int>> tmpList;
-
-    while (!list_.empty() && list_.front()[1] == 0) {
-      tmpList.push_back(list_.front());
-      list_.pop_front();
-    }
-
-    if (list_.empty()) {
-      list_.splice(list_.begin(), tmpList);
-      return {-1, -1};
-    }
-
-    vector<int> value = list_.front();
-    list_.pop_front();
-
-    list_.splice(list_.begin(), tmpList);
-
-    return value;
+    if (dogQueue_.empty()) return {-1, -1};
+    vector<int> dog = dogQueue_.front();
+    dogQueue_.pop();
+    return dog;
   }
 
   vector<int> dequeueCat() {
-    list<vector<int>> tmpList;
-
-    while (!list_.empty() && list_.front()[1] == 1) {
-      tmpList.push_back(list_.front());
-      list_.pop_front();
-    }
-
-    if (list_.empty()) {
-      list_.splice(list_.begin(), tmpList);
-      return {-1, -1};
-    }
-
-    vector<int> value = list_.front();
-    list_.pop_front();
-
-    list_.splice(list_.begin(), tmpList);
-
-    return value;
+    if (catQueue_.empty()) return {-1, -1};
+    vector<int> cat = catQueue_.front();
+    catQueue_.pop();
+    return cat;
   }
 
- private:
-  list<vector<int>> list_;
+  queue<vector<int>> catQueue_;
+  queue<vector<int>> dogQueue_;
 };
 
 /**
