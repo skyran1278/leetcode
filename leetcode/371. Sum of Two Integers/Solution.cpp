@@ -5,6 +5,7 @@ using namespace std;
 
 /**
  * @brief 16 m 1 s
+ * @brief 6 m 39 s
  * O(1) (bounded by 32 or 64 iterations — number of bits)
  * O(1)
  */
