@@ -8,6 +8,7 @@ using namespace std;
 
 /**
  * @brief 14 m 40 s
+ * @brief 18 m 33 s
  *
  */
 class SortedStack {
@@ -15,43 +16,30 @@ class SortedStack {
   SortedStack() {}
 
   void push(int val) {
-    while (!sortedStack.empty() && sortedStack.top() < val) {
-      int value = sortedStack.top();
-      sortedStack.pop();
-
-      stack2_.push(value);
+    while (!sortedStack_.empty() && val > sortedStack_.top()) {
+      auxiliaryStack_.push(sortedStack_.top());
+      sortedStack_.pop();
     }
-
-    sortedStack.push(val);
-
-    while (!stack2_.empty()) {
-      int value = stack2_.top();
-      stack2_.pop();
-
-      sortedStack.push(value);
+    sortedStack_.push(val);
+    while (!auxiliaryStack_.empty()) {
+      sortedStack_.push(auxiliaryStack_.top());
+      auxiliaryStack_.pop();
     }
   }
 
   void pop() {
-    if (isEmpty()) {
-      return;
-    }
-
-    sortedStack.pop();
+    if (!isEmpty()) sortedStack_.pop();
   }
 
   int peek() {
-    if (isEmpty()) {
-      return -1;
-    }
-    return sortedStack.top();
+    if (isEmpty()) return -1;
+    return sortedStack_.top();
   }
 
-  bool isEmpty() { return sortedStack.empty(); }
+  bool isEmpty() { return sortedStack_.empty(); }
 
- private:
-  stack<int> sortedStack;
-  stack<int> stack2_;
+  stack<int> sortedStack_;
+  stack<int> auxiliaryStack_;
 };
 
 /**
