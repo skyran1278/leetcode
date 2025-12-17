@@ -5,6 +5,7 @@ using namespace std;
 
 /**
  * @brief 20 m 14 s
+ * @brief 8 m 40 s
  * O(n)
  * O(n)
  */
@@ -16,27 +17,25 @@ class Solution {
   // Y   I   R
   // s = "AB", numRows = 1
   string convert(string s, size_t numRows) {
-    if (numRows == 1 || numRows >= s.size()) {
-      return s;
-    }
+    if (numRows == 1 || numRows >= s.size()) return s;
 
-    vector<string> zigzag(numRows);
+    vector<string> rows(numRows);
 
-    size_t zigzagIndex = 0;
-    size_t indexDirection = -1;
+    int row = 0;
+    int reverse = -1;
     for (size_t i = 0; i < s.size(); i++) {
-      // zigzag = ["PAHN", "APLSIIG", "YIR"]
-      zigzag[zigzagIndex].push_back(s[i]);
+      rows[row].push_back(s[i]);
 
-      if (zigzagIndex == 0 || zigzagIndex == numRows - 1) {
-        indexDirection *= -1;
+      if (row == 0 || row == numRows - 1) {
+        reverse *= -1;
       }
-      zigzagIndex += indexDirection;
+
+      row += reverse;
     }
 
     string result;
-    for (size_t i = 0; i < numRows; i++) {
-      result += zigzag[i];
+    for (auto&& row : rows) {
+      result += row;
     }
 
     return result;
