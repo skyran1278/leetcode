@@ -10,59 +10,54 @@ using namespace std;
 
 struct TreeNode {
   int val;
-  TreeNode *left;
-  TreeNode *right;
+  TreeNode* left;
+  TreeNode* right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
+  TreeNode(int x, TreeNode* left, TreeNode* right)
       : val(x), left(left), right(right) {}
 };
 
 struct ListNode {
   int val;
-  ListNode *next;
+  ListNode* next;
   ListNode() : val(0), next(nullptr) {}
   ListNode(int x) : val(x), next(nullptr) {}
-  ListNode(int x, ListNode *next) : val(x), next(next) {}
+  ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
 /**
  * @brief 7 m 30 s
+ * @brief 8 m 56 s
+ * O(n)
  * O(n)
  */
 class Solution {
  public:
-  vector<ListNode *> listOfDepth(TreeNode *tree) {
-    vector<ListNode *> results;
+  vector<ListNode*> listOfDepth(TreeNode* tree) {
+    vector<ListNode*> result;
 
-    queue<TreeNode *> q;
-    q.push(tree);
+    queue<TreeNode*> q;
+    if (tree) q.push(tree);
 
     while (!q.empty()) {
-      int qSize = q.size();
+      size_t count = q.size();
 
-      ListNode *level = new ListNode();
-      ListNode *current = level;
-      for (size_t i = 0; i < qSize; i++) {
-        TreeNode *node = q.front();
+      ListNode* dummy = new ListNode();
+      ListNode* runner = dummy;
+      for (size_t i = 0; i < count; i++) {
+        TreeNode* node = q.front();
         q.pop();
 
-        ListNode *l = new ListNode(node->val);
-        current->next = l;
-        current = current->next;
-
-        if (node->left != nullptr) {
-          q.push(node->left);
-        }
-
-        if (node->right != nullptr) {
-          q.push(node->right);
-        }
+        runner->next = new ListNode(node->val);
+        runner = runner->next;
+        if (node->left) q.push(node->left);
+        if (node->right) q.push(node->right);
       }
 
-      results.push_back(level->next);
+      result.push_back(dummy->next);
     }
 
-    return results;
+    return result;
   }
 };
