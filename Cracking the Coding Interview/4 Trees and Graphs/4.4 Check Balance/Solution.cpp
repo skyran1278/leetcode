@@ -10,26 +10,27 @@ using namespace std;
 
 struct TreeNode {
   int val;
-  TreeNode *left;
-  TreeNode *right;
+  TreeNode* left;
+  TreeNode* right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
+  TreeNode(int x, TreeNode* left, TreeNode* right)
       : val(x), left(left), right(right) {}
 };
 
 /**
  * @brief 24 m 1 s
+ * @brief 5 m 32 s
  */
 class Solution {
  public:
-  bool isBalanced(TreeNode *root) { return dfs(root) != -1; }
+  bool isBalanced(TreeNode* root) { return height(root) != -1; }
 
-  int dfs(TreeNode *node) {
+  int height(TreeNode* node) {
     if (node == nullptr) return 0;
 
-    int leftHeight = dfs(node->left);
-    int rightHeight = dfs(node->right);
+    int leftHeight = height(node->left);
+    int rightHeight = height(node->right);
 
     if (leftHeight == -1 || rightHeight == -1 ||
         abs(leftHeight - rightHeight) > 1) {
