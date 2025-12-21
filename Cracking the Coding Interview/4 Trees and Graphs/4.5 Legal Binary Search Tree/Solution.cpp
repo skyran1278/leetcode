@@ -37,7 +37,7 @@ class Solution {
       return true;
     }
 
-    long left = inorder(current->left, last);
+    bool left = inorder(current->left, last);
 
     if (current->val <= last) {
       return false;
