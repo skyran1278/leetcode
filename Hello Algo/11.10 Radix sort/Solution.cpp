@@ -32,6 +32,12 @@ void countingSort(int arr[], int n, int digit) {
   }
 }
 
+/**
+ * @brief 19 m 15 s
+ * O(nk)
+ * O(n + d)
+ * stable
+ */
 void radixSort(int arr[], int n) {
   int largest = -__INT_MAX__ - 1;
   for (size_t i = 0; i < n; i++) {
