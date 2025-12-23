@@ -17,6 +17,7 @@ struct TreeNode {
 /**
  * @brief 12 m 37 s
  * @brief 8 m 42 s
+ * @brief 3 m 8 s
  * O(n)
  * O(1)
  */
@@ -32,10 +33,10 @@ class Solution {
       } else if (root->val < q->val) {
         root = root->right;
       } else {
-        return root;
+        break;
       }
     }
 
-    return nullptr;
+    return root;
   }
 };
