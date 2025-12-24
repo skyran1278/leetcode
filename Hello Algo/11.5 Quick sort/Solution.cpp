@@ -13,6 +13,7 @@ using namespace std;
 /**
  * @brief 13 m 21 s
  * @brief 39 m 42 s
+ * @brief 7 m 9 s
  * O(nlogn)
  * O(n)
  * unstable
@@ -20,7 +21,7 @@ using namespace std;
 class Solution {
  public:
   void quickSort(vector<int>& arr, int low, int high) {
-    if (low > high) return;
+    if (low >= high) return;
 
     int pivot = partition(arr, low, high);
 

@@ -9,6 +9,7 @@ using namespace std;
 /**
  * @brief 14 m 40 s
  * @brief 18 m 33 s
+ * @brief 5 m 30 s
  *
  */
 class SortedStack {
