@@ -10,28 +10,28 @@ using namespace std;
 
 struct TreeNode {
   int val;
-  TreeNode *left;
-  TreeNode *right;
+  TreeNode* left;
+  TreeNode* right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
+  TreeNode(int x, TreeNode* left, TreeNode* right)
       : val(x), left(left), right(right) {}
 };
 
 /**
  * @brief 50 m 40 s
+ * @brief 18 m 54 s
  * O(n^2)
  */
 class Solution {
  public:
-  int pathSum(TreeNode *root, int sum) {
+  int pathSum(TreeNode* root, int sum) {
     int result = 0;
-    int left = sum;
-    backtrack(result, left, false, root);
+    backtrack(result, sum, false, root);
     return result;
   }
 
-  void backtrack(int &result, int current, bool hasSelect, TreeNode *choice) {
+  void backtrack(int& result, int current, bool hasSelect, TreeNode* choice) {
     if (choice == nullptr) {
       return;
     }
@@ -54,6 +54,6 @@ class Solution {
 int main() {
   Solution s;
 
-  TreeNode *node = new TreeNode(1);
+  TreeNode* node = new TreeNode(1);
   s.pathSum(node, 0);
 }

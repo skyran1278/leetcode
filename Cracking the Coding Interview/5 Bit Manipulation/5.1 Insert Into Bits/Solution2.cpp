@@ -10,6 +10,7 @@ using namespace std;
 
 /**
  * @brief 28 m 51 s
+ * @brief 55 m 4 s
  * can skip for loop
  * O(1)
  * O(1)

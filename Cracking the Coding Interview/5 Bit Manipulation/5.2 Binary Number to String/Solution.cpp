@@ -17,22 +17,19 @@ using namespace std;
 class Solution {
  public:
   string printBin(double num) {
-    string binaryRepresented = "0.";
-    while (num > 0 && binaryRepresented.size() <= 32) {
+    string result = "0.";
+    while (num > 0 && result.size() < 32) {
       num *= 2;
+
       if (num >= 1) {
-        num -= 1;
-        binaryRepresented.append("1");
+        num--;
+        result.push_back('1');
       } else {
-        binaryRepresented.append("0");
+        result.push_back('0');
       }
     }
 
-    if (num > 0) {
-      return "ERROR";
-    }
-
-    return binaryRepresented;
+    return num == 0 ? result : "ERROR";
   }
 };
 
