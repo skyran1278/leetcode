@@ -12,6 +12,7 @@ using namespace std;
 
 /**
  * @brief 7 m 49 s
+ * @brief 16 m 3 s
  * O(n + k)
  * O(n + k)
  * stable
@@ -32,8 +33,7 @@ class Solution {
 
     string result = s;
     for (int i = s.size() - 1; i >= 0; i--) {
-      result[count[s[i] - 'a'] - 1] = s[i];
-      count[s[i] - 'a']--;
+      result[--count[s[i] - 'a']] = s[i];
     }
 
     return result;
