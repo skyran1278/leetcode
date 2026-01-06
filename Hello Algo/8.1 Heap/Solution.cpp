@@ -10,6 +10,10 @@
 
 using namespace std;
 
+/**
+ * @brief 18 m 8 s
+ *
+ */
 struct MinHeap {
   int* harr;
   int capacity, heap_size;
@@ -33,8 +37,7 @@ struct MinHeap {
 int MinHeap::extractMin() {
   if (heap_size == 0) return -1;
   int smallest = harr[0];
-  harr[0] = harr[heap_size - 1];
-  heap_size--;
+  harr[0] = harr[--heap_size];
   MinHeapify(0);
   return smallest;
 }
