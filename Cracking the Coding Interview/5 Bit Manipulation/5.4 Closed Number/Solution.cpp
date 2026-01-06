@@ -11,6 +11,8 @@ using namespace std;
 /**
  * @brief 1 hrs 24 m 55 s
  * @brief 20 m 46 s
+ * @brief 38 m 54 s
+ * @brief 50 m 34 s
  * feel hard, need more time to understand it
  * O(1)
  * O(1)

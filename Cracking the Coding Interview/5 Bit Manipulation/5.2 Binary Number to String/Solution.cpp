@@ -10,6 +10,7 @@ using namespace std;
 
 /**
  * @brief 10 m 32 s
+ * @brief 7 m 2 s
  * binary in fraction
  * O(1)
  * O(1)

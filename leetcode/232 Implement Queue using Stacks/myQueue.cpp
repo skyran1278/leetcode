@@ -5,6 +5,7 @@ using namespace std;
 /**
  * @brief 14 m 28 s
  * @brief 13 m 54 s
+ * @brief 13 m 21 s
  * push: O(1), other: O(mostly 1, rarely n)
  */
 class MyQueue {
@@ -14,11 +15,7 @@ class MyQueue {
   void push(int x) { inputStack_.push(x); }
 
   int pop() {
-    if (outputStack_.empty()) {
-      moveInputToOutput();
-    }
-
-    int first = outputStack_.top();
+    int first = peek();
     outputStack_.pop();
     return first;
   }

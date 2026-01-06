@@ -23,6 +23,7 @@ struct TreeNode {
  * @brief 5 m 41 s
  * @brief 6 m 16 s
  * @brief 32 m 18 s
+ * @brief 27 m 27 s
  * backtrack
  * O(n!)
  * O(n * n!)

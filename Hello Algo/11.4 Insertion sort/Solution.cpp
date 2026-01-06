@@ -12,7 +12,8 @@ using namespace std;
 
 /**
  * @brief 13 m 44 s
- * O(n^2)
+ * @brief 12 m 58 s
+ * O(n²)
  * O(1)
  * stable
  */
