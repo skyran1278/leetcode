@@ -20,40 +20,53 @@ struct TreeNode {
 
 /**
  * @brief 48 m 19 s
- * O(mn)
- * O(h)
+ * @brief 17 m 54 s
+ * Height check skips isSame unless exact match, better than naive O(NM) always
+ * n = number of nodes in T1, m = number of nodes in T2
+ * O(nm)
+ * O(max(n, m))
  */
 class Solution {
  public:
   bool checkSubTree(TreeNode* t1, TreeNode* t2) {
+    int t1Height = 0;
     int t2Height = height(t2);
-
-    return checkSubTree_(t1, t2, t2Height) == -1;
+    bool result = false;
+    checkSubTreeWithSameHeight(t1, t2, t1Height, t2Height, result);
+    return result;
   }
 
-  int checkSubTree_(TreeNode* t1, TreeNode* t2, int t2Height) {
-    if (t1 == nullptr) return 0;
+  void checkSubTreeWithSameHeight(TreeNode* t1, TreeNode* t2, int& t1Height,
+                                  int t2Height, bool& result) {
+    if (result) return;
+    if (t1 == nullptr) return;
 
-    int left = checkSubTree_(t1->left, t2, t2Height);
-    int right = checkSubTree_(t1->right, t2, t2Height);
-    if (left == -1 || right == -1) return -1;
+    int left = 0;
+    checkSubTreeWithSameHeight(t1->left, t2, left, t2Height, result);
+    int right = 0;
+    checkSubTreeWithSameHeight(t1->right, t2, right, t2Height, result);
+    t1Height = max(left, right) + 1;
 
-    int t1Hight = max(left, right) + 1;
-
-    if (t1Hight == t2Height && isSame(t1, t2)) return -1;
-
-    return t1Hight;
+    if (t1Height == t2Height && isSame(t1, t2)) {
+      result = true;
+      return;
+    }
   }
 
-  int height(TreeNode* node) {
-    if (node == nullptr) return 0;
-    return max(height(node->left), height(node->right)) + 1;
-  }
-
-  int isSame(TreeNode* t1, TreeNode* t2) {
+  bool isSame(TreeNode* t1, TreeNode* t2) {
     if (t1 == nullptr && t2 == nullptr) return true;
     if (t1 == nullptr || t2 == nullptr) return false;
+
     return t1->val == t2->val && isSame(t1->left, t2->left) &&
            isSame(t1->right, t2->right);
+  }
+
+  int height(TreeNode* t) {
+    if (t == nullptr) return 0;
+
+    int left = height(t->left);
+    int right = height(t->right);
+
+    return max(left, right) + 1;
   }
 };
