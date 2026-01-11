@@ -10,6 +10,7 @@ using namespace std;
 
 /**
  * @brief 1 hrs 13 m 18 s
+ * @brief 1 hrs 31 m 29 s
  *
  */
 class Solution {
