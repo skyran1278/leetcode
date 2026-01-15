@@ -5,6 +5,7 @@ using namespace std;
 /**
  * @brief 18 m 57 s
  * @brief 8 m 54 s
+ * @brief 3 m 56 s
  * O(1)
  */
 class MinStack {

@@ -6,6 +6,7 @@ using namespace std;
 /**
  * @brief 6 m 13 s
  * @brief 2 m 0 s
+ * @brief 1 m 24 s
  * O(n)
  * O(1)
  * use XOR feature

@@ -10,6 +10,7 @@ using namespace std;
 
 /**
  * @brief 9 m 32 s
+ * @brief 2 m 30 s
  * O(1)
  * O(1)
  */

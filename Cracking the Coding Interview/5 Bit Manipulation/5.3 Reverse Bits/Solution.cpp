@@ -13,6 +13,7 @@ using namespace std;
  * @brief 7 m 50 s
  * @brief 56 m 57 s
  * @brief 11 m 36 s
+ * @brief 13 m 46 s
  * get bit
  * can do it in a reverse way, but not intuitive
  * O(1)
