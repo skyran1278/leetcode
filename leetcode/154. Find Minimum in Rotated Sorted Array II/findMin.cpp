@@ -7,6 +7,7 @@ using namespace std;
  * @brief 35 m 49 s
  * @brief 13 m 2 s
  * @brief 3 m 27 s
+ * @brief 4 m 52 s
  * If you face east (nums[right]), you always know whether to turn left or right
  * to reach the treasure. If you face west (nums[left]), sometimes you don’t
  * even know if the treasure is behind you.
