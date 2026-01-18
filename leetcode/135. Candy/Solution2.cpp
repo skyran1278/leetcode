@@ -6,6 +6,7 @@ using namespace std;
 
 /**
  * @brief 12 m 46 s
+ * @brief 5 m 28 s
  * O(n)
  * O(n)
  * 貪心兩次
