@@ -4,24 +4,25 @@ using namespace std;
 
 struct TreeNode {
   int val;
-  TreeNode *left;
-  TreeNode *right;
+  TreeNode* left;
+  TreeNode* right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
+  TreeNode(int x, TreeNode* left, TreeNode* right)
       : val(x), left(left), right(right) {}
 };
 
 /**
  * @brief 3 m 42 s
  * @brief 6 m 49 s
+ * @brief 2 m 50 s
  * O(n)
  * O(h)
  */
 class Solution {
  public:
   // root = [4,2,7,1,3,6,9]
-  TreeNode *invertTree(TreeNode *root) {
+  TreeNode* invertTree(TreeNode* root) {
     if (root != nullptr) {
       swap(root->left, root->right);
 

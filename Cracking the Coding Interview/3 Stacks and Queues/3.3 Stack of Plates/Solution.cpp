@@ -9,6 +9,7 @@ using namespace std;
 /**
  * @brief 20 m 24 s
  * @brief 27 m 7 s
+ * @brief 16 m 14 s
  *
  */
 class StackOfPlates {
@@ -27,22 +28,7 @@ class StackOfPlates {
     stacks_.back().push(val);
   }
 
-  int pop() {
-    if (stacks_.empty()) {
-      return -1;
-    }
-
-    stack<int>& lastStack = stacks_.back();
-
-    int value = lastStack.top();
-    lastStack.pop();
-
-    if (lastStack.empty()) {
-      stacks_.pop_back();
-    }
-
-    return value;
-  }
+  int pop() { return popAt(stacks_.size() - 1); }
 
   int popAt(int index) {
     if (index >= stacks_.size()) {

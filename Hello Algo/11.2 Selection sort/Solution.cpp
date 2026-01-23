@@ -13,6 +13,7 @@ using namespace std;
 /**
  * @brief 30 s
  * @brief 4 m 9 s
+ * @brief 2 m 21 s
  * O(n²)
  * O(1)
  * unstable sort
