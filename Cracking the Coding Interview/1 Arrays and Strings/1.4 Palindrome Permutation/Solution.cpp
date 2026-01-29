@@ -11,6 +11,7 @@ using namespace std;
 
 /**
  * @brief 6 m 19 s
+ * @brief 4 m 13 s
  * O(n)
  * O(Σ)
  */

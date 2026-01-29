@@ -12,6 +12,7 @@ using namespace std;
 
 /**
  * @brief 5 m 32 s
+ * @brief 3 m 58 s
  * O(n) Substring search is linear (in practice, near O(n))
  * O(n) For concatenation of s1 + s1
  */
