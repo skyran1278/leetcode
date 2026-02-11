@@ -10,7 +10,7 @@
 # Base directory for all LeetCode problems
 BASE_DIR="leetcode"
 BASE_DIR="Hello Algo"
-BASE_DIR="Cracking the Coding Interview/8 Recursion and Dynamic Programming"
+BASE_DIR="Cracking the Coding Interview/7 Object-Oriented Design"
 
 # Default C++ template content
 CPP_TEMPLATE=$(cat << 'EOF'
