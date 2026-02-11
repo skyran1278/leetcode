@@ -11,7 +11,7 @@
 using namespace std;
 
 /**
- * @brief
+ * @brief 5 m 55 s
  * O(n * Cn) where Cn is the n-th Catalan number
  * O(n)
  */

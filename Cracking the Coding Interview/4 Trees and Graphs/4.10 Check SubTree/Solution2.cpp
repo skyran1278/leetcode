@@ -10,23 +10,24 @@ using namespace std;
 
 struct TreeNode {
   int val;
-  TreeNode *left;
-  TreeNode *right;
+  TreeNode* left;
+  TreeNode* right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
+  TreeNode(int x, TreeNode* left, TreeNode* right)
       : val(x), left(left), right(right) {}
 };
 
 /**
  * @brief 10 m 14 s
+ * @brief 10 m 10 s
  * n = number of nodes in T1, m = number of nodes in T2
  * O(nm)
  * O(max(n, m))
  */
 class Solution {
  public:
-  bool checkSubTree(TreeNode *t1, TreeNode *t2) {
+  bool checkSubTree(TreeNode* t1, TreeNode* t2) {
     int t2Hight = height(t2);
     int t1Hight = height(t1);
 
@@ -41,7 +42,7 @@ class Solution {
     return false;
   }
 
-  bool isSameTree(TreeNode *t1, TreeNode *t2) {
+  bool isSameTree(TreeNode* t1, TreeNode* t2) {
     if (t1 == nullptr && t2 == nullptr) {
       return true;
     }
@@ -54,7 +55,7 @@ class Solution {
            isSameTree(t1->right, t2->right);
   }
 
-  int height(TreeNode *tree) {
+  int height(TreeNode* tree) {
     if (tree == nullptr) {
       return 0;
     }
@@ -66,9 +67,9 @@ class Solution {
 int main() {
   Solution s;
 
-  TreeNode *t1 = new TreeNode(1);
+  TreeNode* t1 = new TreeNode(1);
   t1->left = new TreeNode(2);
   t1->right = new TreeNode(3);
-  TreeNode *t2 = new TreeNode(2);
+  TreeNode* t2 = new TreeNode(2);
   s.checkSubTree(t1, t2);
 }
