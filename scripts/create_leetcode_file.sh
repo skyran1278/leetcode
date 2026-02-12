@@ -18,6 +18,7 @@ CPP_TEMPLATE=$(cat << 'EOF'
 #include <iostream>
 #include <climits>
 #include <list>
+#include <memory>
 #include <queue>
 #include <stack>
 #include <string>
