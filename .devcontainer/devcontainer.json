@@ -28,11 +28,11 @@
     "vscode": {
       "extensions": [
         // Python
-        "njpwerner.autodocstring",
-        "ms-python.vscode-pylance",
-        "ms-python.python",
-        "charliermarsh.ruff",
-        "tamasfe.even-better-toml",
+        // "njpwerner.autodocstring",
+        // "ms-python.vscode-pylance",
+        // "ms-python.python",
+        // "charliermarsh.ruff",
+        // "tamasfe.even-better-toml",
 
         // C++
         "ms-vscode.cpptools",
@@ -48,7 +48,6 @@
 
         "mhutchie.git-graph",
         "eamodio.gitlens",
-        "wmaurer.change-case",
         "streetsidesoftware.code-spell-checker"
       ]
     }
