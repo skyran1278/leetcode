@@ -3,9 +3,7 @@
 Compute average and median runtimes from @brief annotations.
 
 Usage:
-    1. conda env update --file environment.yml  --prune
-    2. java installed
-    3. F5
+    1. uv run scripts/timing_stats.py
 """
 
 from __future__ import annotations

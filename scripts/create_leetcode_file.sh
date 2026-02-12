@@ -15,6 +15,7 @@ BASE_DIR="Cracking the Coding Interview/7 Object-Oriented Design"
 # Default C++ template content
 CPP_TEMPLATE=$(cat << 'EOF'
 #include <algorithm>
+#include <iostream>
 #include <climits>
 #include <list>
 #include <queue>
