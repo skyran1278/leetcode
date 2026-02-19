@@ -11,7 +11,7 @@
 using namespace std;
 
 /**
- * @brief
+ * @brief 17 m 2 s
  * O(n!)
  * O(n)
  */
@@ -45,9 +45,9 @@ class Solution {
       if (usedCol[col] || usedDiag1[diag1] || usedDiag2[diag2]) continue;
 
       usedCol[col] = usedDiag1[diag1] = usedDiag2[diag2] = true;
-      string rowString = string(n, '.');
-      rowString[col] = 'Q';
-      state.push_back(rowString);
+      string s(n, '.');
+      s[col] = 'Q';
+      state.push_back(s);
 
       backtrack(result, n, state, row + 1, usedCol, usedDiag1, usedDiag2);
 
