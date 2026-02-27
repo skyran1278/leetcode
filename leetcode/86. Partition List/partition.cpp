@@ -17,6 +17,11 @@ struct ListNode {
   ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+/**
+ * @brief 4 m 21 s
+ * O(n)
+ * O(n)
+ */
 class Solution {
  public:
   // head = [1, 4, 3, 2, 5, 2], x = 3

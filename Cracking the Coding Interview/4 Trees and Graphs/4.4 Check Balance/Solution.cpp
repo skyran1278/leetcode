@@ -22,6 +22,7 @@ struct TreeNode {
  * @brief 24 m 1 s
  * @brief 5 m 32 s
  * @brief 3 m 18 s
+ * @brief 3 m 0 s
  */
 class Solution {
  public:
