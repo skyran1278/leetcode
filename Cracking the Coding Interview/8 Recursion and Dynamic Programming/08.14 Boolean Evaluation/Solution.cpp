@@ -12,16 +12,17 @@ using namespace std;
 
 /**
  * @brief 22 m 48 s
+ * @brief 11 m 28 s
  * O(n^3)
  * O(n^2)
  */
 class Solution {
  public:
   int countEval(string s, int result) {
-    int n = s.size();
+    int n = static_cast<int>(s.length());
     vector<vector<vector<int>>> dp(n, vector<vector<int>>(n, vector<int>(2)));
 
-    for (size_t i = 0; i < n; i += 2) {
+    for (int i = 0; i < n; i += 2) {
       if (s[i] == '1') {
         dp[i][i][1] = 1;
       } else {
@@ -42,7 +43,7 @@ class Solution {
             dp[i][i + chunk][1] += left1 * right1;
           } else if (s[j] == '|') {
             dp[i][i + chunk][0] += left0 * right0;
-            dp[i][i + chunk][1] += left1 * (right0 + right1) + left0 * right1;
+            dp[i][i + chunk][1] += left0 * right1 + left1 * (right0 + right1);
           } else if (s[j] == '^') {
             dp[i][i + chunk][0] += left0 * right0 + left1 * right1;
             dp[i][i + chunk][1] += left0 * right1 + left1 * right0;
