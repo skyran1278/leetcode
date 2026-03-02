@@ -31,7 +31,7 @@
         // language standard
         "-std=c++23",
 
-        "${fileDirname}/**.cpp",
+        "\"${fileDirname}\"/**.cpp",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}.out"
       ],
