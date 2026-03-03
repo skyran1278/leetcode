@@ -7,9 +7,9 @@
 using namespace std;
 
 /**
- * @brief 6 m 45 s
- * @brief 10 m 41 s
- * @brief 3 m 58 s
+ * @brief 6m 45s
+ * @brief 10m 41s
+ * @brief 3m 58s
  *
  */
 class MyQueue {

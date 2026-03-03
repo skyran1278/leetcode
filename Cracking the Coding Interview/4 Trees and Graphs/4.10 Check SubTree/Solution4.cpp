@@ -19,8 +19,8 @@ struct TreeNode {
 };
 
 /**
- * @brief 48 m 19 s
- * @brief 17 m 54 s
+ * @brief 48m 19s
+ * @brief 17m 54s
  * Height check skips isSame unless exact match, better than naive O(NM) always
  * n = number of nodes in T1, m = number of nodes in T2
  * O(nm)

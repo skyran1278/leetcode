@@ -19,7 +19,7 @@ struct TreeNode {
 };
 
 /**
- * @brief 25 m 23 s
+ * @brief 25m 23s
  * bfs + dfs
  * n = number of nodes in T1, m = number of nodes in T2
  * O(nm)

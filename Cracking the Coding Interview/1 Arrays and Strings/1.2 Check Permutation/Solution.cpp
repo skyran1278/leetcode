@@ -9,9 +9,9 @@
 using namespace std;
 
 /**
- * @brief 2 m 22 s
- * @brief 2 m 42 s
- * @brief 4 m 1 s
+ * @brief 2m 22s
+ * @brief 2m 42s
+ * @brief 4m 1s
  * O(n)
  * O(n)
  */

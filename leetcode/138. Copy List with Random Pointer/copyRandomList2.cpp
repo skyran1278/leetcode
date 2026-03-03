@@ -12,7 +12,7 @@ class Node {
 };
 
 /**
- * @brief 26 m 57 s
+ * @brief 26m 57s
  * O(n^2)
  * O(1)
  */

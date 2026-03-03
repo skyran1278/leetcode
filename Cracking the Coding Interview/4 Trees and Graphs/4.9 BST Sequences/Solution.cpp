@@ -19,7 +19,7 @@ struct TreeNode {
 };
 
 /**
- * @brief 1 hrs 15 m 12 s
+ * @brief 1 hrs 15m 12s
  *
  */
 class Solution {

@@ -9,7 +9,7 @@
 using namespace std;
 
 /**
- * @brief 19 m 48 s
+ * @brief 19m 48s
  * What are the 32-bit values where all even or all odd bit positions are set to
  * 1?
  * O(1)

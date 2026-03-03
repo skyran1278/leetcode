@@ -5,11 +5,11 @@
 using namespace std;
 
 /**
- * @brief 59 m 56 s
- * @brief 14 m 4 s
- * @brief 16 m 54 s
- * @brief 13 m 34 s
- * @brief 8 m 49 s
+ * @brief 59m 56s
+ * @brief 14m 4s
+ * @brief 16m 54s
+ * @brief 13m 34s
+ * @brief 8m 49s
  *
  * O(n) n == decoded string length
  * O(n)

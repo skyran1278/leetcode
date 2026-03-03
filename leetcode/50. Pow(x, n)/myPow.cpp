@@ -1,7 +1,7 @@
 /**
- * @brief 20 m 49 s
- * @brief 20 m 32 s
- * @brief 5 m 57 s
+ * @brief 20m 49s
+ * @brief 20m 32s
+ * @brief 5m 57s
  * O(log n)
  * O(log n)
  */

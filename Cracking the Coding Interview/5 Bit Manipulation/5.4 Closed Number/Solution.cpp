@@ -9,11 +9,11 @@
 using namespace std;
 
 /**
- * @brief 1 hrs 24 m 55 s
- * @brief 20 m 46 s
- * @brief 38 m 54 s
- * @brief 50 m 34 s
- * @brief 23 m 19 s
+ * @brief 1 hrs 24m 55s
+ * @brief 20m 46s
+ * @brief 38m 54s
+ * @brief 50m 34s
+ * @brief 23m 19s
  * feel hard, need more time to understand it
  * O(1)
  * O(1)

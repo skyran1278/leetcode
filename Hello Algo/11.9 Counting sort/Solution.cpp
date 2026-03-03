@@ -11,8 +11,8 @@
 using namespace std;
 
 /**
- * @brief 7 m 49 s
- * @brief 16 m 3 s
+ * @brief 7m 49s
+ * @brief 16m 3s
  * O(n + k)
  * O(n + k)
  * stable

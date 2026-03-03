@@ -9,7 +9,7 @@
 using namespace std;
 
 /**
- * @brief 38 m 9 s
+ * @brief 38m 9s
  *
  */
 class Solution {

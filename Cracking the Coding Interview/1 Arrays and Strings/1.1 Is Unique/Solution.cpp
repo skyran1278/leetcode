@@ -9,8 +9,8 @@
 using namespace std;
 
 /**
- * @brief 1 m 19 s
- * @brief 4 m 33 s
+ * @brief 1m 19s
+ * @brief 4m 33s
  *
  */
 class Solution {

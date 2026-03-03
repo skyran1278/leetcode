@@ -4,8 +4,8 @@
 using namespace std;
 
 /**
- * @brief 30 m 31 s
- * @brief 32 m 46 s
+ * @brief 30m 31s
+ * @brief 32m 46s
  * O(n * n!)
  * O(n) for recursion stack, O(n * n!) for results.
  *

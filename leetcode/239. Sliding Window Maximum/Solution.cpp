@@ -4,12 +4,12 @@
 using namespace std;
 
 /**
- * @brief 1 hrs 40 m 39 s
- * @brief 24 m 5 s
- * @brief 17 m 5 s
- * @brief 11 m 43 s
- * @brief 10 m 3 s
- * @brief 9 m 34 s
+ * @brief 1 hrs 40m 39s
+ * @brief 24m 5s
+ * @brief 17m 5s
+ * @brief 11m 43s
+ * @brief 10m 3s
+ * @brief 9m 34s
  * Monotonic Deque
  * O(n)
  * O(k)

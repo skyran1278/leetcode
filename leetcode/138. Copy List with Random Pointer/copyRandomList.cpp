@@ -15,7 +15,7 @@ class Node {
 };
 
 /**
- * @brief 1 hrs 11 m 19 s
+ * @brief 1 hrs 11m 19s
  * O(n)
  */
 class Solution {

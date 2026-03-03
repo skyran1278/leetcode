@@ -5,8 +5,8 @@
 using namespace std;
 
 /**
- * @brief 7 m 49 s
- * @brief 5 m 46 s
+ * @brief 7m 49s
+ * @brief 5m 46s
  * O(n)
  * O(1)
  * count how many times that bit appears

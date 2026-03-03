@@ -3,9 +3,9 @@
 using namespace std;
 
 /**
- * @brief 14 m 28 s
- * @brief 13 m 54 s
- * @brief 13 m 21 s
+ * @brief 14m 28s
+ * @brief 13m 54s
+ * @brief 13m 21s
  * push: O(1), other: O(mostly 1, rarely n)
  */
 class MyQueue {

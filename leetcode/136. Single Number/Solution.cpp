@@ -4,9 +4,9 @@
 using namespace std;
 
 /**
- * @brief 6 m 13 s
- * @brief 2 m 0 s
- * @brief 1 m 24 s
+ * @brief 6m 13s
+ * @brief 2m 0s
+ * @brief 1m 24s
  * O(n)
  * O(1)
  * use XOR feature

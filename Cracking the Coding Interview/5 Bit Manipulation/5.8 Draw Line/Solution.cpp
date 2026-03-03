@@ -9,9 +9,9 @@
 using namespace std;
 
 /**
- * @brief 1 hrs 13 m 18 s
- * @brief 1 hrs 31 m 29 s
- * @brief 27 m 35 s
+ * @brief 1 hrs 13m 18s
+ * @brief 1 hrs 31m 29s
+ * @brief 27m 35s
  *
  */
 class Solution {

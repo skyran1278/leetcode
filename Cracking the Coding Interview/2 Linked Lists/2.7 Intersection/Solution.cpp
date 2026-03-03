@@ -17,8 +17,8 @@ struct ListNode {
 };
 
 /**
- * @brief 12 m 18 s
- * @brief 4 m 4 s
+ * @brief 12m 18s
+ * @brief 4m 4s
  * O(n)
  * O(1)
  */

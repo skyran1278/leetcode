@@ -8,9 +8,9 @@
 using namespace std;
 
 /**
- * @brief 16 m 9 s
- * @brief 30 m 55 s
- * @brief 6 m 7 s
+ * @brief 16m 9s
+ * @brief 30m 55s
+ * @brief 6m 7s
  *
  */
 class AnimalShelf {

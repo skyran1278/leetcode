@@ -16,9 +16,9 @@ struct TreeNode {
 };
 
 /**
- * @brief 1 hrs 5 m 13 s
- * @brief 8 m 1 s
- * @brief 8 m 19 s
+ * @brief 1 hrs 5m 13s
+ * @brief 8m 1s
+ * @brief 8m 19s
  * O(h) h = tree height
  * O(1)
  */

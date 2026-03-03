@@ -2,9 +2,9 @@
 bool isBadVersion(int version);
 
 /**
- * @brief 1 m 18 s
- * @brief 9 m 22 s
- * @brief 2 m 52 s
+ * @brief 1m 18s
+ * @brief 9m 22s
+ * @brief 2m 52s
  * O(log n)
  * O(1)
  */

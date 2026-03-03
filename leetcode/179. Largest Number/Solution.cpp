@@ -13,8 +13,8 @@ struct Compare {
 };
 
 /**
- * @brief 1 hrs 35 m 3 s
- * @brief 13 m 53 s
+ * @brief 1 hrs 35m 3s
+ * @brief 13m 53s
  * O(n log n)
  * O(n)
  */

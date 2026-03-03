@@ -9,11 +9,11 @@
 using namespace std;
 
 /**
- * @brief 23 m 16 s
- * @brief 7 m 50 s
- * @brief 56 m 57 s
- * @brief 11 m 36 s
- * @brief 13 m 46 s
+ * @brief 23m 16s
+ * @brief 7m 50s
+ * @brief 56m 57s
+ * @brief 11m 36s
+ * @brief 13m 46s
  * get bit
  * can do it in a reverse way, but not intuitive
  * O(1)

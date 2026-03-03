@@ -11,8 +11,8 @@
 using namespace std;
 
 /**
- * @brief 1 hrs 0 m 56 s
- * @brief 21 m 15 s
+ * @brief 1 hrs 0m 56s
+ * @brief 21m 15s
  * O(rc)
  * O(rc)
  */

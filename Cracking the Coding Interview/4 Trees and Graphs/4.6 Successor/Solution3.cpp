@@ -16,8 +16,8 @@ struct TreeNode {
 };
 
 /**
- * @brief 34 m 41 s
- * @brief 5 m 23 s
+ * @brief 34m 41s
+ * @brief 5m 23s
  * dfs stack
  * O(h) h = tree height
  * O(h)

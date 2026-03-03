@@ -4,8 +4,8 @@
 using namespace std;
 
 /**
- * @brief 1 hrs 53 m 18 s
- * @brief 15 m 57 s
+ * @brief 1 hrs 53m 18s
+ * @brief 15m 57s
  * O(V + E) (courses + prerequisites)
  * O(V + E) (adjacency list + recursion/queue)
  */

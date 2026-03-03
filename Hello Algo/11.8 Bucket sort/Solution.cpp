@@ -11,10 +11,10 @@
 using namespace std;
 
 /**
- * @brief 12 m 54 s
- * @brief 5 m 10 s
- * @brief 5 m 46 s
- * @brief 6 m 22 s
+ * @brief 12m 54s
+ * @brief 5m 10s
+ * @brief 5m 46s
+ * @brief 6m 22s
  * O(n + k)
  * O(n + k)
  * depends on whether the sorting algorithm used within each bucket is stable.

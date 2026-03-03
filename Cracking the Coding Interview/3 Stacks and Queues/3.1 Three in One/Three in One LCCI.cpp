@@ -7,8 +7,8 @@
 using namespace std;
 
 /**
- * @brief 20 m 35 s
- * @brief 24 m 44 s
+ * @brief 20m 35s
+ * @brief 24m 44s
  *
  * Simulate
  */

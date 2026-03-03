@@ -7,8 +7,8 @@
 using namespace std;
 
 /**
- * @brief 19 m 29 s
- * @brief 30 m 19 s
+ * @brief 19m 29s
+ * @brief 30m 19s
  * O(log n)
  * O(1)
  */

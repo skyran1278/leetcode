@@ -32,8 +32,8 @@ void countingSort(int arr[], int n, int digit) {
 }
 
 /**
- * @brief 19 m 15 s
- * @brief 13 m 43 s
+ * @brief 19m 15s
+ * @brief 13m 43s
  * O(nk)
  * O(n + d)
  * stable

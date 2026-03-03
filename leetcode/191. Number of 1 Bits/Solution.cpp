@@ -5,9 +5,9 @@
 using namespace std;
 
 /**
- * @brief 2 m 42 s
- * @brief 5 m 16 s
- * @brief 2 m 30 s
+ * @brief 2m 42s
+ * @brief 5m 16s
+ * @brief 2m 30s
  * O(k), where k is the number of 1 bits.
  * O(1)
  */

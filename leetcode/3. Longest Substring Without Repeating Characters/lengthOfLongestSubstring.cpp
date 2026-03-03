@@ -5,12 +5,12 @@
 using namespace std;
 
 /**
- * @brief 34 m 0 s
- * @brief 20 m 55 s
- * @brief 20 m 42 s
- * @brief 15 m 26 s
- * @brief 8 m 47 s
- * @brief 11 m 46 s
+ * @brief 34m 0s
+ * @brief 20m 55s
+ * @brief 20m 42s
+ * @brief 15m 26s
+ * @brief 8m 47s
+ * @brief 11m 46s
  * O(n)
  * O(1)
  */

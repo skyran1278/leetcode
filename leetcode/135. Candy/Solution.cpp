@@ -5,7 +5,7 @@
 using namespace std;
 
 /**
- * @brief 1 hrs 19 m 44 s
+ * @brief 1 hrs 19m 44s
  * O(n)
  */
 class Solution {

@@ -4,12 +4,12 @@
 using namespace std;
 
 /**
- * @brief 28 m 28 s
- * @brief 24 m 10 s
- * @brief 12 m 27 s
- * @brief 2 m 23 s
- * @brief 2 m 18 s
- * @brief 2 m 15 s
+ * @brief 28m 28s
+ * @brief 24m 10s
+ * @brief 12m 27s
+ * @brief 2m 23s
+ * @brief 2m 18s
+ * @brief 2m 15s
  * O(n)
  */
 class Solution {

@@ -19,11 +19,11 @@ struct TreeNode {
 };
 
 /**
- * @brief 28 m 8 s
- * @brief 5 m 41 s
- * @brief 6 m 16 s
- * @brief 32 m 18 s
- * @brief 27 m 27 s
+ * @brief 28m 8s
+ * @brief 5m 41s
+ * @brief 6m 16s
+ * @brief 32m 18s
+ * @brief 27m 27s
  * backtrack
  * O(n!)
  * O(n * n!)

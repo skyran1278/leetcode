@@ -7,10 +7,10 @@
 using namespace std;
 
 /**
- * @brief 14 m 40 s
- * @brief 18 m 33 s
- * @brief 5 m 30 s
- * @brief 11 m 52 s
+ * @brief 14m 40s
+ * @brief 18m 33s
+ * @brief 5m 30s
+ * @brief 11m 52s
  *
  */
 class SortedStack {

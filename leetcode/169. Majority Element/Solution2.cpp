@@ -5,7 +5,7 @@
 using namespace std;
 
 /**
- * @brief 7 m 28 s
+ * @brief 7m 28s
  * O(n)
  * O(1)
  */

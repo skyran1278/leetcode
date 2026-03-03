@@ -4,10 +4,10 @@
 using namespace std;
 
 /**
- * @brief 52 m 48 s
- * @brief 5 m 38 s
- * @brief 4 m 7 s
- * @brief 7 m 26 s
+ * @brief 52m 48s
+ * @brief 5m 38s
+ * @brief 4m 7s
+ * @brief 7m 26s
  * O(n)
  * O(1)
  */

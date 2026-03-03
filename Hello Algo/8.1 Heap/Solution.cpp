@@ -11,9 +11,9 @@
 using namespace std;
 
 /**
- * @brief 18 m 8 s
- * @brief 10 m 30 s
- * @brief 14 m 4 s
+ * @brief 18m 8s
+ * @brief 10m 30s
+ * @brief 14m 4s
  *
  */
 struct MinHeap {

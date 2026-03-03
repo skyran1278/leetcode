@@ -11,8 +11,8 @@
 using namespace std;
 
 /**
- * @brief 1 m 44 s
- * @brief 5 m 51 s
+ * @brief 1m 44s
+ * @brief 5m 51s
  * repeatedly swaps adjacent elements
  * O(n²)
  * O(1)

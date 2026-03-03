@@ -22,9 +22,9 @@ struct TreeNode {
 };
 
 /**
- * @brief 17 m 58 s
- * @brief 10 m 2 s
- * @brief 4 m 18 s
+ * @brief 17m 58s
+ * @brief 10m 2s
+ * @brief 4m 18s
  * O(n)
  * O(h)
  */

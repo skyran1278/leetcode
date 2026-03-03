@@ -4,8 +4,8 @@
 using namespace std;
 
 /**
- * @brief 21 m 49 s
- * @brief 14 m 0 s
+ * @brief 21m 49s
+ * @brief 14m 0s
  * O(n)
  * O(1)
  */

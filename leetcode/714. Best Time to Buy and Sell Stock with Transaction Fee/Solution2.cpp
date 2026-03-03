@@ -11,9 +11,9 @@
 using namespace std;
 
 /**
- * @brief 9 m 7 s
- * @brief 4 m 9 s
- * @brief 4 m 4 s
+ * @brief 9m 7s
+ * @brief 4m 9s
+ * @brief 4m 4s
  * @brief 2m 57s
  *
  * Define dp[i, 0] as the maximum profit up to day i without holding stock,

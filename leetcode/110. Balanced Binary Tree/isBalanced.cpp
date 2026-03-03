@@ -13,7 +13,7 @@ struct TreeNode {
 };
 
 /**
- * @brief 54 m 35 s
+ * @brief 54m 35s
  * O(n^2)
  */
 class Solution {

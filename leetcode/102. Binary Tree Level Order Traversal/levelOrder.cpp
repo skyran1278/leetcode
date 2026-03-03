@@ -26,8 +26,8 @@ struct TreeNode {
 };
 
 /**
- * @brief 36 m 9 s
- * @brief 12 m 50 s
+ * @brief 36m 9s
+ * @brief 12m 50s
  * O(n)
  * O(n)
  */

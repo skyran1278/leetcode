@@ -4,10 +4,10 @@
 using namespace std;
 
 /**
- * @brief 35 m 49 s
- * @brief 13 m 2 s
- * @brief 3 m 27 s
- * @brief 4 m 52 s
+ * @brief 35m 49s
+ * @brief 13m 2s
+ * @brief 3m 27s
+ * @brief 4m 52s
  * If you face east (nums[right]), you always know whether to turn left or right
  * to reach the treasure. If you face west (nums[left]), sometimes you don’t
  * even know if the treasure is behind you.

@@ -5,8 +5,8 @@
 using namespace std;
 
 /**
- * @brief 12 m 46 s
- * @brief 5 m 28 s
+ * @brief 12m 46s
+ * @brief 5m 28s
  * O(n)
  * O(n)
  * 貪心兩次

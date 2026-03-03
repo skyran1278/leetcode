@@ -9,8 +9,8 @@
 using namespace std;
 
 /**
- * @brief 10 m 32 s
- * @brief 7 m 2 s
+ * @brief 10m 32s
+ * @brief 7m 2s
  * binary in fraction
  * O(1)
  * O(1)

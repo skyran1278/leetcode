@@ -7,9 +7,9 @@
 using namespace std;
 
 /**
- * @brief 20 m 24 s
- * @brief 27 m 7 s
- * @brief 16 m 14 s
+ * @brief 20m 24s
+ * @brief 27m 7s
+ * @brief 16m 14s
  *
  */
 class StackOfPlates {

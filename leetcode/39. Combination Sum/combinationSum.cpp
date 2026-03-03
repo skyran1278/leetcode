@@ -3,8 +3,8 @@
 using namespace std;
 
 /**
- * @brief 16 m 27 s
- * @brief 13 m 52 s
+ * @brief 16m 27s
+ * @brief 13m 52s
  * O(n^(target/minCandidate))
  * O(target)
  */

@@ -3,9 +3,9 @@
 using namespace std;
 
 /**
- * @brief 16 m 37 s
- * @brief 23 m 30 s
- * @brief 10 m 26 s
+ * @brief 16m 37s
+ * @brief 23m 30s
+ * @brief 10m 26s
  * O(n * n!)
  * O(n) for recursion depth, plus O(n * n!) output.
  */
