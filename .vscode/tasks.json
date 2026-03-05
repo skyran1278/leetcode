@@ -25,6 +25,9 @@
         "-Wconversion",
         "-Wsign-conversion",
 
+        // if a variable is shadowed
+        "-Wshadow",
+
         // Enable “Treat warnings as errors”. This will force you to resolve all issues causing warnings.
         "-Werror",
 
