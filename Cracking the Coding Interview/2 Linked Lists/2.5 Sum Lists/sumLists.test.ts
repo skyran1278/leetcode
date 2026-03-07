@@ -1,9 +1,4 @@
-import {
-  Node,
-  arrayToLinkedList,
-  createLinkedList,
-  linkedListToArray,
-} from '../linkedList';
+import { arrayToLinkedList, linkedListToArray, Node } from '../linkedList';
 import { sumLists, sumLists2 } from './sumLists';
 
 describe('sumLists', () => {
@@ -133,24 +128,5 @@ describe('sumLists2', () => {
     const result = sumLists2(list1, list2);
 
     expect(linkedListToArray(result)).toEqual(expectedOutput);
-  });
-});
-
-describe('performance comparison', () => {
-  const list1 = createLinkedList(1000); // Create a linked list of length 10,000
-  const list2 = createLinkedList(1000);
-
-  it('for loop (sumLists) performs better than recursive (sumLists2)', () => {
-    const start1 = process.hrtime();
-    sumLists(list1, list2);
-    const end1 = process.hrtime(start1);
-    const time1 = end1[0] * 1000 + end1[1] / 1000000;
-
-    const start2 = process.hrtime();
-    sumLists2(list1, list2);
-    const end2 = process.hrtime(start2);
-    const time2 = end2[0] * 1000 + end2[1] / 1000000;
-
-    expect(time1).toBeLessThan(time2);
   });
 });

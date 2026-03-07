@@ -1,4 +1,10 @@
-import { Node, createLinkedList, linkedListToArray } from './linkedList';
+import {
+  Node,
+  arrayToLinkedList,
+  createLinkedList,
+  linkedListToArray,
+  reverseLinkedList,
+} from './linkedList';
 
 describe('createLinkedList', () => {
   it('should create an empty linked list when length is 0', () => {
@@ -36,5 +42,61 @@ describe('createLinkedList', () => {
     }
 
     expect(count).toBe(length);
+  });
+
+  it('should throw for negative length', () => {
+    expect(() => createLinkedList(-1)).toThrow('Invalid linked list length');
+  });
+});
+
+describe('arrayToLinkedList', () => {
+  it('should convert a single-element array', () => {
+    const result = arrayToLinkedList([42]);
+    expect(result.value).toBe(42);
+    expect(result.next).toBeNull();
+  });
+
+  it('should convert a multi-element array', () => {
+    const result = arrayToLinkedList([1, 2, 3]);
+    expect(linkedListToArray(result)).toEqual([1, 2, 3]);
+  });
+
+  it('should work with strings', () => {
+    const result = arrayToLinkedList(['a', 'b', 'c']);
+    expect(linkedListToArray(result)).toEqual(['a', 'b', 'c']);
+  });
+});
+
+describe('linkedListToArray', () => {
+  it('should return empty array for null', () => {
+    expect(linkedListToArray(null)).toEqual([]);
+  });
+
+  it('should convert a single node', () => {
+    expect(linkedListToArray(new Node(7))).toEqual([7]);
+  });
+});
+
+describe('reverseLinkedList', () => {
+  it('should return null for null input', () => {
+    expect(reverseLinkedList(null)).toBeNull();
+  });
+
+  it('should reverse a single node', () => {
+    const node = new Node(1);
+    const result = reverseLinkedList(node);
+    expect(linkedListToArray(result)).toEqual([1]);
+  });
+
+  it('should reverse a multi-node list', () => {
+    const head = arrayToLinkedList([1, 2, 3, 4, 5]);
+    const result = reverseLinkedList(head);
+    expect(linkedListToArray(result)).toEqual([5, 4, 3, 2, 1]);
+  });
+
+  it('should reverse a two-node list', () => {
+    const head = arrayToLinkedList([1, 2]);
+    const result = reverseLinkedList(head);
+    expect(linkedListToArray(result)).toEqual([2, 1]);
   });
 });

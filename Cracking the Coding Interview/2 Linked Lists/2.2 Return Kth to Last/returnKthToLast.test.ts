@@ -140,6 +140,9 @@ describe('returnKthToLast performance', () => {
     const head = arrayToLinkedList([1, 2, 3, 4, 5]);
     const k = 2;
 
+    // Warmup to avoid JIT cold-start skew
+    returnKthToLast2(head, k);
+
     const start = process.hrtime();
     returnKthToLast2(head, k);
     const end = process.hrtime(start);
