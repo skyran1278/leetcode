@@ -16,11 +16,6 @@
 
 # Timing Statistics
 
-```sh
-sh scripts/create_leetcode_file.sh <file name>
-uv run scripts/timing_stats.py
-```
-
 |                     | Problems | Average   | Median    |
 | ------------------- | -------- | --------- | --------- |
 | 2025-04-12 12:25:09 | 50       | 31 m 0 s  | 23 m 45 s |

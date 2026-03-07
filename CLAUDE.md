@@ -4,11 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a multi-language coding practice repository covering LeetCode problems, Cracking the Coding Interview (CTCI), Hello Algo, and Algorithms (4th ed.) study. Problems are solved primarily in **C++** and **TypeScript**, with some **Python** and **Java**.
+This is a multi-language coding practice repository covering LeetCode problems, Cracking the Coding Interview (CTCI), Hello Algo. Problems are solved primarily in **C++** and **TypeScript**, with some **Python**.
 
 ## Commands
 
 ### TypeScript / Node.js
+
 ```bash
 pnpm install          # Install dependencies
 pnpm test             # Run Jest in watch mode
@@ -17,18 +18,30 @@ pnpm format           # Prettier with auto-format
 ```
 
 Run a single test file:
+
 ```bash
 pnpm exec jest "path/to/file.test.ts" --no-coverage
 ```
 
+Press `F5` to run the current file and view debug console output in VS Code. (Ignore module warning error.)
+
 ### C++
-Compile all `.cpp` files in a problem directory:
+
+Create a new problem scaffold:
+
+```bash
+sh scripts/create_leetcode_file.sh <folder name>
+```
+
+Press `F5` to run and compile all `.cpp` files in a problem directory:
+
 ```bash
 g++ -fdiagnostics-color=always -g -ggdb -pedantic-errors -Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion -Werror -std=c++23 "path/to/dir/"*.cpp -o path/to/dir/Solution.out
 ./path/to/dir/Solution.out
 ```
 
 ### Python
+
 ```bash
 uv sync --locked                      # Install Python dependencies
 uv run scripts/timing_stats.py       # Analyze @brief timing annotations
@@ -56,6 +69,7 @@ scripts/
 ## Language Conventions
 
 ### C++
+
 - Standard: **C++23** with `-Werror` (all warnings are errors)
 - Formatting: clang-format with **Google** base style (`.clang-format`)
 - Each problem lives in its own directory; all `.cpp` files there are compiled together
@@ -70,11 +84,13 @@ scripts/
   ```
 
 ### TypeScript
+
 - ESLint: `typescript-eslint` strict + stylistic type-checked rules
 - Prettier: single quotes, trailing commas, sorted imports via `@ianvs/prettier-plugin-sort-imports`
 - Each problem has a `<name>.ts` solution and a `<name>.test.ts` Jest test file
 - Unused args prefixed with `_` are allowed; unused variables emit warnings, not errors
 
 ### Python
+
 - Requires Python 3.10+, managed with `uv`
 - Dependencies: `pyspark` (used for timing analysis)
