@@ -26,14 +26,17 @@ Use one of: `fix`, `feat`, `build`, `chore`, `ci`, `docs`, `style`, `refactor`, 
 - `feat`: adds a new feature
 - `fix`: represents a bug fix
 - `BREAKING CHANGE`: add `!` before `:` in type/scope, or include `BREAKING CHANGE:` footer
+  - signals when: removing/renaming public fields or functions, changing function signatures, removing supported values
 
 ## Guidelines
 
 **description:**
+
 - imperative, present tense, lowercase start, no period
 - immediately follows the colon and space
 
 **body** (include by default; omit only for trivial changes like typo fixes):
+
 - blank line after description
 - use dashes (`-`) for bullet points
 - imperative, present tense, lowercase start, no period
@@ -41,16 +44,23 @@ Use one of: `fix`, `feat`, `build`, `chore`, `ci`, `docs`, `style`, `refactor`, 
 - explain the motivation (WHY), not just what changed
 
 **footer (optional):**
+
 - one blank line after body
 - token format: `Token: value` or `Token #value`
 - `BREAKING CHANGE` MUST be uppercase
 
-## Example
+## Examples
 
 ```
 fix(auth): add refresh token logic
 
 - users were unexpectedly logged out when token expired silently
+```
+
+```
+refactor(api)!: split User name into firstName and lastName
+
+- downstream callers reading user.name will break; must migrate to firstName/lastName
 ```
 
 ## Validation Checklist
@@ -64,11 +74,13 @@ fix(auth): add refresh token logic
 
 ## Common Mistakes
 
-| Mistake | Fix |
-|---------|-----|
-| `feat: Added new button` | `feat: add new button` (imperative, lowercase) |
-| `fix: fixed bug.` | `fix: fix bug` (no period, imperative) |
-| Body immediately after description | Add blank line between description and body |
-| Line > 80 chars | Break into multiple lines |
-| `breaking change:` in footer | Must be `BREAKING CHANGE:` (uppercase) |
-| No body on non-trivial change | Add body explaining motivation (WHY) |
+| Mistake                                  | Fix                                             |
+| ---------------------------------------- | ----------------------------------------------- |
+| `feat: Added new button`                 | `feat: add new button` (imperative, lowercase)  |
+| `fix: fixed bug.`                        | `fix: fix bug` (no period, imperative)          |
+| Body immediately after description       | Add blank line between description and body     |
+| Line > 80 chars                          | Break into multiple lines                       |
+| `breaking change:` in footer             | Must be `BREAKING CHANGE:` (uppercase)          |
+| No body on non-trivial change            | Add body explaining motivation (WHY)            |
+| Renamed/removed public field with no `!` | Add `!` after type/scope: `refactor(api)!: ...` |
+| Changed function signature with no `!`   | Add `!` after type/scope: `feat(auth)!: ...`    |
