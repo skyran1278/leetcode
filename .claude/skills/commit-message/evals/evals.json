@@ -1,0 +1,54 @@
+{
+  "skill_name": "commit-message",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate a commit message for this diff:\n\n```diff\ndiff --git a/src/auth/token.ts b/src/auth/token.ts\nindex 4a2c1b3..9e7f823 100644\n--- a/src/auth/token.ts\n+++ b/src/auth/token.ts\n@@ -12,6 +12,18 @@ export async function validateToken(token: string): Promise<User> {\n   return decoded as User;\n }\n \n+export async function refreshToken(token: string): Promise<string> {\n+  const user = await validateToken(token);\n+  const newToken = jwt.sign(\n+    { id: user.id, email: user.email },\n+    process.env.JWT_SECRET!,\n+    { expiresIn: '7d' }\n+  );\n+  await redis.set(`token:${user.id}`, newToken, 'EX', 604800);\n+  return newToken;\n+}\n+\n export function decodeToken(token: string): TokenPayload {\n```",
+      "expected_output": "A Conventional Commits message with type 'feat', scope 'auth', imperative description, and a body bullet explaining WHY (users were silently logged out).",
+      "files": [],
+      "assertions": [
+        "Header type is 'feat' with scope 'auth'",
+        "Description is imperative, lowercase, no trailing period",
+        "Body contains at least one '- ' bullet point",
+        "No '!' in header (not a breaking change)",
+        "All lines are 80 characters or fewer"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Generate a commit message for this diff:\n\n```diff\ndiff --git a/api/users.py b/api/users.py\nindex 1234567..abcdefg 100644\n--- a/api/users.py\n+++ b/api/users.py\n@@ -45,7 +45,7 @@ class UserSchema(Schema):\n     class Meta:\n         fields = ('id', 'email', 'created_at', 'updated_at')\n \n-    name = fields.Str(required=True)\n+    first_name = fields.Str(required=True)\n+    last_name = fields.Str(required=True)\n \n-    def get_full_name(self):\n-        return self.name\n+    def get_full_name(self):\n+        return f'{self.first_name} {self.last_name}'\n```",
+      "expected_output": "A BREAKING CHANGE commit message — 'name' renamed to 'first_name'/'last_name' breaks the API. Should use '!' after type/scope and body explaining the migration path.",
+      "files": [],
+      "assertions": [
+        "Header contains '!' before ':' signaling a breaking change",
+        "Body mentions migration path (first_name and/or last_name)",
+        "Body uses '- ' bullet points, not prose paragraphs",
+        "All lines are 80 characters or fewer"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Generate a commit message for this diff:\n\n```diff\ndiff --git a/README.md b/README.md\nindex aaa1111..bbb2222 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,4 @@\n-# My Proejct\n+# My Project\n \n ## Installation\n```",
+      "expected_output": "A minimal 'docs' commit with no body (typo fix is trivial). Header only: 'docs: fix typo in README title'.",
+      "files": [],
+      "assertions": [
+        "Type is 'docs'",
+        "No body present (trivial change; body should be omitted)",
+        "Description mentions typo or README or title",
+        "All lines are 80 characters or fewer"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Generate a commit message for this diff:\n\n```diff\ndiff --git a/src/db/query.ts b/src/db/query.ts\nindex 111aaaa..222bbbb 100644\n--- a/src/db/query.ts\n+++ b/src/db/query.ts\n@@ -8,10 +8,14 @@ export async function getUsers(filters: UserFilters): Promise<User[]> {\n-  const result = await db.query(\n-    `SELECT * FROM users WHERE active = true`\n-  );\n-  return result.rows;\n+  const conditions: string[] = ['active = true'];\n+  const params: unknown[] = [];\n+  if (filters.role) {\n+    conditions.push(`role = $${params.length + 1}`);\n+    params.push(filters.role);\n+  }\n+  if (filters.createdAfter) {\n+    conditions.push(`created_at > $${params.length + 1}`);\n+    params.push(filters.createdAfter);\n+  }\n+  const result = await db.query(\n+    `SELECT * FROM users WHERE ${conditions.join(' AND ')}`,\n+    params\n+  );\n+  return result.rows;\n }\n```",
+      "expected_output": "A 'feat' or 'refactor' commit with scope 'db' or 'query', body explaining the motivation (filtering was hardcoded, now parameterized). Lines ≤ 80 chars, bullets not prose.",
+      "files": [],
+      "assertions": [
+        "Type is 'feat' or 'refactor' with a scope (db or query)",
+        "Body explains motivation: filtering was hardcoded, now supports dynamic conditions",
+        "Body uses '- ' bullet points, not prose paragraphs",
+        "All lines are 80 characters or fewer"
+      ]
+    }
+  ]
+}

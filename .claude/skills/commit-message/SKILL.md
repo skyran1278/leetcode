@@ -69,6 +69,7 @@ refactor(api)!: split User name into firstName and lastName
 - [ ] scope (if used) is a noun in parentheses
 - [ ] description is lowercase, imperative, no trailing period
 - [ ] body begins with a blank line after description
+- [ ] body uses `- ` bullet points (never prose paragraphs)
 - [ ] every line ≤ 80 characters
 - [ ] breaking changes marked with `!` or `BREAKING CHANGE:` footer
 
@@ -82,5 +83,8 @@ refactor(api)!: split User name into firstName and lastName
 | Line > 80 chars                          | Break into multiple lines                       |
 | `breaking change:` in footer             | Must be `BREAKING CHANGE:` (uppercase)          |
 | No body on non-trivial change            | Add body explaining motivation (WHY)            |
+| Body written as prose paragraph          | Use `- ` bullet points instead                  |
+| `feat!(scope): ...` — `!` before scope    | `!` goes after scope: `feat(scope)!: ...`       |
+| `feat!: ...` — `!` before colon, no scope | `!` goes after type: `feat!: ...` ✅ (no scope) |
 | Renamed/removed public field with no `!` | Add `!` after type/scope: `refactor(api)!: ...` |
 | Changed function signature with no `!`   | Add `!` after type/scope: `feat(auth)!: ...`    |
