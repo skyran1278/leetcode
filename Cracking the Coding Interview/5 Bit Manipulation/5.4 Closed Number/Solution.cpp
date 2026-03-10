@@ -14,58 +14,68 @@ using namespace std;
  * @brief 38m 54s
  * @brief 50m 34s
  * @brief 23m 19s
- * feel hard, need more time to understand it
+ * @brief 42m 33s
  * O(1)
  * O(1)
  */
 class Solution {
  public:
   vector<int> findClosedNumbers(int num) {
-    // 01 -> 10
-    int smallest = -1;
-    for (int i = 0; i < 30; i++) {
-      bool cur = num & 1 << i;
-      bool next = num & 1 << i + 1;
+    if (num == __INT_MAX__) return {-1, -1};
+    if (num == 1) return {2, -1};
+
+    // 0110 -> 1001
+    int large = num;
+    for (int i{0}; i < 30; ++i) {
+      bool cur = num & (1 << i);
+      bool next = num & (1 << (i + 1));
+
       if (cur && !next) {
-        smallest = (num & ~(1 << i)) | 1 << i + 1;
+        large |= 1 << (i + 1);
+        large &= ~(1 << i);
+
         int high = i - 1;
         int low = 0;
         while (high > low) {
-          while (high > low && !(num & 1 << high)) high--;
-          while (high > low && num & 1 << low) low++;
+          while (high > low && !(large & (1 << high))) high--;
+          while (high > low && large & (1 << low)) low++;
+
           if (high > low) {
-            smallest = (smallest & ~(1 << high)) | 1 << low;
-            high--;
-            low++;
+            large &= ~(1 << high);
+            large |= 1 << low;
           }
         }
         break;
       }
     }
 
-    // 10 -> 01
-    int largest = -1;
-    for (int i = 0; i < 30; i++) {
-      bool cur = num & 1 << i;
-      bool next = num & 1 << i + 1;
+    // 1001 -> 0110
+    int small = num;
+    for (int i{0}; i < 30; ++i) {
+      bool cur = num & (1 << i);
+      bool next = num & (1 << (i + 1));
+
       if (!cur && next) {
-        largest = (num & ~(1 << i + 1)) | 1 << i;
+        small |= 1 << i;
+        small &= ~(1 << (i + 1));
+
         int high = i - 1;
         int low = 0;
         while (high > low) {
-          while (high > low && num & 1 << high) high--;
-          while (high > low && !(num & 1 << low)) low++;
+          while (high > low && small & (1 << high)) high--;
+          while (high > low && !(small & (1 << low))) low++;
+
           if (high > low) {
-            largest = (largest & ~(1 << low)) | 1 << high;
-            high--;
-            low++;
+            small |= 1 << high;
+            small &= ~(1 << low);
           }
         }
+
         break;
       }
     }
 
-    return {smallest, largest};
+    return {large, small};
   }
 };
 
