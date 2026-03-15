@@ -11,49 +11,45 @@ using namespace std;
  * @brief 16m 9s
  * @brief 30m 55s
  * @brief 6m 7s
+ * @brief 9m 31s
  *
  */
 class AnimalShelf {
  public:
-  AnimalShelf() {}
+  AnimalShelf() : cats(), dogs() {}
 
   void enqueue(vector<int> animal) {
-    if (animal[1] == 0) {
-      catQueue_.push(animal);
-    } else if (animal[1] == 1) {
-      dogQueue_.push(animal);
-    }
+    if (animal[1] == 0) cats.push(animal[0]);
+    if (animal[1] == 1) dogs.push(animal[0]);
   }
 
   vector<int> dequeueAny() {
-    if (dogQueue_.empty()) return dequeueCat();
-    if (catQueue_.empty()) return dequeueDog();
+    if (cats.empty()) return dequeueDog();
+    if (dogs.empty()) return dequeueCat();
 
-    vector<int>& cat = catQueue_.front();
-    vector<int>& dog = dogQueue_.front();
-    if (cat[0] < dog[0]) {
-      return dequeueCat();
-    } else {
-      return dequeueDog();
-    }
+    int dog = dogs.front();
+    int cat = cats.front();
+
+    if (cat < dog) return dequeueCat();
+    return dequeueDog();
   }
 
   vector<int> dequeueDog() {
-    if (dogQueue_.empty()) return {-1, -1};
-    vector<int> dog = dogQueue_.front();
-    dogQueue_.pop();
-    return dog;
+    if (dogs.empty()) return {-1, -1};
+    int dog = dogs.front();
+    dogs.pop();
+    return {dog, 1};
   }
 
   vector<int> dequeueCat() {
-    if (catQueue_.empty()) return {-1, -1};
-    vector<int> cat = catQueue_.front();
-    catQueue_.pop();
-    return cat;
+    if (cats.empty()) return {-1, -1};
+    int cat = cats.front();
+    cats.pop();
+    return {cat, 0};
   }
 
-  queue<vector<int>> catQueue_;
-  queue<vector<int>> dogQueue_;
+  queue<int> cats;
+  queue<int> dogs;
 };
 
 /**
