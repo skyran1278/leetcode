@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <list>
 #include <queue>
 #include <stack>
@@ -10,6 +11,7 @@ using namespace std;
 
 /**
  * @brief 19m 57s
+ * @brief 4m 53s
  * O(1)
  * O(1)
  */
@@ -17,7 +19,7 @@ class Solution {
  public:
   int convertInteger(int A, int B) {
     // Brian Kernighan may Overflow when 1000... (-__INT_MAX__ - 1)
-    unsigned n = static_cast<unsigned>(A ^ B);
+    std::uint32_t n = static_cast<std::uint32_t>(A ^ B);
     int count = 0;
     while (n) {
       n = n & (n - 1);
