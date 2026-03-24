@@ -23,19 +23,20 @@ USER vscode
 WORKDIR /home/vscode
 
 RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
-COPY --chown=vscode:vscode .p10k.zsh .
-RUN curl -sS https://starship.rs/install.sh | sh -s -- -y
+RUN git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+RUN git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+RUN git clone --depth=1 https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search
 
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-RUN git clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh/zsh-nvm
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-RUN git clone https://github.com/zsh-users/zsh-history-substring-search.git ~/.zsh/zsh-history-substring-search
+RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+RUN ~/.fzf/install --all --no-bash --no-fish
 
-RUN git clone https://github.com/skyran1278/zshrc.git ~/Documents/zshrc
-RUN ln -sf ~/Documents/zshrc/.zshrc ~/.zshrc
+# Download and install fnm
+RUN curl -fsSL https://fnm.vercel.app/install | bash
+RUN mkdir -p ~/.zsh/completions
+RUN /home/vscode/.local/share/fnm/fnm completions --shell zsh > ~/.zsh/completions/_fnm
+RUN /home/vscode/.local/share/fnm/fnm install --lts --corepack-enabled
 
 # Download and install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
-RUN mkdir ~/.zsh/completions
 RUN uv generate-shell-completion zsh > ~/.zsh/completions/_uv
 RUN uvx --generate-shell-completion zsh > ~/.zsh/completions/_uvx
