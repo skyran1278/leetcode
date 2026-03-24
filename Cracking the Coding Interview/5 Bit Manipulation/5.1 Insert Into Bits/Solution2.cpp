@@ -11,6 +11,7 @@ using namespace std;
 /**
  * @brief 28m 51s
  * @brief 55m 4s
+ * @brief 34m 21s
  * can skip for loop
  * O(1)
  * O(1)
