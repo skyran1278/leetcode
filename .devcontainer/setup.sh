@@ -10,4 +10,4 @@ ln -sf "$PWD/.devcontainer/.zshrc" ~/
 uv sync --locked
 
 # Install node packages.
-pnpm install
+COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install

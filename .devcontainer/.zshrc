@@ -11,6 +11,18 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# === SSH Agent Management ===
+# wsl only
+# https://unix.stackexchange.com/a/316560
+# Note that ssh-add without arguments adds ~/.ssh/id_rsa, ~/.ssh/id_ecdsa, ~/.ssh/id_ed25519.
+# You might want to pass ssh-add arguments if your private keys are in another file.
+# ~/.zshrc for zsh shell and ~/.profile for vscode extension
+# if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+#   eval `ssh-agent` > /dev/null
+#   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+# fi
+# export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+
 # === History Configuration ===
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=50000                # Max in-memory history entries
@@ -23,12 +35,8 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt share_history          # share command history data
 
 # === Shell Options ===
-setopt prompt_subst           # evaluate parameter expansion in prompt strings
-setopt interactive_comments   # allow comments in interactive shell
-setopt auto_cd                # type directory name to cd
 setopt auto_pushd             # cd pushes to directory stack
 setopt pushd_ignore_dups      # no duplicates in dir stack
-setopt no_beep                # silence terminal bell
 
 # === Aliases ===
 alias np="pnpm"
@@ -36,16 +44,13 @@ alias pn="pnpm"
 
 # === Completions ===
 # compinit initializes zsh's Tab completion system by scanning all completion
-# definitions in $fpath. This is slow (~200ms), so we cache the result in
-# ~/.zcompdump and only do a full rebuild once every 24 hours.
-#   -C = skip security check, reuse cached dump (fast path)
-#   (no flag) = full scan and rebuild (slow path, regenerates ~/.zcompdump)
+# definitions in $fpath. This is slow (~200ms), so we always use the cached
+# dump (-C) and rebuild in the background when stale (>24h).
 fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit
-if [[ -f ~/.zcompdump && -z ~/.zcompdump(#qN.mh+24) ]]; then
-  compinit -C  # dump exists and is fresh (<24h) — use cache
-else
-  compinit     # dump missing or stale (>24h) — full rebuild
+compinit -C
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit &!  # stale — rebuild in background, takes effect next shell
 fi
 
 # === Plugins ===
@@ -70,7 +75,11 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 # https://code.visualstudio.com/docs/terminal/shell-integration
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
   # Performance-first: inline the script path to avoid spawning Node on each shell startup
-  VS_CODE_ZSH_INTEGRATION="/usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh"
+  if [[ "$OSTYPE" == darwin* ]]; then
+    VS_CODE_ZSH_INTEGRATION="/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh"
+  else
+    VS_CODE_ZSH_INTEGRATION="/usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-rc.zsh"
+  fi
   if [[ -r "$VS_CODE_ZSH_INTEGRATION" ]]; then
     . "$VS_CODE_ZSH_INTEGRATION"
   # Fallback to portable approach if the app path differs (e.g., non-standard install)
