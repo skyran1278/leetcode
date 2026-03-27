@@ -13,6 +13,7 @@ using namespace std;
 /**
  * @brief 22m 48s
  * @brief 11m 28s
+ * @brief 27m 12s
  * O(n^3)
  * O(n^2)
  */
@@ -30,23 +31,25 @@ class Solution {
       }
     }
 
-    for (int chunk = 2; chunk < n; chunk += 2) {
-      for (int i = 0; i + chunk < n; i += 2) {
-        for (int j = i + 1; j < i + chunk; j += 2) {
+    for (int chunk = 3; chunk <= n; chunk += 2) {
+      for (int i = 0; i + chunk - 1 < n; i += 2) {
+        for (int j = i + 1; j < i + chunk - 1; j += 2) {
           int left0 = dp[i][j - 1][0];
           int left1 = dp[i][j - 1][1];
-          int right0 = dp[j + 1][i + chunk][0];
-          int right1 = dp[j + 1][i + chunk][1];
+          int right0 = dp[j + 1][i + chunk - 1][0];
+          int right1 = dp[j + 1][i + chunk - 1][1];
 
           if (s[j] == '&') {
-            dp[i][i + chunk][0] += left0 * (right0 + right1) + left1 * right0;
-            dp[i][i + chunk][1] += left1 * right1;
+            dp[i][i + chunk - 1][0] +=
+                left0 * (right0 + right1) + left1 * right0;
+            dp[i][i + chunk - 1][1] += left1 * right1;
           } else if (s[j] == '|') {
-            dp[i][i + chunk][0] += left0 * right0;
-            dp[i][i + chunk][1] += left0 * right1 + left1 * (right0 + right1);
+            dp[i][i + chunk - 1][0] += left0 * right0;
+            dp[i][i + chunk - 1][1] +=
+                left0 * right1 + left1 * (right0 + right1);
           } else if (s[j] == '^') {
-            dp[i][i + chunk][0] += left0 * right0 + left1 * right1;
-            dp[i][i + chunk][1] += left0 * right1 + left1 * right0;
+            dp[i][i + chunk - 1][0] += left0 * right0 + left1 * right1;
+            dp[i][i + chunk - 1][1] += left0 * right1 + left1 * right0;
           }
         }
       }
