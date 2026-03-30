@@ -9,6 +9,7 @@ using namespace std;
 /**
  * @brief 12m 46s
  * @brief 44m 53s
+ * @brief 17m 27s
  * O(log n)
  * O(1)
  */
@@ -32,7 +33,7 @@ class Solution {
 
     start += (n - 1) / digitLength;
     string value = to_string(start);
-    return value[(size_t)((n - 1) % digitLength)] - '0';
+    return value[static_cast<size_t>((n - 1) % digitLength)] - '0';
   }
 };
 
