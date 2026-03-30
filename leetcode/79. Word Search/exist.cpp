@@ -36,7 +36,8 @@ class Solution {
 
     for (size_t row = 0; row < board.size(); row++) {
       for (size_t col = 0; col < board[row].size(); col++) {
-        if (backtrack(board, used, row, col, word, 0)) {
+        if (backtrack(board, word, used, static_cast<int>(row),
+                      static_cast<int>(col), 0)) {
           return true;
         }
       }
@@ -45,14 +46,14 @@ class Solution {
     return false;
   }
 
-  bool backtrack(vector<vector<char>>& board, vector<vector<bool>>& used,
-                 int row, int col, string& word, int idx) {
+  bool backtrack(vector<vector<char>>& board, const string& word,
+                 vector<vector<bool>>& used, int row, int col, size_t idx) {
     if (idx == word.size()) {
       return true;
     }
 
-    int m = board.size();
-    int n = board[0].size();
+    int m = static_cast<int>(board.size());
+    int n = static_cast<int>(board[0].size());
     if (row >= m || row < 0 || col < 0 || col >= n || used[row][col] ||
         board[row][col] != word[idx]) {
       return false;
@@ -60,11 +61,11 @@ class Solution {
 
     used[row][col] = true;
 
-    static const vector<pair<int, int>> directions = {
+    static const vector<pair<int, int>> directions{
         {1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
     for (auto&& [dr, dc] : directions) {
-      if (backtrack(board, used, row + dr, col + dc, word, idx + 1)) {
+      if (backtrack(board, word, used, row + dr, col + dc, idx + 1)) {
         return true;
       }
     }
