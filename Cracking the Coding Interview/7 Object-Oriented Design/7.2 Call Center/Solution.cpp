@@ -69,7 +69,7 @@ class Director : public Employee {
 class CallCenter {
  public:
   bool dispatchCall(Call* call) {
-    for (int level = 0; level <= 2; ++level) {
+    for (int level = 0; level < NUM_LEVELS; ++level) {
       for (auto&& employee : m_employees[level]) {
         if (employee->isFree()) {
           employee->handleCall(call);
