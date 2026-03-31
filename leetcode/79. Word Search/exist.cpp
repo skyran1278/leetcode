@@ -1,5 +1,7 @@
 #include <algorithm>
+#include <array>
 #include <string>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -7,6 +9,7 @@ using namespace std;
 /**
  * @brief 1 hrs 10m 12s
  * @brief 53m 44s
+ * @brief 36m 7s
  * O(M * N * 3^L)
  * O(MN)
  */
@@ -61,10 +64,9 @@ class Solution {
 
     used[row][col] = true;
 
-    static const vector<pair<int, int>> directions{
-        {1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    constexpr array<pair<int, int>, 4> dirs{{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}};
 
-    for (auto&& [dr, dc] : directions) {
+    for (auto&& [dr, dc] : dirs) {
       if (backtrack(board, word, used, row + dr, col + dc, idx + 1)) {
         return true;
       }
