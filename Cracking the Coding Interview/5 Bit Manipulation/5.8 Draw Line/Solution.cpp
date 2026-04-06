@@ -1,3 +1,4 @@
+#include <climits>
 #include <list>
 #include <queue>
 #include <stack>
@@ -12,39 +13,50 @@ using namespace std;
  * @brief 1 hrs 13m 18s
  * @brief 1 hrs 31m 29s
  * @brief 27m 35s
+ * @brief 40m 39s
  *
  */
 class Solution {
  public:
   vector<int> drawLine(int length, int w, int x1, int x2, int y) {
-    vector<int> results(length);
-    int intPerRow = w / 32;
-    int rowStart = y * intPerRow;
-    int rowEnd = rowStart + intPerRow;
+    vector<int> screen(length);
+    int width = w / 32;
+    int height = length / width;
 
-    for (size_t i = rowStart; i < rowEnd; i++) {
-      int begin = (i - rowStart) * 32;
-      int end = begin + 31;
-      if (begin > x2 || end < x1) {
-        // Entire word is outside the line range
-        results[i] = 0;
-      } else if (begin >= x1 && end <= x2) {
-        // Entire word is within the line range
-        results[i] = -1;
-      } else if (begin >= x1 && end > x2) {
-        int zeroLength = end - x2;
-        results[i] = ~((1 << zeroLength) - 1);
-      } else if (begin < x1 && end <= x2) {
-        int oneLength = end - x1 + 1;
-        results[i] = (1 << oneLength) - 1;
+    int start = 0;
+    int end = 31;
+    for (int i = y * width; i < (y + 1) * width; ++i) {
+      if (x1 > end || x2 < start) {
+        //    start --- end
+        //   x1 --- x2
+        //    start --- end
+        //             x1 --- x2
+        screen[i] = 0;
+      } else if (x1 <= start && x2 >= end) {
+        //    start --- end
+        //      x1 ----- x2
+        screen[i] = -1;
       } else {
-        int left = ~((1 << end - x2) - 1);
-        int right = (1 << end - x1 + 1) - 1;
-        results[i] = left & right;
+        //    start --- end
+        //      x1 --- x2
+        //    start --- end
+        //        x1 --- x2
+        //    start --- end
+        //        x1 - x2
+        int leadingZero = max(x1 - start, 0);
+        int trailingZero = max(end - x2, 0);
+
+        int leading = static_cast<int>(~0u >> leadingZero);
+        int trailing = static_cast<int>(~0u << trailingZero);
+
+        screen[i] = leading & trailing;
       }
+
+      start += 32;
+      end += 32;
     }
 
-    return results;
+    return screen;
   }
 };
 
