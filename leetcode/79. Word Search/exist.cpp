@@ -10,6 +10,7 @@ using namespace std;
  * @brief 1 hrs 10m 12s
  * @brief 53m 44s
  * @brief 36m 7s
+ * @brief 15m 35s
  * O(M * N * 3^L)
  * O(MN)
  */
