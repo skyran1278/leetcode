@@ -1,3 +1,5 @@
+#include <algorithm>
+#include <functional>
 #include <list>
 #include <queue>
 #include <stack>
@@ -31,6 +33,11 @@ class Solution {
     string s1 = preOrder(t1);
     string s2 = preOrder(t2);
 
+    // // Horspool variant — often faster in benchmarks
+    // auto it = search(s1.begin(), s1.end(),
+    //                  boyer_moore_horspool_searcher(s2.begin(), s2.end()));
+
+    // return it != s1.end();
     return s1.find(s2) != string::npos;
   }
 
