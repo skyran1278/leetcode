@@ -14,6 +14,7 @@ using namespace std;
  * @brief 1 hrs 31m 29s
  * @brief 27m 35s
  * @brief 40m 39s
+ * @brief 12m 26s
  *
  */
 class Solution {
@@ -21,7 +22,6 @@ class Solution {
   vector<int> drawLine(int length, int w, int x1, int x2, int y) {
     vector<int> screen(length);
     int width = w / 32;
-    int height = length / width;
 
     int start = 0;
     int end = 31;
