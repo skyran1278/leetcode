@@ -40,8 +40,8 @@ void countingSort(int arr[], int n, int digit) {
  * @brief 19m 15s
  * @brief 13m 43s
  * @brief 22m 29s
- * O(nk)
- * O(n + d)
+ * O(nk) - k = number of digits in the largest number
+ * O(n + d) - d = radix (base), here d = 10
  * stable
  */
 void radixSort(int arr[], int n) {
