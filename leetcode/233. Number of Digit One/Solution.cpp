@@ -9,6 +9,8 @@ using namespace std;
 /**
  * @brief 19m 29s
  * @brief 30m 19s
+ * @brief -- (editorial)
+ * @brief 13m 17s (recall)
  * O(log n)
  * O(1)
  */
@@ -16,7 +18,7 @@ class Solution {
  public:
   // n = 201
   int countDigitOne(int n) {
-    int count = 0;
+    long count = 0;
 
     for (long digit = 1; digit <= n; digit *= 10) {
       long higher = n / (digit * 10);  // higher = 0;
@@ -32,7 +34,7 @@ class Solution {
       }
     }
 
-    return count;
+    return static_cast<int>(count);
   }
 };
 
