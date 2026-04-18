@@ -8,10 +8,11 @@ Usage:
 
 from __future__ import annotations
 
+import os
 import re
 import statistics
 from datetime import datetime
-from typing import Optional, Tuple, cast
+from typing import NamedTuple, Optional, cast
 
 from pyspark.sql import SparkSession
 
@@ -25,8 +26,24 @@ BRIEF_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# @brief lines carrying any of these tags are excluded from baseline stats.
+# See CLAUDE.md for the tagging convention.
+TAGS_TO_SKIP = ("(editorial)", "(recall)", "(untimed)")
+
 SECONDS_IN_MIN = 60
 SECONDS_IN_HOUR = 60 * SECONDS_IN_MIN
+
+
+class BriefStats(NamedTuple):
+    avg_sec: float
+    median_sec: float
+    attempts: int
+    unique_problems: int
+    editorial: int
+
+
+def problem_dir(path: str) -> str:
+    return os.path.dirname(path)
 
 # ANSI colors (no external dependency)
 CLR_RESET = "\033[0m"
@@ -62,61 +79,66 @@ def humanize(seconds: float | int) -> str:
     return f"{minutes} m {secs} s"
 
 
-def compute_runtime_stats() -> Tuple[float, float, int]:
+def compute_runtime_stats() -> BriefStats:
     spark = SparkSession.builder.appName("brief-stats").getOrCreate()
     sc = spark.sparkContext
 
-    # After filtering with the type guard, the resulting RDD holds only ints.
+    pairs = (
+        sc.wholeTextFiles(PATH_GLOB)
+        .flatMap(
+            lambda pc: [(pc[0], ln) for ln in pc[1].splitlines() if "@brief" in ln]
+        )
+        .cache()
+    )
+
+    clean = pairs.filter(
+        lambda pl: not any(tag in pl[1] for tag in TAGS_TO_SKIP)
+    )
+    editorial = pairs.filter(lambda pl: "(editorial)" in pl[1])
+
     times = (
-        sc.textFile(PATH_GLOB)
-        .filter(lambda line: "@brief" in line)
-        .map(parse_brief)
+        clean.map(lambda pl: parse_brief(pl[1]))
         .filter(lambda sec: sec is not None)
     )
 
     if times.isEmpty():
         print("No valid @brief timings found.")
         spark.stop()
-        return (0, 0, 0)
+        return BriefStats(0.0, 0.0, 0, 0, 0)
 
     avg_sec = times.mean()
-    # statistics.median may return int or float depending on cardinality; treat as float
-    collected_raw = times.collect()
-    # At runtime all elements are ints because of _is_int filter; help the type checker.
-    collected = cast(list[int], collected_raw)
+    collected = cast(list[int], times.collect())
     median_sec = float(statistics.median(collected))
+    attempts = clean.count()
+    unique_problems = clean.map(lambda pl: problem_dir(pl[0])).distinct().count()
+    editorial_count = editorial.count()
 
-    matched_file_count = times.count()
     spark.stop()
-
-    return avg_sec, median_sec, matched_file_count
+    return BriefStats(avg_sec, median_sec, attempts, unique_problems, editorial_count)
 
 
 def main() -> None:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    avg_sec, med_sec, matched_files_count = compute_runtime_stats()
+    stats = compute_runtime_stats()
 
-    # |                     | Problems | Average  | Median    |
-    # | ------------------- | -------- | -------- | --------- |
-    # | 2025-04-12 12:25:09 | 50       | 31 m 0 s | 23 m 45 s |
-    # print("")
-    # print(f"{CLR_BOLD}{CLR_CYAN}LeetCode Timing Stats{CLR_RESET} ({timestamp})")
-    # print(f"{CLR_BOLD}{CLR_CYAN}{timestamp}{CLR_RESET}")
-    # print(f"{CLR_GREEN}Problems     :{CLR_RESET} {matched_files_count}")
-    # print(f"{CLR_GREEN}Average Time :{CLR_RESET} {humanize(avg_sec)}")
-    # print(f"{CLR_GREEN}Median Time  :{CLR_RESET} {humanize(med_sec)}")
     print(
         f"| {CLR_BOLD}{CLR_CYAN}{'Date':<19}{CLR_RESET} | "
         f"{CLR_BOLD}{CLR_CYAN}{'Problems':<8}{CLR_RESET} | "
+        f"{CLR_BOLD}{CLR_CYAN}{'Attempts':<8}{CLR_RESET} | "
+        f"{CLR_BOLD}{CLR_CYAN}{'Editorial':<9}{CLR_RESET} | "
         f"{CLR_BOLD}{CLR_CYAN}{'Average':<9}{CLR_RESET} | "
         f"{CLR_BOLD}{CLR_CYAN}{'Median':<9}{CLR_RESET} |"
     )
-    print("| ------------------- | -------- | --------- | --------- |")
+    print(
+        "| ------------------- | -------- | -------- | --------- | --------- | --------- |"
+    )
     print(
         f"| {timestamp:<19} | "
-        f"{CLR_YELLOW}{str(matched_files_count):<8}{CLR_RESET} | "
-        f"{CLR_RED}{humanize(avg_sec):<9}{CLR_RESET} | "
-        f"{CLR_GREEN}{humanize(med_sec):<9}{CLR_RESET} |"
+        f"{CLR_YELLOW}{str(stats.unique_problems):<8}{CLR_RESET} | "
+        f"{CLR_YELLOW}{str(stats.attempts):<8}{CLR_RESET} | "
+        f"{CLR_YELLOW}{str(stats.editorial):<9}{CLR_RESET} | "
+        f"{CLR_RED}{humanize(stats.avg_sec):<9}{CLR_RESET} | "
+        f"{CLR_GREEN}{humanize(stats.median_sec):<9}{CLR_RESET} |"
     )
 
 
