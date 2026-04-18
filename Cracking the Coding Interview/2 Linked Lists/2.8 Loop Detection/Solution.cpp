@@ -18,30 +18,28 @@ struct ListNode {
 
 /**
  * @brief 11m 58s
- * @brief 56 s
+ * @brief 56s
+ * @brief 14m 5s
  * O(n)
  * O(1)
  */
 class Solution {
  public:
-  // head = [3,2,0,-4], pos = 1
   ListNode* detectCycle(ListNode* head) {
     ListNode* fast = head;
     ListNode* slow = head;
 
-    while (fast && fast->next) {
-      fast = fast->next->next;  // fast = -4
-      slow = slow->next;        // slow = -4
+    do {
+      if (!fast || !fast->next) return nullptr;
 
-      if (slow == fast) break;
-    }
-
-    if (!fast || !fast->next) return nullptr;
+      fast = fast->next->next;
+      slow = slow->next;
+    } while (fast != slow);
 
     fast = head;
     while (fast != slow) {
-      fast = fast->next;  // fast = 2
-      slow = slow->next;  // slow = 2
+      fast = fast->next;
+      slow = slow->next;
     }
 
     return fast;
