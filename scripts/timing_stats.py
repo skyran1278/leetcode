@@ -12,11 +12,11 @@ import os
 import re
 import statistics
 from datetime import datetime
-from typing import NamedTuple, Optional, cast
+from pathlib import Path
+from typing import NamedTuple, Optional
 
-from pyspark.sql import SparkSession
-
-PATH_GLOB = "{leetcode,Cracking the Coding Interview, Hello Algo}/**/*.{cpp,py,ts,js}"
+ROOTS = ("leetcode", "Cracking the Coding Interview", "Hello Algo")
+EXTS = (".cpp", ".py", ".ts", ".js")
 
 BRIEF_PATTERN = re.compile(
     r"@brief\s*"
@@ -80,40 +80,31 @@ def humanize(seconds: float | int) -> str:
 
 
 def compute_runtime_stats() -> BriefStats:
-    spark = SparkSession.builder.appName("brief-stats").getOrCreate()
-    sc = spark.sparkContext
+    pairs: list[tuple[str, str]] = []
+    for root in ROOTS:
+        for path in Path(root).rglob("*"):
+            if path.suffix not in EXTS or not path.is_file():
+                continue
+            text = path.read_text(encoding="utf-8", errors="replace")
+            path_str = str(path)
+            for line in text.splitlines():
+                if "@brief" in line:
+                    pairs.append((path_str, line))
 
-    pairs = (
-        sc.wholeTextFiles(PATH_GLOB)
-        .flatMap(
-            lambda pc: [(pc[0], ln) for ln in pc[1].splitlines() if "@brief" in ln]
-        )
-        .cache()
-    )
+    clean = [pl for pl in pairs if not any(tag in pl[1] for tag in TAGS_TO_SKIP)]
+    editorial_count = sum(1 for pl in pairs if "(editorial)" in pl[1])
 
-    clean = pairs.filter(
-        lambda pl: not any(tag in pl[1] for tag in TAGS_TO_SKIP)
-    )
-    editorial = pairs.filter(lambda pl: "(editorial)" in pl[1])
+    times = [sec for _, line in clean if (sec := parse_brief(line)) is not None]
 
-    times = (
-        clean.map(lambda pl: parse_brief(pl[1]))
-        .filter(lambda sec: sec is not None)
-    )
-
-    if times.isEmpty():
+    if not times:
         print("No valid @brief timings found.")
-        spark.stop()
         return BriefStats(0.0, 0.0, 0, 0, 0)
 
-    avg_sec = times.mean()
-    collected = cast(list[int], times.collect())
-    median_sec = float(statistics.median(collected))
-    attempts = clean.count()
-    unique_problems = clean.map(lambda pl: problem_dir(pl[0])).distinct().count()
-    editorial_count = editorial.count()
+    avg_sec = statistics.mean(times)
+    median_sec = float(statistics.median(times))
+    attempts = len(clean)
+    unique_problems = len({problem_dir(p) for p, _ in clean})
 
-    spark.stop()
     return BriefStats(avg_sec, median_sec, attempts, unique_problems, editorial_count)
 
 
