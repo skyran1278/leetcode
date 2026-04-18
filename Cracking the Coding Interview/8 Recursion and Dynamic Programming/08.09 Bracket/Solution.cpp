@@ -12,35 +12,41 @@ using namespace std;
 
 /**
  * @brief 5m 55s
+ * @brief 46m 46s
  * O(n * Cn) where Cn is the n-th Catalan number
  * O(n)
  */
 class Solution {
  public:
   vector<string> generateParenthesis(int n) {
-    vector<string> result;
-    string state;
-    backtrack(result, state, n * 2, n, n);
+    vector<string> result{};
+    string state{};
+    backtrack(n, n, state, result);
     return result;
   }
 
-  void backtrack(vector<string>& result, string& state, int n, int left,
-                 int right) {
-    if (state.size() == n) {
+  void backtrack(int open, int close, string& state, vector<string>& result) {
+    if (open == 0 && close == 0) {
       result.push_back(state);
       return;
     }
 
-    if (left > 0) {
+    if (open > 0) {
       state.push_back('(');
-      backtrack(result, state, n, left - 1, right);
+      backtrack(open - 1, close, state, result);
       state.pop_back();
     }
 
-    if (right > left) {
+    if (close > open) {
       state.push_back(')');
-      backtrack(result, state, n, left, right - 1);
+      backtrack(open, close - 1, state, result);
       state.pop_back();
     }
   }
 };
+
+int main() {
+  Solution s;
+  s.generateParenthesis(2);
+  return 0;
+}
