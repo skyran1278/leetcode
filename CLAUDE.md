@@ -77,11 +77,15 @@ scripts/
 - Track attempt timing in `@brief` comments:
   ```cpp
   /**
-   * @brief 7m 30s
+   * @brief 45m (editorial)   // stuck, studied the editorial / hint
+   * @brief 8m (recall)       // redo within ~1 week of an (editorial) attempt
+   * @brief -- (untimed)      // solved but forgot to time it
+   * @brief 15m 30s           // clean independent solve — counts toward stats
    * O(n)
    * O(n)
    */
   ```
+  Only untagged `@brief` lines feed `timing_stats.py`. Tagged lines (`editorial` / `recall` / `untimed`) preserve history without polluting the baseline.
 
 ### TypeScript
 
