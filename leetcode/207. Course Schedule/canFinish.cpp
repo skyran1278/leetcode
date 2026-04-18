@@ -6,6 +6,7 @@ using namespace std;
 /**
  * @brief 1 hrs 53m 18s
  * @brief 15m 57s
+ * @brief 21m 15s
  * O(V + E) (courses + prerequisites)
  * O(V + E) (adjacency list + recursion/queue)
  */
