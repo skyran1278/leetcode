@@ -2,8 +2,8 @@
 
 # Script: create_leetcode_file.sh
 # Purpose: Creates a directory and a basic C++ solution file for a LeetCode problem.
-# Usage: ./create_leetcode_file.sh <problem_title>...
-# Example: ./create_leetcode_file.sh two sum
+# Usage: ./scripts/create_leetcode_file.sh <problem_title>...
+# Example: ./scripts/create_leetcode_file.sh two sum
 
 # --- Configuration ---
 
