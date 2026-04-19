@@ -1,52 +1,59 @@
+#include <cassert>
 #include <deque>
-#include <iostream>
 #include <vector>
 
 using namespace std;
 
 /**
  * @brief -- (editorial)
+ * @brief 27m 13s (recall)
  * O(mn)
  * O(mn)
  */
 class Solution {
  public:
   vector<vector<int>> maxpool2d(vector<vector<int>>& M, int kernel_size) {
-    size_t m = M.size();
-    size_t n = M[0].size();
-    size_t k = static_cast<size_t>(kernel_size);
-    if (m < k || n < k) return {};
+    int m = static_cast<int>(M.size());
+    int n = static_cast<int>(M[0].size());
 
-    vector<vector<int>> H(m, vector<int>(n - k + 1));
-    for (size_t row = 0; row < m; ++row) {
-      deque<size_t> window;
-      for (size_t col = 0; col < n; ++col) {
-        if (!window.empty() && window.front() + k <= col) {
-          window.pop_front();
+    vector<vector<int>> rowMax(m, vector<int>(n - kernel_size + 1));
+    for (int row = 0; row < m; ++row) {
+      deque<int> monotonic;
+      for (int col = 0; col < n; ++col) {
+        if (!monotonic.empty() && monotonic.front() + kernel_size <= col) {
+          monotonic.pop_front();
         }
-        while (!window.empty() && M[row][window.back()] <= M[row][col]) {
-          window.pop_back();
+
+        while (!monotonic.empty() && M[row][monotonic.back()] < M[row][col]) {
+          monotonic.pop_back();
         }
-        window.push_back(col);
-        if (col + 1 >= k) {
-          H[row][col + 1 - k] = M[row][window.front()];
+
+        monotonic.push_back(col);
+
+        if (col + 1 >= kernel_size) {
+          rowMax[row][col + 1 - kernel_size] = M[row][monotonic.front()];
         }
       }
     }
 
-    vector<vector<int>> result(m - k + 1, vector<int>(n - k + 1));
-    for (size_t col = 0; col < n - k + 1; ++col) {
-      deque<size_t> window;
-      for (size_t row = 0; row < m; ++row) {
-        if (!window.empty() && window.front() + k <= row) {
-          window.pop_front();
+    vector<vector<int>> result(m - kernel_size + 1,
+                               vector<int>(n - kernel_size + 1));
+    for (int col = 0; col < n - kernel_size + 1; ++col) {
+      deque<int> monotonic;
+      for (int row = 0; row < m; ++row) {
+        if (!monotonic.empty() && monotonic.front() + kernel_size <= row) {
+          monotonic.pop_front();
         }
-        while (!window.empty() && H[window.back()][col] <= H[row][col]) {
-          window.pop_back();
+
+        while (!monotonic.empty() &&
+               rowMax[monotonic.back()][col] < rowMax[row][col]) {
+          monotonic.pop_back();
         }
-        window.push_back(row);
-        if (row + 1 >= k) {
-          result[row + 1 - k][col] = H[window.front()][col];
+
+        monotonic.push_back(row);
+
+        if (row + 1 >= kernel_size) {
+          result[row + 1 - kernel_size][col] = rowMax[monotonic.front()][col];
         }
       }
     }
@@ -63,10 +70,10 @@ int main() {
       {0, 1, 2, 23, 4, 5, 6, 7, 8, 9},
       {9, 8, 7, 6, 5, 4, 3, 2, 1, 0},
   };
-  auto r = s.maxpool2d(M, 3);
-  for (auto& row : r) {
-    for (int v : row) cout << v << ' ';
-    cout << '\n';
-  }
+  vector<vector<int>> expected = {
+      {10, 23, 23, 23, 6, 8, 9, 9},
+      {10, 23, 23, 23, 6, 8, 9, 9},
+  };
+  assert(s.maxpool2d(M, 3) == expected);
   return 0;
 }
