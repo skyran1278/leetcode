@@ -15,6 +15,7 @@ using namespace std;
 
 /**
  * @brief -- (editorial)
+ * @brief 9m 23s (recall)
  * O(log(maxValue))
  * O(1)
  */
@@ -24,29 +25,35 @@ class Solution {
     using ll = long long;
 
     auto lcm = [](ll x, ll y) -> ll {
-      ll g = __gcd(x, y);
-      // clamp overflow: if result > 2e18, treat as infinity
-      return (x / g > 2e18 / y) ? (ll)2e18 : x / g * y;
+      ll g = std::gcd(x, y);
+      return x / g * y;
     };
 
     ll ab = lcm(a, b);
-    ll bc = lcm(b, c);
     ll ac = lcm(a, c);
+    ll bc = lcm(b, c);
     ll abc = lcm(ab, c);
 
-    // count ugly numbers in [1, x]
     auto count = [&](ll x) -> ll {
-      return x / a + x / b + x / c - x / ab - x / bc - x / ac + x / abc;
+      return x / a + x / b + x / c - x / ab - x / ac - x / bc + x / abc;
     };
 
-    ll lo = 1, hi = 2e9;
-    while (lo < hi) {
-      ll mid = lo + (hi - lo) / 2;
-      if (count(mid) >= n)
-        hi = mid;
-      else
-        lo = mid + 1;
+    ll low = 1;
+    ll high = 2e9;
+    while (high > low) {
+      ll mid = low + (high - low) / 2;
+      if (count(mid) >= n) {
+        high = mid;
+      } else {
+        low = mid + 1;
+      }
     }
-    return (int)lo;
+
+    return static_cast<int>(low);
   }
 };
+
+int main() {
+  Solution s;
+  s.nthUglyNumber(5, 2, 3, 5);
+}
