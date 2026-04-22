@@ -15,6 +15,7 @@ struct TreeNode {
  * @brief 12m 9s
  * @brief 14m 53s
  * @brief 16m 8s
+ * @brief 38m 53s
  * O(n)
  * O(n)
  */
@@ -33,28 +34,16 @@ class Codec {
   // Decodes your encoded data to tree.
   TreeNode* deserialize(string data) {
     stringstream ss(data);
-    queue<string> values;
-
-    string item;
-    while (getline(ss, item, ',')) {
-      values.push(item);
-    }
-
-    return dfs(values);
+    return dfs(ss);
   }
 
-  // [1,2,null,null,3,4,null,null,4,null,null]
-  TreeNode* dfs(queue<string>& values) {
-    string value = values.front();
-    values.pop();
-    if (value == "null") {
-      return nullptr;
-    }
-
+  TreeNode* dfs(stringstream& ss) {
+    string value;
+    getline(ss, value, ',');
+    if (value == "null") return nullptr;
     TreeNode* node = new TreeNode(stoi(value));
-    node->left = dfs(values);
-    node->right = dfs(values);
-
+    node->left = dfs(ss);
+    node->right = dfs(ss);
     return node;
   }
 };
