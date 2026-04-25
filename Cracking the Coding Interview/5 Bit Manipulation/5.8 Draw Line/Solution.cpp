@@ -15,6 +15,7 @@ using namespace std;
  * @brief 27m 35s
  * @brief 40m 39s
  * @brief 12m 26s
+ * @brief 6m 38s
  *
  */
 class Solution {
