@@ -5,6 +5,7 @@ using namespace std;
 /**
  * @brief 37m 42s
  * @brief 11m 45s
+ * @brief 20m 40s (editorial)
  * O(n)
  * O(1)
  */
